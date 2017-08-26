@@ -4,91 +4,91 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitem
 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-<loc>/</loc>
-<lastmod>2017-08-27T00:17:41-00:00</lastmod>
+<loc>http://localhost:8000/</loc>
+<lastmod>2017-08-27T00:45:49-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>/archives.html</loc>
-<lastmod>2017-08-27T00:17:41-00:00</lastmod>
+<loc>http://localhost:8000/archives.html</loc>
+<lastmod>2017-08-27T00:45:49-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>/tags.html</loc>
-<lastmod>2017-08-27T00:17:41-00:00</lastmod>
+<loc>http://localhost:8000/tags.html</loc>
+<lastmod>2017-08-27T00:45:49-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>/categories.html</loc>
-<lastmod>2017-08-27T00:17:41-00:00</lastmod>
+<loc>http://localhost:8000/categories.html</loc>
+<lastmod>2017-08-27T00:45:49-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>/pages/about.html</loc>
+<loc>http://localhost:8000/pages/about.html</loc>
 <lastmod>2017-05-20T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/Real-Time Tracking.html</loc>
+<loc>http://localhost:8000/Real-Time Tracking.html</loc>
 <lastmod>2017-05-20T21:33:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>/MDNet.html</loc>
+<loc>http://localhost:8000/MDNet.html</loc>
 <lastmod>2017-05-20T21:33:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>/category/visual-tracking.html</loc>
+<loc>http://localhost:8000/category/visual-tracking.html</loc>
 <lastmod>2017-08-26T20:34:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>/tag/deep-neural-networks.html</loc>
+<loc>http://localhost:8000/tag/deep-neural-networks.html</loc>
 <lastmod>2017-08-26T20:34:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>/tag/convolutional-neural-networks.html</loc>
+<loc>http://localhost:8000/tag/convolutional-neural-networks.html</loc>
 <lastmod>2017-05-20T21:33:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>/tag/visual-tracking.html</loc>
+<loc>http://localhost:8000/tag/visual-tracking.html</loc>
 <lastmod>2017-08-26T20:34:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>/tag/real-time-tracking.html</loc>
+<loc>http://localhost:8000/tag/real-time-tracking.html</loc>
 <lastmod>2017-08-26T20:34:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>/author/lingxiaoyang.html</loc>
+<loc>http://localhost:8000/author/lingxiaoyang.html</loc>
 <lastmod>2017-08-26T20:34:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>

@@ -4,11 +4,12 @@
 <head>
   <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
 
-    <link rel="stylesheet" type="text/css" href="/theme/stylesheet/style.min.css">
+    <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/stylesheet/style.min.css">
 
-  <link rel="stylesheet" type="text/css" href="/theme/pygments/monokai.min.css">
-  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/font-awesome/css/font-awesome.min.css">
 
+    <link href="http://localhost:8000/static/custom.css" rel="stylesheet">
 
 
 
@@ -19,15 +20,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="" />
 
-    <!-- Chrome, Firefox OS and Opera -->
-    <meta name="theme-color" content="#333333">
-    <!-- Windows Phone -->
-    <meta name="msapplication-navbutton-color" content="#333333">
-    <!-- iOS Safari -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <!-- Microsoft EDGE -->
-    <meta name="msapplication-TileColor" content="#333333">
 
 <meta name="author" content="Lingxiao.Yang" />
 <meta name="description" content="利用tracking videos以及detection的一些tricks来做visual tracking的论文。" />
@@ -37,11 +29,11 @@
 <meta property="og:title" content="Paper Reading: Learning Multi-domain Convolutional Neural Networks for Visual Tracking"/>
 <meta property="og:description" content="利用tracking videos以及detection的一些tricks来做visual tracking的论文。"/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="/MDNet.html"/>
+<meta property="og:url" content="http://localhost:8000/MDNet.html"/>
 <meta property="og:type" content="article"/>
 <meta property="article:published_time" content="2017-05-19 13:55:00+08:00"/>
 <meta property="article:modified_time" content="2017-05-20 21:33:00+08:00"/>
-<meta property="article:author" content="/author/lingxiaoyang.html">
+<meta property="article:author" content="http://localhost:8000/author/lingxiaoyang.html">
 <meta property="article:section" content="Visual Tracking"/>
 <meta property="article:tag" content="Visual Tracking"/>
 <meta property="article:tag" content="Convolutional Neural Networks"/>
@@ -53,15 +45,15 @@
 <body>
   <aside>
     <div>
-      <a href="">
-        <img src="/theme/img/profile.png" alt="Lingxiao" title="Lingxiao">
+      <a href="http://localhost:8000">
+        <img src="http://localhost:8000/theme/img/profile.png" alt="Lingxiao" title="Lingxiao">
       </a>
-      <h1><a href="">Lingxiao</a></h1>
+      <h1><a href="http://localhost:8000">Lingxiao</a></h1>
 
 <p>On the way to a Researcher</p>
       <nav>
         <ul class="list">
-          <li><a href="/pages/about.html#about">About</a></li>
+          <li><a href="http://localhost:8000/pages/about.html#about">About</a></li>
 
         </ul>
       </nav>
@@ -75,7 +67,7 @@
   <main>
 
     <nav>
-      <a href="">    Home
+      <a href="http://localhost:8000">    Home
 </a>
 
       <a href="/archives.html">Archives</a>
@@ -89,7 +81,7 @@
       
     <h1 id="MDNet">Paper Reading: Learning Multi-domain Convolutional Neural Networks for Visual Tracking</h1>
     <p>
-          Posted on 周五 19 五月 2017 in <a href="/category/visual-tracking.html">Visual Tracking</a>
+          Posted on 周五 19 五月 2017 in <a href="http://localhost:8000/category/visual-tracking.html">Visual Tracking</a>
 
 
         &#8226; 1 min read
@@ -112,7 +104,7 @@
 </ol>
 </blockquote>
 <h2>CNN 网络的训练</h2>
-<p><img alt="MDNet-Pipeline" src="/images/MDNet/MDNet-Pipeline.png" style="width: 1179px; height: auto;"/></p>
+<p><img alt="MDNet-Pipeline" src="http://localhost:8000/images/MDNet/MDNet-Pipeline.png" style="width: 1179px; height: auto;"/></p>
 <p>上图给出了本文利用CNN在额外的videos上进行训练的网络结构。在单目标跟踪的情况下，object可能在一个视频中是待跟踪的目标，而在另外的视频中可能会成为背景。作者认为这种不一致的情况会使得CNN的训练变得苦难，所以提出了新的架构，如果中<strong>fc6</strong>分支。具体来说可以认为作者将每一video当作一个特定的domain，然后对于每一个domain单独训练一个二分类器，即图中<strong>fc6</strong>分支。训练过程中，每一次的迭代会更新：1）当前domain的分类器以及2）前面权值共享部分（i.e. conv1 -&gt; fc5）。这也是本文题目"Multi-Domain"的由来。另外，为了更好的适应跟踪这个特定的问题，作者对于CNN网络进行了改动。比如，将输入图像的size变小（224 -&gt; 107）。同时，跟踪的训练样本很少，不足以很好的训练一个大型的CNN网络，所以作者利用在ImageNet上训练好的VGG-M的前三层来进行网络的初始化，以学习到更好的feature。网络额训练则是通过传统的SGD + Momentum方法。</p>
 <p>注意，这里作者有几个重要的claims:</p>
 <blockquote>
@@ -140,12 +132,12 @@
 <p>在线跟踪的pipeline比较简单，直接将训练好的网络应用到相应的视频中即可。不过这里作者去掉了预训练的<strong>fc6</strong>，重新初始化一个二分类器用于跟踪。跟踪的具体操作与传统的方法类似，即利用前一帧的位置进行采样，将这些candidates送给当前的tracker选择出最好的结果来（<em>实际上在代码中，作者取了跟踪最好的5个bounding box的平均值来代替最好，可能是因为这样比较稳定吧</em>）。为了提高tracking的稳定性以及performance，作者从detection领域引入了两个tricks：1) online hard negative mining 以及 2) bounding box regression。实际上这两部分对于本论文的tracker来说，至关重要。下面依次来解释。</p>
 <h3>Online Hard Negative Mining</h3>
 <p>Detection的研究中经常会用到Hard Negative Mining (HNM)，这里的用法基本上没有区别。简单来说，即先用现有的模型进行一次预测，然后从预测中选择最合适的样本来进行下一次的训练。每次重复这样的过程直到满足某些设定的条件。这里的“最合适”的选择条件比较简单，即在模型的测试后，选择分数最大的一部分来当做HNM的样本进行后续的训练（可能会有别的更好的选择条件）。从下图中，可以看到，迭代到后面挑选出来的样本更难。例如第一个视频中，我们需要跟踪到赛跑中的某一个人，而其余的人都可以认为是干扰目标。在经过迭代挑选之后，选择出来的负样本基本上都是人，将这些样本加入训练的话，可以尽可能的减小tracker受到到相似目标干扰的情况。这里有一个可以思考的问题：如果我对正负样本都进行这种类似的选择会不会提高tracking的结果？</p>
-<p><img alt="OHNM" src="/images/MDNet/MDNet-HNM.png" style="width: 414px; height: auto;"/></p>
+<p><img alt="OHNM" src="http://localhost:8000/images/MDNet/MDNet-HNM.png" style="width: 414px; height: auto;"/></p>
 <h3>Bounding Box Regression</h3>
 <p>论文包括作者自己的报告中指出Bounding Box Regression (BBR) 主要是用来提高tracking跟踪结果的准确度，类似锦上添花的效果。如下图所示，BBR有能力将跟踪结果不是很准确的Bounding Box进行矫正。经过个人的实验结果发现，BBR在某些情况下可以使得跟踪的非常不准确甚至于跟踪错误的情况拉回来。这样，BBR的作用不仅仅只是“提高”，某些情况更像是改错。</p>
-<p><img alt="BBR" src="/images/MDNet/MDNet-BBR.png" style="width: 671px; height: auto;"/></p>
+<p><img alt="BBR" src="http://localhost:8000/images/MDNet/MDNet-BBR.png" style="width: 671px; height: auto;"/></p>
 <h2>结果分析</h2>
-<p><img alt="OTB100 Results" src="/images/MDNet/MDNet-OTB100.png" style="width: 642px; height: auto;"/></p>
+<p><img alt="OTB100 Results" src="http://localhost:8000/images/MDNet/MDNet-OTB100.png" style="width: 642px; height: auto;"/></p>
 <p>上图给出了在标准100个测试集合上的结果，可以看出MDNet的结果要比当年最好的一些结果提高不好。例如其"successful plots"要比当时最好的算法（MUSter）高了接近10个点。这个结果是非常的惊人的。实际上，即使过了两年左右的时间，这个结果依然是top3。最近才刚刚被两个算法SANet[1]以及ECO[2]超越，足以见得这个框架的实力。由于这篇文章更像是在做一个tracking的系统，里面包含太多的部件，所以本人也做了一点额外的实验来具体分析这个算法的成功之处，以下逐个来分析。</p>
 <h3>外部数据训练问题</h3>
 <p>MDNet在VOT2015上的结果是远远高于其他参赛的算法，很多人认为此算法利用到了tracking的videos进行网络的训练，不是很公平。现阶段有相当一部分人不是很认可这种利用tracking videos来进行网络训练的方法，例如SANet虽然结果非常高，但最终只中了CVPR的一个workshop。这个可以从VOT的比赛看出一些端倪。例如VOT2016以及VOT2017明确禁止了这种行为，可参考<a href="http://www.votchallenge.net/vot2017/participation.html">VOT2017</a>的声明:</p>
@@ -153,11 +145,11 @@
 <p>Learning from the tracking datasets (OTB, VOT, ALOV, NUSPRO) is prohibited. The use of class labels specific to VOT is not allowed (i.e., identifying a target class in each sequence and applying pretrained class-specific trackers is not allowed).</p>
 </blockquote>
 <p>在VOT2016的时候，此文作者还专门用MDNet跑了一个结果，只不过没有利用tracking的videos来进行fine-tuning。看VOT2016的报告发现，其结果非常的差。本人自己在OTB100上也做了相关的实验，结果如下图所示：</p>
-<p><img alt="No-Pretrained Results" src="/images/MDNet/MDNet-NoPre.png" style="width: 989px; height: auto;"/></p>
+<p><img alt="No-Pretrained Results" src="http://localhost:8000/images/MDNet/MDNet-NoPre.png" style="width: 989px; height: auto;"/></p>
 <p>上图主要report其中一个常用的评测机制：success plots。只不过用不同的标准。例如，左图是利用曲线下面积AUC（Area-Under-Curve），而右图主要是计算tracker在所有视频中success plot为0.5的平均值。图中MDNet是本文的算法，而<strong>MDNet-NH</strong>以及<strong>MDNet-NL</strong>则是没有利用videos进行fine-tuning的结果。<strong>NL</strong>是利用该论文给定的学习参数，而<strong>NH</strong>则是将学习率提高10倍得到的结果。从图中可以证明本文的一个观点：tracking的videos有助于提高最终的结果。</p>
 <h3>OHNM</h3>
 <p>论文中倒是自己评测了每一个小的部分，例如hard negative mining （HNM）以及bounding box regression （BBR）的技术。本着怀疑一切的态度，本人也经过的一些测试，发现BBR基本上与论文里面得出的结果比较一致。而OHNM的结果与论文中给出的有一定的出入。具体来说则是OHNM对于结果有一定的提升，但并没有论文中对比的结果那么明显，下图左给出的原论文中自己的对比实验结果，而在右图中本人自己跑了一个没有HNM的结果，标记为<strong>NHNM</strong>。注意：本人跑的结果基于没有利用tracking videos训练的网络。</p>
-<p><img alt="No-Pretrained Results" src="/images/MDNet/MDNet-NoHNM.png" style="width: 1026px; height: auto;"/></p>
+<p><img alt="No-Pretrained Results" src="http://localhost:8000/images/MDNet/MDNet-NoHNM.png" style="width: 1026px; height: auto;"/></p>
 <p>从上图中可以看出，本人自己跑的结果比原论文给出的结果要好处不少（0.865 vs 0.816）。这里需要注意两点：1）在我们自己跑的结果中利用到了BBR技术；以及2）本人的网络没有利用外部数据进行fine-tuning。虽然对比不是绝对的公平，但是鉴于以上两点，我们可以初步认为HNM有一定的提升（请看右图中<strong>MDNet-NH</strong>与<strong>MDNet-NH-NHNM</strong>的对比结果），但是没有原始论文中claim的那样暴力（提升了将近10个点）。另外，原始论文中（如上图左）提到，在没有利用multi-domain思想进行训练的情况下（SDNet），跟踪的结果远不及利用了该思想的结果。而事实上，在论文SANet中，也对这一现象进行了简单的测试，发现multi-domain的训练方式对最终的结果影响并没有这么大（1~2%）。这也是为什么本人比较怀疑该论文自己的对比实验的原因。</p>
 <h3>参考文献</h3>
 <p>[1] Fan H, Ling H. SANet: Structure-Aware Network for Visual Tracking[J]. arXiv preprint arXiv:1611.06878, 2016.</p>
@@ -165,8 +157,8 @@
   </div>
   <div class="tag-cloud">
     <p>
-      <a href="/tag/visual-tracking.html">Visual Tracking</a>
-      <a href="/tag/convolutional-neural-networks.html">Convolutional Neural Networks</a>
+      <a href="http://localhost:8000/tag/visual-tracking.html">Visual Tracking</a>
+      <a href="http://localhost:8000/tag/convolutional-neural-networks.html">Convolutional Neural Networks</a>
     </p>
   </div>
 
@@ -207,7 +199,7 @@
   "@context" : "http://schema.org",
   "@type" : "Blog",
   "name": " Lingxiao's World ",
-  "url" : "",
+  "url" : "http://localhost:8000",
   "image": "",
   "description": "Lingxiao's Thoughts and Writings"
 }
