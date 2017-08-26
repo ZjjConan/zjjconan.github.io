@@ -4,91 +4,91 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitem
 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-<loc>https://zjjconan.github.io/</loc>
-<lastmod>2017-08-27T00:14:48-00:00</lastmod>
+<loc>/</loc>
+<lastmod>2017-08-27T00:17:41-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>https://zjjconan.github.io/archives.html</loc>
-<lastmod>2017-08-27T00:14:48-00:00</lastmod>
+<loc>/archives.html</loc>
+<lastmod>2017-08-27T00:17:41-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>https://zjjconan.github.io/tags.html</loc>
-<lastmod>2017-08-27T00:14:48-00:00</lastmod>
+<loc>/tags.html</loc>
+<lastmod>2017-08-27T00:17:41-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>https://zjjconan.github.io/categories.html</loc>
-<lastmod>2017-08-27T00:14:48-00:00</lastmod>
+<loc>/categories.html</loc>
+<lastmod>2017-08-27T00:17:41-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>https://zjjconan.github.io/pages/about.html</loc>
+<loc>/pages/about.html</loc>
 <lastmod>2017-05-20T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://zjjconan.github.io/Real-Time Tracking.html</loc>
+<loc>/Real-Time Tracking.html</loc>
 <lastmod>2017-05-20T21:33:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>https://zjjconan.github.io/MDNet.html</loc>
+<loc>/MDNet.html</loc>
 <lastmod>2017-05-20T21:33:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>https://zjjconan.github.io/category/visual-tracking.html</loc>
+<loc>/category/visual-tracking.html</loc>
 <lastmod>2017-08-26T20:34:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>https://zjjconan.github.io/tag/deep-neural-networks.html</loc>
+<loc>/tag/deep-neural-networks.html</loc>
 <lastmod>2017-08-26T20:34:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>https://zjjconan.github.io/tag/convolutional-neural-networks.html</loc>
+<loc>/tag/convolutional-neural-networks.html</loc>
 <lastmod>2017-05-20T21:33:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>https://zjjconan.github.io/tag/visual-tracking.html</loc>
+<loc>/tag/visual-tracking.html</loc>
 <lastmod>2017-08-26T20:34:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>https://zjjconan.github.io/tag/real-time-tracking.html</loc>
+<loc>/tag/real-time-tracking.html</loc>
 <lastmod>2017-08-26T20:34:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>https://zjjconan.github.io/author/lingxiaoyang.html</loc>
+<loc>/author/lingxiaoyang.html</loc>
 <lastmod>2017-08-26T20:34:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
