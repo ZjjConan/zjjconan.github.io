@@ -102,12 +102,30 @@
 
 
   <div>
-    <p><a href="https://arxiv.org/pdf/1708.00153.pdf">Parallel Tracking and Verifying: A Framework for Real-Time and High Accuracy Visual Tracking</a></p>
-<p>by Heng Fan and Haibin Ling (ICCV 2017)</p>
+    <hr>
+<h6># <a href="https://arxiv.org/pdf/1708.00153.pdf">Parallel Tracking and Verifying: A Framework for Real-Time and High Accuracy Visual Tracking</a></h6>
+<p>Heng Fan and Haibin Ling (ICCV 2017)</p>
+<p><img alt="PTAV" src="/images/RTT-DNN/PTAV-pipeline.png"></p>
+<p>个人感觉这篇文章有点过于工程化了。实际上本文主要利用两部分信息来进行跟踪：1）跟踪器以及2）检测子。具体做法如图所示，即利用快速的跟踪器对每一帧进行相应的处理，同时利用另外一个线程运行较为准确的检测子，然后每隔<em>N</em>帧来进行一次检测。在双线程汇聚的帧上，选择更为可靠的一个结果作为最终的跟踪结果。论文给出的最终结果：OTB100: Prec - 84.9, Succ - 63.5, Speed - 25 fps. </p>
+<hr>
 <p><a href="https://arxiv.org/pdf/1705.06368.pdf">Re3: Real-Time Recurrent Regression Networks for Object Tracking</a></p>
 <p>Daniel Gordon1, Ali Farhadi1, Dieter Fox</p>
+<hr>
 <p><a href="https://arxiv.org/pdf/1704.06036.pdf">End-to-end representation learning for Correlation Filter based tracking</a></p>
 <p>Jack Valmadre, Luca Bertinetto, Joao F. Henriques, Andrea Vedaldi Philip, H. S. Torr</p>
+<hr>
+<p><a href="https://arxiv.org/pdf/1708.02973v1.pdf">Learning Policies for Adaptive Tracking with Deep Feature Cascades</a></p>
+<p>Chen Huang, Simon Lucey, Deva Ramanan (ICCV 2017)</p>
+<hr>
+<p><a href="https://arxiv.org/pdf/1703.04590.pdf">Learning Background-Aware Correlation Filters for Visual Tracking</a></p>
+<p>Hamed Kiani Galoogahi1, Ashton Fagg, Simon Lucey (ICCV 2017)</p>
+<hr>
+<p><a href="https://www.researchgate.net/publication/318910124_Learning_Dynamic_Siamese_Network_for_Visual_Object_Tracking">Learning Dynamic Siamese Network for Visual Object Tracking</a></p>
+<p>Qing Guo, Wei Feng, Ce Zhou, Rui Huang, Liang Wan, Song Wang (ICCV 2017)</p>
+<hr>
+<p><a href="https://arxiv.org/pdf/1708.03874.pdf">Recurrent Filter Learning for Visual Tracking</a></p>
+<p>Tianyu Yang, Antoni B. Chan (ICCVW 2017)</p>
+<hr>
   </div>
   <div class="tag-cloud">
     <p>
