@@ -103,29 +103,43 @@
 
   <div>
     <hr>
-<p><a href="https://arxiv.org/pdf/1708.00153.pdf">Parallel Tracking and Verifying: A Framework for Real-Time and High Accuracy Visual Tracking</a></p>
-<p>Heng Fan and Haibin Ling (ICCV 2017)</p>
-<p><img alt="PTAV" src="/images/RTT-DNN/PTAV-pipeline.png"></p>
+<h5><a href="https://arxiv.org/pdf/1708.00153.pdf">Parallel Tracking and Verifying: A Framework for Real-Time and High Accuracy Visual Tracking</a> (ICCV 2017)</h5>
+<p>Heng Fan and Haibin Ling</p>
+<p><img alt="PTAV" src="/images/RTT-DNN-Part-1/PTAV-pipeline.png"></p>
 <p>个人感觉这篇文章有点过于工程化了。实际上本文主要利用两部分信息来进行跟踪：1）跟踪器以及2）检测子。具体做法如图所示，即利用快速的跟踪器对每一帧进行相应的处理，同时利用另外一个线程运行较为准确的检测子，然后每隔<em>N</em>帧来进行一次检测。在双线程汇聚的帧上，选择更为可靠的一个结果作为最终的跟踪结果。论文给出的最终结果：OTB100: Prec - 84.9, Succ - 63.5, Speed - 25 fps. </p>
 <hr>
-<p><a href="https://arxiv.org/pdf/1705.06368.pdf">Re3: Real-Time Recurrent Regression Networks for Object Tracking</a></p>
+<h5><a href="https://arxiv.org/pdf/1705.06368.pdf">Re3: Real-Time Recurrent Regression Networks for Object Tracking</a></h5>
 <p>Daniel Gordon1, Ali Farhadi1, Dieter Fox</p>
+<p><img alt="Re3" src="/images/RTT-DNN-Part-1/Re3-pipeline.png"></p>
+<p>这篇文章算是利用Recurrent Network做single-object tracking为数不多的几篇文章之一。实际上与GOTURN [1]类似。只不过具体的网络结构不一样罢了。最终的结果确实比GOTURN要好。个人认为可能有两个原因：1）利用RNN（LSTM）探索了更多的历史信息；2）在线跟踪的时候，会每个N帧reset LSTM里面的state，类似于在线的自适应。</p>
 <hr>
-<p><a href="https://arxiv.org/pdf/1704.06036.pdf">End-to-end representation learning for Correlation Filter based tracking</a></p>
+<h5><a href="https://arxiv.org/pdf/1704.06036.pdf">End-to-end representation learning for Correlation Filter based tracking</a> (CVPR 2017)</h5>
 <p>Jack Valmadre, Luca Bertinetto, Joao F. Henriques, Andrea Vedaldi Philip, H. S. Torr</p>
+<p><img alt="CFNet" src="/images/RTT-DNN-Part-1/CFNet-pipeline.png"></p>
+<p>这篇文章还蛮有意思的.是去年SiamFc[2]论文的一个扩展。主要是将当前流行的两个tracking工具: CNN 以及Correlation Filter做融合。论文中将CF设计成一层网络，并做了详细的推导（感觉一切都可以用来做成一层layer）。与SiamFc不一样的是：1）引入CF层，使得整个网络可以非常的小（900KB）既可以得到跟SiamFc（9M）差不多的结果。2）引入crop层，感觉这个crop层的存在是为了能够更好的在线更新模板。而SiamFc仅仅利用第一帧的信息。这部分可能也是结果可以很好的一个原因吧。</p>
 <hr>
-<p><a href="https://arxiv.org/pdf/1708.02973v1.pdf">Learning Policies for Adaptive Tracking with Deep Feature Cascades</a></p>
-<p>Chen Huang, Simon Lucey, Deva Ramanan (ICCV 2017)</p>
+<h5><a href="https://arxiv.org/pdf/1708.02973v1.pdf">Learning Policies for Adaptive Tracking with Deep Feature Cascades</a> (ICCV 2017)</h5>
+<p>Chen Huang, Simon Lucey, Deva Ramanan</p>
+<p><img alt="EAST" src="/images/RTT-DNN-Part-1/EAST-pipeline.png"></p>
+<p>这篇文章主要是利用reinforcement learning做layer的挑选工作（如pipeline所示）。主要原理是考虑到一些比较简单的跟踪情况，可能只需要非常简单的feature就可以很好的做到跟踪，例如某些移动缓慢的目标，而对于非常有challenge的跟踪情况，如deformation非常大的情况，需要利用到更深的层次的layer。跟踪网络利用了速度比较快的SiamFc[1]架构，layer层的挑选则通过reinforcement learning进行。</p>
 <hr>
-<p><a href="https://arxiv.org/pdf/1703.04590.pdf">Learning Background-Aware Correlation Filters for Visual Tracking</a></p>
-<p>Hamed Kiani Galoogahi1, Ashton Fagg, Simon Lucey (ICCV 2017)</p>
+<h5><a href="https://arxiv.org/pdf/1703.04590.pdf">Learning Background-Aware Correlation Filters for Visual Tracking</a> (ICCV 2017)</h5>
+<p>Hamed Kiani Galoogahi1, Ashton Fagg, Simon Lucey</p>
+<p><img alt="BACF" src="/images/RTT-DNN-Part-1/BACF.png"></p>
+<p>这篇文章主要探索如何利用background的样本来增强CF学习到的目标模板。在原始的correlation filter的框架下，扩大训练时候的search region，同时自己定义了一个crop操作，将一个search region里面所有的负样本挑选出来进行训练。crop的操作是可以预先定义好的，所有并没有太多额外的计算负担。</p>
 <hr>
-<p><a href="https://www.researchgate.net/publication/318910124_Learning_Dynamic_Siamese_Network_for_Visual_Object_Tracking">Learning Dynamic Siamese Network for Visual Object Tracking</a></p>
-<p>Qing Guo, Wei Feng, Ce Zhou, Rui Huang, Liang Wan, Song Wang (ICCV 2017)</p>
+<h5><a href="https://www.researchgate.net/publication/318910124_Learning_Dynamic_Siamese_Network_for_Visual_Object_Tracking">Learning Dynamic Siamese Network for Visual Object Tracking</a> (ICCV 2017)</h5>
+<p>Qing Guo, Wei Feng, Ce Zhou, Rui Huang, Liang Wan, Song Wang</p>
 <hr>
-<p><a href="https://arxiv.org/pdf/1708.03874.pdf">Recurrent Filter Learning for Visual Tracking</a></p>
-<p>Tianyu Yang, Antoni B. Chan (ICCVW 2017)</p>
+<h5><a href="https://arxiv.org/pdf/1708.03874.pdf">Recurrent Filter Learning for Visual Tracking</a> (ICCVW 2017)</h5>
+<p>Tianyu Yang, Antoni B. Chan</p>
 <hr>
+<h5><a href="http://openaccess.thecvf.com/content_cvpr_2017/papers/Yun_Action-Decision_Networks_for_CVPR_2017_paper.pdf">Action-Decision Networks for Visual Tracking with Deep Reinforcement Learning</a> (CVPR 2017)</h5>
+<p>Sangdoo Yun, Jongwon Choi, Youngjoon Yoo, Kimin Yun and Jin Young Choi</p>
+<hr>
+<h4>Reference</h4>
+<p>[1] Held D, Thrun S, Savarese S. Learning to track at 100 fps with deep regression networks[C]. European Conference on Computer Vision. Springer International Publishing, 2016: 749-765.</p>
+<p>[2] Bertinetto L, Valmadre J, Henriques J F, et al. Fully-convolutional siamese networks for object tracking[C]. European Conference on Computer Vision. Springer International Publishing, 2016: 850-865.</p>
   </div>
   <div class="tag-cloud">
     <p>
