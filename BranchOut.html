@@ -1,0 +1,227 @@
+
+<!DOCTYPE html>
+<html lang="chinese (simplified)">
+<head>
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" type="text/css" href="/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="/theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/font-awesome.min.css">
+
+    <link href="/static/custom.css" rel="stylesheet">
+
+
+
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#333333">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#333333">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Microsoft EDGE -->
+    <meta name="msapplication-TileColor" content="#333333">
+
+<meta name="author" content="Lingxiao.Yang" />
+<meta name="description" content="考虑如何更好的在线进行tracker的ensembling工作。" />
+<meta name="keywords" content="Visual Tracking, Convolutional Neural Networks, Ensemble Tracking">
+
+<meta property="og:site_name" content="Lingxiao's World"/>
+<meta property="og:title" content="Paper Reading: BranchOut: Regularization for Online Ensemble Tracking with Convolutional Neural Networks"/>
+<meta property="og:description" content="考虑如何更好的在线进行tracker的ensembling工作。"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="/BranchOut.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2017-09-20 13:55:00+08:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="/author/lingxiaoyang.html">
+<meta property="article:section" content="Visual Tracking"/>
+<meta property="article:tag" content="Visual Tracking"/>
+<meta property="article:tag" content="Convolutional Neural Networks"/>
+<meta property="article:tag" content="Ensemble Tracking"/>
+<meta property="og:image" content="">
+
+  <title>Lingxiao's World &ndash; Paper Reading: BranchOut: Regularization for Online Ensemble Tracking with Convolutional Neural Networks</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="">
+        <img src="/theme/img/profile.png" alt="Lingxiao" title="Lingxiao">
+      </a>
+      <h1><a href="">Lingxiao</a></h1>
+
+<p>On the way to a Researcher</p>
+      <nav>
+        <ul class="list">
+          <li><a href="/pages/about.html#about">About</a></li>
+
+        </ul>
+      </nav>
+
+      <ul class="social">
+        <li><a class="sc-github" href="https://github.com/ZjjConan" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-linkedin" href="https://www.linkedin.com/feed/?trk=" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="">    Home
+</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="BranchOut">Paper Reading: BranchOut: Regularization for Online Ensemble Tracking with Convolutional Neural Networks</h1>
+    <p>
+          Posted on 周三 20 九月 2017 in <a href="/category/visual-tracking.html">Visual Tracking</a>
+
+
+        &#8226; 1 min read
+    </p>
+  </header>
+
+
+  <div>
+    <p>论文出处<a href="http://openaccess.thecvf.com/content_cvpr_2017/papers/Han_BranchOut_Regularization_for_CVPR_2017_paper.pdf">CVPR2017</a></p>
+<h2>概述</h2>
+<p>本文主旨是在考虑如何做tracker的ensembling的工作。提出了一种类似dropout[1]的简单有效的算法。</p>
+<hr>
+<h2>tracker的整体结构</h2>
+<p><img alt="BranchOut-Pipeline" src="/images/BranchOut/BranchOut-pipeline.png"></p>
+<p>上图给出了该ensembling的基本框架。网络整体简单类似MDNet[2]以及TCNN[3]。只不过设计了多条<code>支路</code>的tracker（见图fc4以后）。最终，利用average pooling将tracker的预测pool到一起，得到最终的预测分数。但是，简单直接的ensembling的框架会有两个缺点：</p>
+<blockquote>
+<ol>
+<li>
+<p>由于tracking问题的特殊性，在不利用更多的tracking videos进行训练的同时，很难保证多个tracker ensembling之后不会过拟合到某一些样本上。</p>
+</li>
+<li>
+<p>直接暴力的end-to-end的学习，很难保证tracker之间有互补或者有不同的识别能力。</p>
+</li>
+</ol>
+</blockquote>
+<p>所以本文针对以上两点问题，给出了简单有效的解决方案：</p>
+<blockquote>
+<ol>
+<li>
+<p>支路的多样性。例如如图所示，某些支路有两层网络，而某些支路只有一层网络。利用这种多样性保持tracker的多样性。</p>
+</li>
+<li>
+<p>在训练过程中，为了防止多条支路共同拟合到同一些样本上，利用dropout思想随即dropout一些支路。</p>
+</li>
+</ol>
+</blockquote>
+<p><strong> 在线跟踪过程与MDNet基本一致 </strong></p>
+<hr>
+<h2>结果分析</h2>
+<p>这里仅仅给出一些简单的分析结果：</p>
+<table>
+<thead>
+<tr>
+<th align="center">Tracker</th>
+<th align="center">Success Rate (AUC)</th>
+<th align="center">Precision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">MDNet-BranchOut</td>
+<td align="center">0.683</td>
+<td align="center">0.919</td>
+</tr>
+<tr>
+<td align="center">MDNet</td>
+<td align="center">0.678</td>
+<td align="center">0.909</td>
+</tr>
+<tr>
+<td align="center">MDNet-Navie</td>
+<td align="center">0.674</td>
+<td align="center">0.905</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>上表可以看出，BranchOut还是起到了一点作用的。而MDNet-Navie基本上没有什么作用。可能也是论文里面提到的，navie的融合会使得所有的支路overfitting到同样的一些样本了吧。</p>
+<p>同时作者也给出了在VOT2015上的结果（见论文），结果显示，这篇文章与TCNN[3]的表现很接近。但是比较奇怪的是C-COT这个算法在这个数据上结果非常的差。作者给出的解释
+是C-COT[4]的默认参数可能过拟合了其论文里面报的数据集。</p>
+</blockquote>
+<hr>
+<h3>参考文献</h3>
+<p>[1] Srivastava N, Hinton G E, Krizhevsky A, et al. Dropout: a simple way to prevent neural networks from overfitting [J]. Journal of machine learning research, 2014, 15(1): 1929-1958.</p>
+<p>[2] Nam H, Han B. Learning multi-domain convolutional neural networks for visual tracking [C]. Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. 2016: 4293-4302.</p>
+<p>[3] Nam H, Baek M, Han B. Modeling and propagating cnns in a tree structure for visual tracking [J]. arXiv preprint arXiv:1608.07242, 2016.</p>
+<p>[4] Danelljan M, Robinson A, Khan F S, et al. Beyond correlation filters: Learning continuous convolution operators for visual tracking[C]. European Conference on Computer Vision. Springer International Publishing, 2016: 472-488.</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="/tag/visual-tracking.html">Visual Tracking</a>
+      <a href="/tag/convolutional-neural-networks.html">Convolutional Neural Networks</a>
+      <a href="/tag/ensemble-tracking.html">Ensemble Tracking</a>
+    </p>
+  </div>
+
+
+
+    <div class="addthis_relatedposts_inline">
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'zjjconan';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+        Please enable JavaScript to view comments.
+
+</noscript>
+<!-- End Disqus -->
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Lingxiao's World ",
+  "url" : "",
+  "image": "",
+  "description": "Lingxiao's Thoughts and Writings"
+}
+</script>
+
+</body>
+</html>
