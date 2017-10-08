@@ -96,7 +96,7 @@
           Posted on 周六 26 八月 2017 in <a href="/category/visual-tracking.html">Visual Tracking</a>
 
 
-        &#8226; 1 min read
+        &#8226; 2 min read
     </p>
   </header>
 
@@ -133,13 +133,18 @@
 <hr>
 <h5><a href="https://arxiv.org/pdf/1708.03874.pdf">Recurrent Filter Learning for Visual Tracking</a> (ICCVW 2017)</h5>
 <p>Tianyu Yang, Antoni B. Chan</p>
+<p><img alt="RFL" src="/images/RTT-DNN-Part-1/RFL-pipeline.png"></p>
+<p>这篇文章与SiamFc[2]蛮像的，算是在这个工作上的一个改进。主要贡献是利用ConvLSTM[3]来加入一些temporal的信息。利用temporal的信息来产生目标模板。除去LSTM部分，其他的具体操作类似SiamFc。但是作者认为模板的更新对于跟踪很重要，所以作者在跟踪到目标后还专门对模板进行了在线的跟踪。这一部分也是常用的模板加权平均的策略。但个人比较好奇的是，跟踪是一个跟temporal信息非常相关的课题，为什么这里融合了temporal信息之后，反倒还没有原始的SiamFc的结果好。这一部分可能需要仔细研究一下。</p>
 <hr>
 <h5><a href="http://openaccess.thecvf.com/content_cvpr_2017/papers/Yun_Action-Decision_Networks_for_CVPR_2017_paper.pdf">Action-Decision Networks for Visual Tracking with Deep Reinforcement Learning</a> (CVPR 2017)</h5>
 <p>Sangdoo Yun, Jongwon Choi, Youngjoon Yoo, Kimin Yun and Jin Young Choi</p>
+<p><img alt="RFL" src="/images/RTT-DNN-Part-1/ADNet-pipeline.png"></p>
+<p>这篇文章主体是利用Reinforcement Learning去做跟踪。具体做法如pipeline图所示。首先，人为定义一些目标在运动中的运动中action，例如上下左右，变大或变小。在预测过程中，每一帧的预测结果同时输入到网络中对当前帧的目标状态进行预测。实际上可以认为这里做了一个简单的状态转移的预测。在状态转移预测过程中，一旦发现预测不准确，则利用传统tracking-by-detection（TBD）的方式重新找回目标。所以与传统的TBD框架相比，实际上这里大量的操作都是状态转移，所以在论文中，作者给出了一个Fast版本，结果实际上没有降太多，速度倒是接近实时（15fps）。仔细思考之后发现，这里ADNet预测状态转移的过程实质上就是Conv+RNN以及Conv+LSTM的过程。</p>
 <hr>
 <h4>Reference</h4>
 <p>[1] Held D, Thrun S, Savarese S. Learning to track at 100 fps with deep regression networks[C]. European Conference on Computer Vision. Springer International Publishing, 2016: 749-765.</p>
 <p>[2] Bertinetto L, Valmadre J, Henriques J F, et al. Fully-convolutional siamese networks for object tracking[C]. European Conference on Computer Vision. Springer International Publishing, 2016: 850-865.</p>
+<p>[3] Xingjian S H I, Chen Z, Wang H, et al. Convolutional LSTM network: A machine learning approach for precipitation nowcasting[C]. Advances in neural information processing systems. 2015: 802-810.</p>
   </div>
   <div class="tag-cloud">
     <p>
