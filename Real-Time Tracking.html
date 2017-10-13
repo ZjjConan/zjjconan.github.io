@@ -35,7 +35,7 @@
 <meta name="keywords" content="Visual Tracking, Deep Neural Networks, Real-Time Tracking">
 
 <meta property="og:site_name" content="Lingxiao's World"/>
-<meta property="og:title" content="A collection of Real-Time Tracking Methods (DNN)"/>
+<meta property="og:title" content="A collection of Real-Time Tracking Methods (DNN-Part I)"/>
 <meta property="og:description" content="Deep Learning for Real-Time Visual Object Tracking"/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="/Real-Time Tracking.html"/>
@@ -49,7 +49,7 @@
 <meta property="article:tag" content="Real-Time Tracking"/>
 <meta property="og:image" content="">
 
-  <title>Lingxiao's World &ndash; A collection of Real-Time Tracking Methods (DNN)</title>
+  <title>Lingxiao's World &ndash; A collection of Real-Time Tracking Methods (DNN-Part I)</title>
 
 </head>
 <body>
@@ -91,7 +91,7 @@
 <article class="single">
   <header>
       
-    <h1 id="Real-Time Tracking">A collection of Real-Time Tracking Methods (DNN)</h1>
+    <h1 id="Real-Time Tracking">A collection of Real-Time Tracking Methods (DNN-Part I)</h1>
     <p>
           Posted on 周六 26 八月 2017 in <a href="/category/visual-tracking.html">Visual Tracking</a>
 
@@ -130,6 +130,9 @@
 <hr>
 <h5><a href="https://www.researchgate.net/publication/318910124_Learning_Dynamic_Siamese_Network_for_Visual_Object_Tracking">Learning Dynamic Siamese Network for Visual Object Tracking</a> (ICCV 2017)</h5>
 <p>Qing Guo, Wei Feng, Ce Zhou, Rui Huang, Liang Wan, Song Wang</p>
+<p><img alt="DSiamFc" src="/images/RTT-DNN-Part-1/DSiam-pipeline.png"></p>
+<p>这篇文章实际上是[2]的一个扩展，与<code>End-to-End</code>那篇目的类似，为了能够使得SiamFc在线快速的更新模板。这篇文章主要引用了两个重要的参数。其中一个重要的参数是为了能够让第一帧的模板<code>transform</code>到前一帧的模板。
+而第二个参数是为了能够更好的保证当前的feature与前景尽可能的相似。为了能够学习这两个参数，作者直接利用<code>Regularized linear regression</code>来model这一部分，这样做也是为了在线能够更好的更新，因为<code>RLS</code>可以在频域下快速求解。</p>
 <hr>
 <h5><a href="https://arxiv.org/pdf/1708.03874.pdf">Recurrent Filter Learning for Visual Tracking</a> (ICCVW 2017)</h5>
 <p>Tianyu Yang, Antoni B. Chan</p>
