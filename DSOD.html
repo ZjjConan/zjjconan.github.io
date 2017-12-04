@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+<html lang="chinese (simplified)">
+<head>
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" type="text/css" href="/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="/theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/font-awesome.min.css">
+
+    <link href="/static/custom.css" rel="stylesheet">
+
+
+
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#333333">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#333333">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Microsoft EDGE -->
+    <meta name="msapplication-TileColor" content="#333333">
+
+<meta name="author" content="Lingxiao.Yang" />
+<meta name="description" content="主要探讨如何在小数据下成功训练一个SOA的detector出来。" />
+<meta name="keywords" content="Object Detection, SSD">
+
+<meta property="og:site_name" content="Lingxiao's World"/>
+<meta property="og:title" content="Paper Reading: DSOD: Learning Deeply Supervised Object Detectors from Scratch"/>
+<meta property="og:description" content="主要探讨如何在小数据下成功训练一个SOA的detector出来。"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="/DSOD.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2017-12-04 15:43:00+08:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="/author/lingxiaoyang.html">
+<meta property="article:section" content="Object Detection"/>
+<meta property="article:tag" content="Object Detection"/>
+<meta property="article:tag" content="SSD"/>
+<meta property="og:image" content="">
+
+  <title>Lingxiao's World &ndash; Paper Reading: DSOD: Learning Deeply Supervised Object Detectors from Scratch</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="">
+        <img src="/theme/img/profile.png" alt="Lingxiao" title="Lingxiao">
+      </a>
+      <h1><a href="">Lingxiao</a></h1>
+
+<p>On the way to a Researcher</p>
+      <nav>
+        <ul class="list">
+          <li><a href="/pages/about.html#about">About</a></li>
+
+        </ul>
+      </nav>
+
+      <ul class="social">
+        <li><a class="sc-github" href="https://github.com/ZjjConan" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-linkedin" href="https://www.linkedin.com/feed/?trk=" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="">    Home
+</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="DSOD">Paper Reading: DSOD: Learning Deeply Supervised Object Detectors from Scratch</h1>
+    <p>
+          Posted on 周一 04 十二月 2017 in <a href="/category/object-detection.html">Object Detection</a>
+
+
+        &#8226; 1 min read
+    </p>
+  </header>
+
+
+  <div>
+    <p>论文出处<a href="http://openaccess.thecvf.com/content_ICCV_2017/papers/Shen_DSOD_Learning_Deeply_ICCV_2017_paper.pdf">CVPR2017</a></p>
+<h2>概述</h2>
+<p>本文主要是考虑如何在小数据下成功训练<code>deep networks for object detection.</code></p>
+<hr>
+<h2>Detector的整体结构</h2>
+<p><img alt="DSOD" src="/images/Object-Detection/DSOD/pipeline.png"></p>
+<p>上图左给除了SSD[1]的结构，而上图右则给出了本文基于SSD改进的DSOD的结构。从整体结构来看，右图与左图最主要的区别在于其利用到了Dense Connection[2]的思想，使得卷积网络靠前的层与靠后的层有一个融合过程，融合之后在进行前向传播。</p>
+<h2>Findings</h2>
+<p>本文在研究中，通过实验有了如下findings:</p>
+<blockquote>
+<ol>
+<li>
+<p>目前的object detector中，只有single-stage(proposal-free)的detector能够很成功的从小数据学习到足够优秀的detector。而two-stage的detector，诸如Faster-RCNN以及R-FCN由于有RoI pooling层的存在，使得在学习过程中，梯度的传递不是很smooth。所以训练起来比较难以收敛（这里关于RoI pooling的解释不足够深入）。</p>
+</li>
+<li>
+<p>deep supervision对于训练深度网络非常有效，尤其在小数据下进行训练。本文虽然只利用到一个loss function，但是由于有dense connection操作的存在，使得梯度可以很好的回传到前面的层。这种结构可以认为是implicit加入了supervision。</p>
+</li>
+<li>
+<p>将densenet中第一个部分，由原始的7x7改成3x3的结构，这样可以更好的保存原始图片的信息。</p>
+</li>
+<li>
+<p>Multiscale的融合策略。在原始的SSD框架下（如图左），仅仅直接feed所有层的预测。而在DSOD（图右）中，所有层的预测一方面送入最终的分类部分，同时也通过subsampling与后续层进行相应的融合。这样，后续的层可以接受到更多信息。</p>
+</li>
+</ol>
+</blockquote>
+<hr>
+<h2>结果分析</h2>
+<p><img alt="DSOD" src="/images/Object-Detection/DSOD/DSOD_comp.png"></p>
+<p>上图是本文探索的几个问题的对比。基本上可以看出对于performance影响最大的几个tech是：1) 在transition layer并不减少feature map的数量（hi-comp factor）；2）在bottleneck layer中，用更多的feature map数量（wide bottleneck）；3）每一层用到的filter number数量足够多（bi growth rate）以及4）第一层的卷积核的大小为3x3（stem block）。</p>
+<hr>
+<h3>参考文献</h3>
+<p>[1] Liu W, Anguelov D, Erhan D, et al. Ssd: Single shot multibox detector[C]. European conference on computer vision. Springer, Cham, 2016: 21-37.</p>
+<p>[2] Huang G, Liu Z, Weinberger K Q, et al. Densely connected convolutional networks. arXiv preprint arXiv:1608.06993, 2016.</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="/tag/object-detection.html">Object Detection</a>
+      <a href="/tag/ssd.html">SSD</a>
+    </p>
+  </div>
+
+
+
+    <div class="addthis_relatedposts_inline">
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'zjjconan';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+        Please enable JavaScript to view comments.
+
+</noscript>
+<!-- End Disqus -->
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Lingxiao's World ",
+  "url" : "",
+  "image": "",
+  "description": "Lingxiao's Thoughts and Writings"
+}
+</script>
+
+</body>
+</html>

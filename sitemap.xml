@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>/</loc>
-<lastmod>2017-10-13T15:08:53-00:00</lastmod>
+<lastmod>2017-12-04T18:58:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>/archives.html</loc>
-<lastmod>2017-10-13T15:08:53-00:00</lastmod>
+<lastmod>2017-12-04T18:58:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>/tags.html</loc>
-<lastmod>2017-10-13T15:08:53-00:00</lastmod>
+<lastmod>2017-12-04T18:58:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>/categories.html</loc>
-<lastmod>2017-10-13T15:08:53-00:00</lastmod>
+<lastmod>2017-12-04T18:58:34-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
@@ -36,6 +36,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <lastmod>2017-05-20T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
+</url>
+
+<url>
+<loc>/DSOD.html</loc>
+<lastmod>2017-12-04T15:43:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
 </url>
 
 <url>
@@ -60,7 +67,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>/category/object-detection.html</loc>
+<lastmod>2017-12-04T15:43:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.6</priority>
+</url>
+
+<url>
 <loc>/category/visual-tracking.html</loc>
+<lastmod>2017-09-20T13:55:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.6</priority>
+</url>
+
+<url>
+<loc>/tag/object-detection.html</loc>
+<lastmod>2017-12-04T15:43:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.6</priority>
+</url>
+
+<url>
+<loc>/tag/visual-tracking.html</loc>
 <lastmod>2017-09-20T13:55:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
@@ -74,13 +102,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>/tag/deep-neural-networks.html</loc>
-<lastmod>2017-08-26T20:34:00+08:06</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.6</priority>
-</url>
-
-<url>
 <loc>/tag/convolutional-neural-networks.html</loc>
 <lastmod>2017-09-20T13:55:00+08:06</lastmod>
 <changefreq>daily</changefreq>
@@ -88,8 +109,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>/tag/visual-tracking.html</loc>
-<lastmod>2017-09-20T13:55:00+08:06</lastmod>
+<loc>/tag/deep-neural-networks.html</loc>
+<lastmod>2017-08-26T20:34:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
@@ -102,8 +123,15 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>/tag/ssd.html</loc>
+<lastmod>2017-12-04T15:43:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.6</priority>
+</url>
+
+<url>
 <loc>/author/lingxiaoyang.html</loc>
-<lastmod>2017-09-20T13:55:00+08:06</lastmod>
+<lastmod>2017-12-04T15:43:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
