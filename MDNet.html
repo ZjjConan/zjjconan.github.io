@@ -118,7 +118,7 @@
 <div class="section" id="cnn">
 <h2><a class="toc-backref" href="#id7"><span class="caps">CNN</span> 网络的训练</a></h2>
 <div class="figure align-center">
-<img alt="pipeline" src="http://localhost:8000/images/MDNet/MDNet-Pipeline.png" style="width: 720px; height: 260px;"/>
+<img alt="MDNet-pipeline" src="http://localhost:8000/images/MDNet/MDNet-Pipeline.png" style="width: 720px; height: 260px;"/>
 </div>
 <p>上图给出了本文利用<span class="caps">CNN</span>在额外的videos上进行训练的网络结构。在单目标跟踪的情况下，object可能在一个视频中是待跟踪的目标，而在另外的视频中可能会成为背景。作者认为这种不一致的情况会使得<span class="caps">CNN</span>的训练变得苦难，所以提出了新的架构，如果中 <strong>fc6</strong> 分支。具体来说可以认为作者将每一video当作一个特定的domain，然后对于每一个domain单独训练一个二分类器，即图中 <strong>fc6</strong> 分支。训练过程中，每一次的迭代会更新：1）当前domain的分类器以及2）前面权值共享部分（i.e. conv1 -&gt; fc5）。这也是本文题目”Multi-Domain”的由来。另外，为了更好的适应跟踪这个特定的问题，作者对于<span class="caps">CNN</span>网络进行了改动。比如，将输入图像的size变小（224 -&gt; 107）。同时，跟踪的训练样本很少，不足以很好的训练一个大型的<span class="caps">CNN</span>网络，所以作者利用在ImageNet上训练好的<span class="caps">VGG</span>-M的前三层来进行网络的初始化，以学习到更好的feature。网络额训练则是通过传统的<span class="caps">SGD</span> + Momentum方法。</p>
 <p>注意，这里作者有几个重要的claims:</p>
