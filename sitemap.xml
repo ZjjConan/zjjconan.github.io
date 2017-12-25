@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>/</loc>
-<lastmod>2017-12-04T18:58:34-00:00</lastmod>
+<lastmod>2017-12-25T20:55:56-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>/archives.html</loc>
-<lastmod>2017-12-04T18:58:34-00:00</lastmod>
+<lastmod>2017-12-25T20:55:56-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>/tags.html</loc>
-<lastmod>2017-12-04T18:58:34-00:00</lastmod>
+<lastmod>2017-12-25T20:55:56-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>/categories.html</loc>
-<lastmod>2017-12-04T18:58:34-00:00</lastmod>
+<lastmod>2017-12-25T20:55:56-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
@@ -53,7 +53,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>/Real-Time Tracking.html</loc>
+<loc>/Real-Time-Tracking-DNN-Part-I.html</loc>
 <lastmod>2017-05-20T21:33:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.6</priority>
