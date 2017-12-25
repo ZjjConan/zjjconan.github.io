@@ -13,7 +13,7 @@
 <meta name="keywords" content="Visual Tracking, One-shot learning, Visual Tracking, " />
 
 <meta property="og:title" content="Paper Reading: MAVOT: Memory-Augmented Video Object Tracking "/>
-<meta property="og:url" content="/drafts/MAVOT.html" />
+<meta property="og:url" content="http://localhost:8000/drafts/MAVOT.html" />
 <meta property="og:description" content="考虑如何更好的在线进行tracker的ensembling工作。" />
 <meta property="og:site_name" content="Lingxiao&#39;s World" />
 <meta property="og:article:author" content="Lingxiao.Yang" />
@@ -25,7 +25,17 @@
 </title>
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
-<link rel="stylesheet" href="/theme/css/style.min.css?7aeecf36">
+<link rel="stylesheet" href="http://localhost:8000/theme/css/style.min.css?7aeecf36">
+        <link rel="shortcut icon" href="http://localhost:8000/theme/images/favicon.ico" type="image/x-icon" type="image/png" />
+        <link rel="icon" href="http://localhost:8000/theme/images/apple-touch-icon-152x152.png" type="image/png" />
+        <link rel="apple-touch-icon" href="http://localhost:8000/theme/images/apple-touch-icon.png"  type="image/png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="http://localhost:8000/theme/images/apple-touch-icon-57x57.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="http://localhost:8000/theme/images/apple-touch-icon-72x72.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="76x76" href="http://localhost:8000/theme/images/apple-touch-icon-76x76.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="http://localhost:8000/theme/images/apple-touch-icon-114x114.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="120x120" href="http://localhost:8000/theme/images/apple-touch-icon-120x120.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="http://localhost:8000/theme/images/apple-touch-icon-144x144.png" type="image/png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="http://localhost:8000/theme/images/apple-touch-icon-152x152.png" type="image/png" />
     </head>
     <body>
         <div id="content-sans-footer">
@@ -37,15 +47,15 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="/"><span class=site-name>Lingxiao's World</span></a>
+                    <a class="brand" href="http://localhost:8000/"><span class=site-name>Lingxiao's World</span></a>
                     <div class="nav-collapse collapse">
                         <ul class="nav pull-right top-menu">
-                            <li ><a href="">Home</a></li>
-                            <li ><a href="/pages/about.html">About</a></li>
-                            <li ><a href="/categories.html">Categories</a></li>
-                            <li ><a href="/tags.html">Tags</a></li>
-                            <li ><a href="/archives.html">Archives</a></li>
-                            <li><form class="navbar-search" action="/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                            <li ><a href="http://localhost:8000">Home</a></li>
+                            <li ><a href="http://localhost:8000/about">About</a></li>
+                            <li ><a href="http://localhost:8000/categories.html">Categories</a></li>
+                            <li ><a href="http://localhost:8000/tags.html">Tags</a></li>
+                            <li ><a href="http://localhost:8000/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="http://localhost:8000/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
                         </ul>
                     </div>
                 </div>
@@ -58,7 +68,7 @@
 <article>
 <div class="row-fluid">
     <header class="page-header span10 offset2">
-    <h1><a href="/drafts/MAVOT.html"> Paper Reading: <span class="caps">MAVOT</span>: Memory-Augmented Video Object&nbsp;Tracking  </a></h1>
+    <h1><a href="http://localhost:8000/drafts/MAVOT.html"> Paper Reading: <span class="caps">MAVOT</span>: Memory-Augmented Video Object&nbsp;Tracking  </a></h1>
     </header>
 </div>
 
@@ -66,9 +76,9 @@
         <div class="span8 offset2 article-content">
 
             
-            <!-- 论文出处 `CVPR2017 <http://openaccess.thecvf.com/content_cvpr_2017/papers/Han_BranchOut_Regularization_for_CVPR_2017_paper.pdf>`_ -->
-<!-- 概述 -->
-<!-- ==== -->
+            <p>论文出处 <a class="reference external" href="https://arxiv.org/pdf/1711.09414.pdf">Arxiv</a></p>
+<div class="section" id="id1">
+<h2>概述</h2>
 <!-- 本文主旨是在考虑如何做tracker的ensembling的工作。提出了一种类似dropout[1] 的简单有效的算法。 -->
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 <!-- tracker的整体结构 -->
@@ -100,16 +110,17 @@
 <!-- 上表可以看出，BranchOut还是起到了一点作用的。而MDNet-Navie基本上没有什么作用。可能也是论文里面提到的，navie的融合会使得所有的支路overfitting到同样的一些样本了吧。 -->
 <!-- 同时作者也给出了在VOT2015上的结果（见论文），结果显示，这篇文章与TCNN [3] 的表现很接近。但是比较奇怪的是C-COT这个算法在这个数据上结果非常的差。作者给出的解释 是C-COT [4] 的默认参数可能过拟合了其论文里面报的数据集。 -->
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+</div>
 
             
             
             <hr/>
 <section>
-    <h2>Related Posts</h2>
+    <h2>Keep Reading</h2>
 <ul class="related-posts-list">
-<li><a href="/MDNet.html" title="Paper Reading: Learning Multi-domain Convolutional Neural Networks for Visual Tracking">Paper Reading: Learning Multi-domain Convolutional Neural Networks for Visual Tracking</a></li>
-<li><a href="/Real-Time-Tracking-DNN-Part-I.html" title="A collection of Real-Time Tracking Methods (DNN-Part I)">A collection of Real-Time Tracking Methods (DNN-Part I)</a></li>
-<li><a href="/BranchOut.html" title="Paper Reading: BranchOut: Regularization for Online Ensemble Tracking with Convolutional Neural Networks">Paper Reading: BranchOut: Regularization for Online Ensemble Tracking with Convolutional Neural Networks</a></li>
+<li><a href="http://localhost:8000/MDNet" title="Paper Reading: Learning Multi-domain Convolutional Neural Networks for Visual Tracking">Paper Reading: Learning Multi-domain Convolutional Neural Networks for Visual Tracking</a></li>
+<li><a href="http://localhost:8000/Real-Time-Tracking-DNN-Part-I" title="A collection of Real-Time Tracking Methods (DNN-Part I)">A collection of Real-Time Tracking Methods (DNN-Part I)</a></li>
+<li><a href="http://localhost:8000/BranchOut" title="Paper Reading: BranchOut: Regularization for Online Ensemble Tracking with Convolutional Neural Networks">Paper Reading: BranchOut: Regularization for Online Ensemble Tracking with Convolutional Neural Networks</a></li>
 </ul>
 <hr />
 </section>
@@ -119,16 +130,16 @@
             <h4>Published</h4>
             <time pubdate="pubdate" datetime="2017-12-25T22:00:00+08:00">12月 25, 2017</time>
             <h4>Category</h4>
-            <a class="category-link" href="/categories.html#visual-tracking-ref">Visual Tracking</a>
+            <a class="category-link" href="http://localhost:8000/categories.html#visual-tracking-ref">Visual Tracking</a>
             <h4>Tags</h4>
             <ul class="list-of-tags tags-in-article">
-                <li><a href="/tags.html#one-shot-learning-ref">One-shot learning
+                <li><a href="http://localhost:8000/tags.html#one-shot-learning-ref">One-shot learning
 </a></li>
-                <li><a href="/tags.html#visual-tracking-ref">Visual Tracking
+                <li><a href="http://localhost:8000/tags.html#visual-tracking-ref">Visual Tracking
                     <span>3</span>
 </a></li>
             </ul>
-<h4>Contact</h4>
+<h4>Stay in Touch</h4>
     <a href="https://github.com/ZjjConan" title="My github Profile" class="sidebar-social-links" target="_blank">
     <i class="fa fa-github sidebar-social-links"></i></a>
     <a href="https://www.linkedin.com/feed/?trk=" title="My linkedin Profile" class="sidebar-social-links" target="_blank">
