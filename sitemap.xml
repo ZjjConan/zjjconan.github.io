@@ -4,63 +4,63 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitem
 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-<loc>https://zjjconan.github.io/</loc>
-<lastmod>2017-12-26T11:39:53-00:00</lastmod>
+<loc>/</loc>
+<lastmod>2017-12-26T11:42:25-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>https://zjjconan.github.io/archives.html</loc>
-<lastmod>2017-12-26T11:39:53-00:00</lastmod>
+<loc>/archives.html</loc>
+<lastmod>2017-12-26T11:42:25-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>https://zjjconan.github.io/tags.html</loc>
-<lastmod>2017-12-26T11:39:53-00:00</lastmod>
+<loc>/tags.html</loc>
+<lastmod>2017-12-26T11:42:25-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>https://zjjconan.github.io/categories.html</loc>
-<lastmod>2017-12-26T11:39:53-00:00</lastmod>
+<loc>/categories.html</loc>
+<lastmod>2017-12-26T11:42:25-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>https://zjjconan.github.io/about</loc>
+<loc>/about</loc>
 <lastmod>2017-05-20T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://zjjconan.github.io/DSOD</loc>
+<loc>/DSOD</loc>
 <lastmod>2017-12-04T15:43:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>https://zjjconan.github.io/BranchOut</loc>
+<loc>/BranchOut</loc>
 <lastmod>2017-09-20T13:55:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>https://zjjconan.github.io/Real-Time-Tracking-DNN-Part-I</loc>
+<loc>/Real-Time-Tracking-DNN-Part-I</loc>
 <lastmod>2017-05-20T21:33:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>https://zjjconan.github.io/MDNet</loc>
+<loc>/MDNet</loc>
 <lastmod>2017-05-20T21:33:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.6</priority>
