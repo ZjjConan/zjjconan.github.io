@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://zjjconan.github.io/</loc>
-<lastmod>2017-12-26T14:32:27-00:00</lastmod>
+<lastmod>2017-12-27T17:08:18-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>https://zjjconan.github.io/archives.html</loc>
-<lastmod>2017-12-26T14:32:27-00:00</lastmod>
+<lastmod>2017-12-27T17:08:18-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>https://zjjconan.github.io/tags.html</loc>
-<lastmod>2017-12-26T14:32:27-00:00</lastmod>
+<lastmod>2017-12-27T17:08:18-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>https://zjjconan.github.io/categories.html</loc>
-<lastmod>2017-12-26T14:32:27-00:00</lastmod>
+<lastmod>2017-12-27T17:08:18-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
@@ -36,6 +36,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <lastmod>2017-05-20T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://zjjconan.github.io/MAVOT</loc>
+<lastmod>2017-12-25T22:00:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.6</priority>
 </url>
 
 <url>
