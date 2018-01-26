@@ -5,70 +5,70 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://zjjconan.github.io/</loc>
-<lastmod>2018-01-26T18:52:44-00:00</lastmod>
+<lastmod>2018-01-26T20:55:45-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>https://zjjconan.github.io/archives.html</loc>
-<lastmod>2018-01-26T18:52:44-00:00</lastmod>
+<lastmod>2018-01-26T20:55:45-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>https://zjjconan.github.io/tags.html</loc>
-<lastmod>2018-01-26T18:52:44-00:00</lastmod>
+<lastmod>2018-01-26T20:55:45-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>https://zjjconan.github.io/categories.html</loc>
-<lastmod>2018-01-26T18:52:44-00:00</lastmod>
+<lastmod>2018-01-26T20:55:45-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>https://zjjconan.github.io/about</loc>
-<lastmod>2017-05-20T00:00:00+08:00</lastmod>
+<lastmod>2017-05-20T00:00:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://zjjconan.github.io/MAVOT</loc>
-<lastmod>2017-12-25T22:00:00+08:00</lastmod>
+<lastmod>2017-12-25T22:00:00+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>https://zjjconan.github.io/DSOD</loc>
-<lastmod>2017-12-04T15:43:00+08:00</lastmod>
+<lastmod>2017-12-04T15:43:00+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>https://zjjconan.github.io/BranchOut</loc>
-<lastmod>2017-09-20T13:55:00+08:00</lastmod>
+<lastmod>2017-09-20T13:55:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>https://zjjconan.github.io/Real-Time-Tracking-DNN-Part-I</loc>
-<lastmod>2017-05-20T21:33:00+08:00</lastmod>
+<lastmod>2017-05-20T21:33:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>https://zjjconan.github.io/MDNet</loc>
-<lastmod>2017-05-20T21:33:00+08:00</lastmod>
+<lastmod>2017-05-20T21:33:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.6</priority>
 </url>
