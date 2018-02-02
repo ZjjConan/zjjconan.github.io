@@ -1,188 +1,125 @@
+
 <!DOCTYPE html>
 
-<html lang="en-US">
+<html lang="english">
 <head>
-<meta charset="utf-8">
-<meta content="IE=edge" http-equiv="X-UA-Compatible">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic" rel="stylesheet" type="text/css">
+<link href="https://zjjconan.github.io/theme/stylesheet/style.min.css" rel="stylesheet" type="text/css">
+<link href="https://zjjconan.github.io/theme/pygments/github.min.css" rel="stylesheet" type="text/css">
+<link href="https://zjjconan.github.io/theme/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="True" name="HandheldFriendly"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="" name="robots"/>
 <meta content="Lingxiao.Yang" name="author"/>
-<meta content="Lingxiao.Yang" name="copyright"/>
-<meta content="article" property="og:type"/>
-<meta content="summary" name="twitter:card">
-<meta content="Visual Tracking, Correlation Filter, Long-Term Tracking, Visual Tracking, " name="keywords"/>
-<meta content="Paper Reading: FCLT – A Fully-Correlational Long-Term Tracker " property="og:title"/>
-<meta content="https://zjjconan.github.io/drafts/FCLT.html" property="og:url"/>
-<meta content="利用correaltion filter来做long-term tracking" property="og:description"/>
+<meta content="利用correaltion filter来做long-term tracking" name="description"/>
+<meta content="Visual Tracking, Correlation Filter, Long-Term Tracking" name="keywords">
 <meta content="Lingxiao's World" property="og:site_name"/>
-<meta content="Lingxiao.Yang" property="og:article:author"/>
-<meta content="2017-12-24T20:55:00+01:00" property="og:article:published_time"/>
-<meta content="Paper Reading: FCLT – A Fully-Correlational Long-Term Tracker " name="twitter:title">
-<meta content="利用correaltion filter来做long-term tracking" name="twitter:description">
-<title>Paper Reading: FCLT – A Fully-Correlational Long-Term Tracker  · Lingxiao's World
-</title>
-<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
-<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
-<link href="https://zjjconan.github.io/theme/css/style.min.css?7aeecf36" rel="stylesheet">
-<link href="https://zjjconan.github.io/theme/images/favicon.ico" rel="shortcut icon" type="image/png"/>
-<link href="https://zjjconan.github.io/theme/images/apple-touch-icon-152x152.png" rel="icon" type="image/png"/>
-<link href="https://zjjconan.github.io/theme/images/apple-touch-icon.png" rel="apple-touch-icon" type="image/png"/>
-<link href="https://zjjconan.github.io/theme/images/apple-touch-icon-57x57.png" rel="apple-touch-icon" sizes="57x57" type="image/png"/>
-<link href="https://zjjconan.github.io/theme/images/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72" type="image/png"/>
-<link href="https://zjjconan.github.io/theme/images/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76" type="image/png"/>
-<link href="https://zjjconan.github.io/theme/images/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114" type="image/png"/>
-<link href="https://zjjconan.github.io/theme/images/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120" type="image/png"/>
-<link href="https://zjjconan.github.io/theme/images/apple-touch-icon-144x144.png" rel="apple-touch-icon" sizes="144x144" type="image/png"/>
-<link href="https://zjjconan.github.io/theme/images/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152" type="image/png"/>
-</link></link></link></meta></meta></meta></meta></meta></meta></head>
+<meta content="Paper Reading: FCLT – A Fully-Correlational Long-Term Tracker" property="og:title"/>
+<meta content="利用correaltion filter来做long-term tracking" property="og:description"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="https://zjjconan.github.io/drafts/FCLT.html" property="og:url"/>
+<meta content="article" property="og:type"/>
+<meta content="2018-02-02 20:55:00+01:00" property="article:published_time"/>
+<meta content="" property="article:modified_time"/>
+<meta content="https://zjjconan.github.io/author/lingxiaoyang.html" property="article:author">
+<meta content="Visual Tracking" property="article:section"/>
+<meta content="Visual Tracking" property="article:tag"/>
+<meta content="Correlation Filter" property="article:tag"/>
+<meta content="Long-Term Tracking" property="article:tag"/>
+<meta content="" property="og:image">
+<title>Lingxiao's World – Paper Reading: FCLT – A Fully-Correlational Long-Term Tracker</title>
+</meta></meta></meta></link></link></link></link></head>
 <body>
-<div id="content-sans-footer">
-<div class="navbar navbar-static-top">
-<div class="navbar-inner">
-<div class="container-fluid">
-<a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-</a>
-<a class="brand" href="https://zjjconan.github.io/"><span class="site-name">Lingxiao's World</span></a>
-<div class="nav-collapse collapse">
-<ul class="nav pull-right top-menu">
-<li><a href="https://zjjconan.github.io">Home</a></li>
-<li><a href="https://zjjconan.github.io/about">About</a></li>
-<li><a href="https://zjjconan.github.io/categories.html">Categories</a></li>
-<li><a href="https://zjjconan.github.io/tags.html">Tags</a></li>
-<li><a href="https://zjjconan.github.io/archives.html">Archives</a></li>
-<li><form action="https://zjjconan.github.io/search.html" class="navbar-search" onsubmit="return validateForm(this.elements['q'].value);"> <input class="search-query" id="tipue_search_input" name="q" placeholder="Search" type="text"/></form></li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="container-fluid">
-<div class="row-fluid">
-<div class="span1"></div>
-<div class="span10">
-<article>
-<div class="row-fluid">
-<header class="page-header span10 offset2">
-<h1><a href="https://zjjconan.github.io/drafts/FCLT.html"> Paper Reading: <span class="caps">FCLT</span> – A Fully-Correlational Long-Term Tracker  </a></h1>
-</header>
-</div>
-<div class="row-fluid">
-<div class="span2 table-of-content">
+<aside>
+<div>
+<a href="https://zjjconan.github.io">
+<img alt="Lingxiao" src="https://zjjconan.github.io/theme/img/profile.png" title="Lingxiao">
+</img></a>
+<h1><a href="https://zjjconan.github.io">Lingxiao</a></h1>
 <nav>
-<h4>Contents</h4>
-<div class="toc" id="">
-<ul class="simple">
-<li><a class="reference internal" href="#id1" id="id3">概述</a></li>
-<li><a class="reference internal" href="#short-term-tracker-csrdcf" id="id4">Short-term Tracker (<span class="caps">CSRDCF</span>)</a></li>
-<li><a class="reference internal" href="#id2" id="id5">参考文献</a></li>
+<ul class="list">
+<li><a href="https://zjjconan.github.io/about#about">About</a></li>
+</ul>
+</nav>
+<ul class="social">
+<li><a class="sc-github" href="https://github.com/ZjjConan" target="_blank"><i class="fa fa-github"></i></a></li>
+<li><a class="sc-linkedin" href="https://www.linkedin.com/feed/?trk=" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+<li><a class="sc-email" href="lingxiao.yang717@gmail.com" target="_blank"><i class="fa fa-email"></i></a></li>
 </ul>
 </div>
-</nav>
-</div>
-<div class="span8 article-content">
-<p>该论文出处 <a class="reference external" href="https://arxiv.org/pdf/1711.09594.pdf">Arxiv</a>。论文中使用的base model是今年<span class="caps">VOT2017</span>表现最好的实时tracker(<span class="caps">CSRDCF</span>)。</p>
-<div class="section" id="id1">
-<h2><a class="toc-backref" href="#id3">概述</a></h2>
+</aside>
+<main>
+<article class="single">
+<header>
+<h1 id="FCLT">Paper Reading: <span class="caps">FCLT</span> – A Fully-Correlational Long-Term Tracker</h1>
+<p>
+          Posted on 周五 02 二月 2018 in <a href="https://zjjconan.github.io/category/visual-tracking.html">Visual Tracking</a>
+
+
+        • 1 min read
+    </p>
+</header>
+<div>
+<h2 id="_1">概述<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
+<p>该论文出处 <a href="https://arxiv.org/pdf/1711.09594.pdf">Arxiv</a>。论文中使用的base model是今年<span class="caps">VOT2017</span>表现最好的实时tracker(<span class="caps">CSRDCF</span>)。</p>
+<hr/>
 <p>本文主要是考虑做long-term tracking的问题，考虑如何在跟踪失败或者目标消失的情况下提升跟踪的准确度。简单总结如下：</p>
-<blockquote>
-<ol class="arabic simple">
-<li>结合跟踪与检测进行长时间跟踪，跟踪以及检测器都是基于corraltion filter的模型。本文中采用的base model是<span class="caps">CSRDCF</span>[1]。</li>
-<li>跟踪部分基本上没有改变，而对于检测部分，论文直接将<span class="caps">CSRDCF</span>应用在全图上做定位。为了更准确的定位，这里利用高斯motion来进行加权。</li>
-</ol>
-</blockquote>
-</div>
-<div class="section" id="short-term-tracker-csrdcf">
-<h2><a class="toc-backref" href="#id4">Short-term Tracker (<span class="caps">CSRDCF</span>)</a></h2>
-<div class="figure">
-<img alt="" src="https://zjjconan.github.io/images/MDNet/MDNet-Pipeline.png"/>
-</div>
-<!-- :height: 280px -->
-<!-- :width: 720px -->
-<!-- :alt: pipeline -->
-<!-- :align: center -->
-<!-- 上图给出了本文利用CNN在额外的videos上进行训练的网络结构。在单目标跟踪的情况下，object可能在一个视频中是待跟踪的目标，而在另外的视频中可能会成为背景。作者认为这种不一致的情况会使得CNN的训练变得苦难，所以提出了新的架构，如果中**fc6**分支。具体来说可以认为作者将每一video当作一个特定的domain，然后对于每一个domain单独训练一个二分类器，即图中**fc6**分支。训练过程中，每一次的迭代会更新：1）当前domain的分类器以及2）前面权值共享部分（i.e. conv1 -> fc5）。这也是本文题目"Multi-Domain"的由来。另外，为了更好的适应跟踪这个特定的问题，作者对于CNN网络进行了改动。比如，将输入图像的size变小（224 -> 107）。同时，跟踪的训练样本很少，不足以很好的训练一个大型的CNN网络，所以作者利用在ImageNet上训练好的VGG-M的前三层来进行网络的初始化，以学习到更好的feature。网络额训练则是通过传统的SGD + Momentum方法。 -->
-<!-- 注意，这里作者有几个重要的claims: -->
-<!-- > 1. Visual tracking aims to distinguish only two classes, target and background, which requires much less model complexity than general visual recognition problems such as ImageNet classification with 1000 classes. -->
-<!-- > 2. A deep CNN is less effective for precise target localization since the spatial information tends to be diluted as a network goes deeper. -->
-<!-- > 3. Since targets in visual tracking are typically small, it is desirable to make input size small, which reduces the depth of the network naturally. -->
-<!-- > 4. A smaller network is obviously more efficient in visual tracking problem, where training and testing are performed online. -->
-<!-- **个人看法.**  由于tracking的训练样本比较少，针对第一以及第四点的claims，个人觉得没有什么问题。确实利用小的CNN网络可以在一方面避免训练阶段的过拟合状态，同时也可以提高tracking的跟踪速度（汗，1fps）。但是第二以及第三点的claims是有问题的： -->
-<!-- > Re - 2. 更深的网络确实损失一部分spatial信息，但这种损失在这里的影响可以忽略不计。本篇论文对于feature的提取是先利用ROI crop出来一个区域，然后将cropped的区域进行resize，再利用CNN对每一个ROI提取feature（这也是MDNet跟踪速度的瓶颈）。实际上spatial的信息对于这种方式的操作并不是非常的重要，毕竟CNN会在每一个区域上都进行单独的操作。 -->
-<!-- > Re - 3. Tracking跟踪的目标一般都比较小（应该是数据库中的目标都比较小），但这并不代表我们需要将输入变得很小。相反，根据个人经验以及很多detection的系统，在小目标的周围进行crop，然后resize到一个相对大一点的size，例如224，对于小目标的定位以及跟踪是很有帮助的。 -->
-<!-- 在线跟踪 -->
-<!-- ======== -->
-<!-- 在线跟踪的pipeline比较简单，直接将训练好的网络应用到相应的视频中即可。不过这里作者去掉了预训练的**fc6**，重新初始化一个二分类器用于跟踪。跟踪的具体操作与传统的方法类似，即利用前一帧的位置进行采样，将这些candidates送给当前的tracker选择出最好的结果来（*实际上在代码中，作者取了跟踪最好的5个bounding box的平均值来代替最好，可能是因为这样比较稳定吧*）。为了提高tracking的稳定性以及performance，作者从detection领域引入了两个tricks：1) online hard negative mining 以及 2) bounding box regression。实际上这两部分对于本论文的tracker来说，至关重要。下面依次来解释。 -->
-<!-- Online Hard Negative Mining -->
-<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-<!-- Detection的研究中经常会用到Hard Negative Mining (HNM)，这里的用法基本上没有区别。简单来说，即先用现有的模型进行一次预测，然后从预测中选择最合适的样本来进行下一次的训练。每次重复这样的过程直到满足某些设定的条件。这里的“最合适”的选择条件比较简单，即在模型的测试后，选择分数最大的一部分来当做HNM的样本进行后续的训练（可能会有别的更好的选择条件）。从下图中，可以看到，迭代到后面挑选出来的样本更难。例如第一个视频中，我们需要跟踪到赛跑中的某一个人，而其余的人都可以认为是干扰目标。在经过迭代挑选之后，选择出来的负样本基本上都是人，将这些样本加入训练的话，可以尽可能的减小tracker受到到相似目标干扰的情况。这里有一个可以思考的问题：如果我对正负样本都进行这种类似的选择会不会提高tracking的结果？ -->
-</div>
-<div class="section" id="id2">
-<h2><a class="toc-backref" href="#id5">参考文献</a></h2>
+<div class="highlight"><pre><span></span>1. 结合跟踪与检测进行长时间跟踪，跟踪以及检测器都是基于corraltion filter的模型。本文中采用的base model是CSRDCF[1]。
+
+2. 跟踪部分基本上没有改变，而对于检测部分，论文直接将CSRDCF应用在全图上做定位。为了更准确的定位，这里利用高斯motion来进行加权。
+</pre></div>
+<h1 id="short-term-tracker-csrdcf">Short-term Tracker (<span class="caps">CSRDCF</span>)<a class="headerlink" href="#short-term-tracker-csrdcf" title="Permanent link">¶</a></h1>
+<h1 id="_2">参考文献<a class="headerlink" href="#_2" title="Permanent link">¶</a></h1>
 <p>[1] Lukežič A, Vojíř T, Čehovin L, et al. Discriminative Correlation Filter with Channel and Spatial Reliability[J]. arXiv preprint arXiv:1611.08461, 2016.</p>
 <p>[2] Danelljan M, Bhat G, Khan F S, et al. <span class="caps">ECO</span>: Efficient Convolution Operators for Tracking[J]. arXiv preprint arXiv:1611.09224, 2016.</p>
 </div>
-<hr/>
-<section>
-<h2>Keep Reading</h2>
-<ul class="related-posts-list">
-<li><a href="https://zjjconan.github.io/MDNet" title="Paper Reading: Learning Multi-domain Convolutional Neural Networks for Visual Tracking">Paper Reading: Learning Multi-domain Convolutional Neural Networks for Visual Tracking</a></li>
-<li><a href="https://zjjconan.github.io/Real-Time-Tracking-DNN-Part-I" title="A collection of Real-Time Tracking Methods (DNN-Part I)">A collection of Real-Time Tracking Methods (DNN-Part I)</a></li>
-<li><a href="https://zjjconan.github.io/BranchOut" title="Paper Reading: BranchOut: Regularization for Online Ensemble Tracking with Convolutional Neural Networks">Paper Reading: BranchOut: Regularization for Online Ensemble Tracking with Convolutional Neural Networks</a></li>
-<li><a href="https://zjjconan.github.io/MAVOT" title="Paper Reading: MAVOT: Memory-Augmented Video Object Tracking">Paper Reading: MAVOT: Memory-Augmented Video Object Tracking</a></li>
+<div class="tag-cloud">
+<p>
+<a href="https://zjjconan.github.io/tag/visual-tracking.html">Visual Tracking</a>
+<a href="https://zjjconan.github.io/tag/correlation-filter.html">Correlation Filter</a>
+<a href="https://zjjconan.github.io/tag/long-term-tracking.html">Long-Term Tracking</a>
+</p>
+</div>
+<div class="related-posts">
+<h4>    You might enjoy
+</h4>
+<ul class="related-posts">
+<li><a href="https://zjjconan.github.io/MAVOT">Paper Reading: <span class="caps">MAVOT</span>: Memory-Augmented Video Object Tracking</a></li>
+<li><a href="https://zjjconan.github.io/Real-Time-Tracking-DNN-Part-I">A collection of Real-Time Tracking Methods (<span class="caps">DNN</span>-Part I)</a></li>
+<li><a href="https://zjjconan.github.io/MDNet">Paper Reading: Learning Multi-domain Convolutional Neural Networks for Visual Tracking</a></li>
+<li><a href="https://zjjconan.github.io/BranchOut">Paper Reading: BranchOut: Regularization for Online Ensemble Tracking with Convolutional Neural Networks</a></li>
 </ul>
-<hr/>
-</section>
 </div>
-<section>
-<div class="span2" style="float:right;font-size:0.9em;">
-<h4>Published</h4>
-<time datetime="2017-12-24T20:55:00+01:00" pubdate="pubdate">12月 24, 2017</time>
-<h4>Category</h4>
-<a class="category-link" href="https://zjjconan.github.io/categories.html#visual-tracking-ref">Visual Tracking</a>
-<h4>Tags</h4>
-<ul class="list-of-tags tags-in-article">
-<li><a href="https://zjjconan.github.io/tags.html#correlation-filter-ref">Correlation Filter
-</a></li>
-<li><a href="https://zjjconan.github.io/tags.html#long-term-tracking-ref">Long-Term Tracking
-</a></li>
-<li><a href="https://zjjconan.github.io/tags.html#visual-tracking-ref">Visual Tracking
-                    <span>4</span>
-</a></li>
-</ul>
-<h4>Stay in Touch</h4>
-<a class="sidebar-social-links" href="https://github.com/ZjjConan" target="_blank" title="My github Profile">
-<i class="fa fa-github sidebar-social-links"></i></a>
-<a class="sidebar-social-links" href="https://www.linkedin.com/feed/?trk=" target="_blank" title="My linkedin Profile">
-<i class="fa fa-linkedin sidebar-social-links"></i></a>
-<a class="sidebar-social-links" href="lingxiao.yang717@gmail.com" target="_blank" title="My gmail Profile">
-<i class="fa fa-gmail sidebar-social-links"></i></a>
-</div>
-</section>
-</div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'zjjconan';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+        Please enable JavaScript to view comments.
+
+</noscript>
 </article>
-</div>
-<div class="span1"></div>
-</div>
-</div>
-<div id="push"></div>
-</div>
 <footer>
-<div id="footer">
-<ul class="footer-content">
-<li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
-</ul>
-</div>
-</footer> <script src="http://code.jquery.com/jquery.min.js"></script>
-<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-<script>
-            function validateForm(query)
-            {
-                return (query.length > 0);
-            }
-        </script>
+<p>©  </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p> </footer>
+</main>
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Lingxiao's World ",
+  "url" : "https://zjjconan.github.io",
+  "image": "",
+  "description": ""
+}
+</script>
 </body>
-<!-- Theme: Elegant built for Pelican
-    License : http://oncrashreboot.com/pelican-elegant -->
 </html>

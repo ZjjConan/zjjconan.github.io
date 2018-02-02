@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Paper Reading: <span class="caps">FCLT</span> – A Fully-Correlational Long-Term Tracker - Lingxiao's World</title>
+<meta charset="utf-8"/>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="./theme/static/css/style.css" rel="stylesheet"/>
+<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+</meta></head>
+<body class="archive" id="index">
+<div class="container">
+<div class="header">
+<ul class="nav nav-pills pull-right">
+<li class=""><a href=".">Home</a></li>
+<li><a href="./about">About</a></li>
+<li><a href="./archives.html">Archives</a></li>
+</ul>
+<h3 class="text-muted"><a href=".">Lingxiao's World</a></h3>
+<h2 class="text-muted"></h2>
+</div>
+<section class="article content" id="content">
+<header>
+<h2 class="entry-title">
+<a href="./FCLT" rel="bookmark" title="Permalink to Paper Reading: FCLT – A Fully-Correlational Long-Term Tracker">Paper Reading: <span class="caps">FCLT</span> – A Fully-Correlational Long-Term Tracker</a></h2>
+</header>
+<div class="entry-content">
+<h2 id="_1">概述<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
+<p>该论文出处 <a href="https://arxiv.org/pdf/1711.09594.pdf">Arxiv</a>。论文中使用的base model是今年<span class="caps">VOT2017</span>表现最好的实时tracker(<span class="caps">CSRDCF</span>)。</p>
+<hr/>
+<p>本文主要是考虑做long-term tracking的问题，考虑如何在跟踪失败或者目标消失的情况下提升跟踪的准确度。简单总结如下：</p>
+<div class="highlight"><pre><span></span>1. 结合跟踪与检测进行长时间跟踪，跟踪以及检测器都是基于corraltion filter的模型。本文中采用的base model是CSRDCF[1]。
+
+2. 跟踪部分基本上没有改变，而对于检测部分，论文直接将CSRDCF应用在全图上做定位。为了更准确的定位，这里利用高斯motion来进行加权。
+</pre></div>
+<h1 id="short-term-tracker-csrdcf">Short-term Tracker (<span class="caps">CSRDCF</span>)<a class="headerlink" href="#short-term-tracker-csrdcf" title="Permanent link">¶</a></h1>
+<h1 id="_2">参考文献<a class="headerlink" href="#_2" title="Permanent link">¶</a></h1>
+<p>[1] Lukežič A, Vojíř T, Čehovin L, et al. Discriminative Correlation Filter with Channel and Spatial Reliability[J]. arXiv preprint arXiv:1611.08461, 2016.</p>
+<p>[2] Danelljan M, Bhat G, Khan F S, et al. <span class="caps">ECO</span>: Efficient Convolution Operators for Tracking[J]. arXiv preprint arXiv:1611.09224, 2016.</p>
+</div><!-- /.entry-content -->
+<footer class="post-info text-muted">
+    Posted on <abbr class="published" title="2018-02-02T20:55:00+01:00">
+      周五 02 二月 2018
+    </abbr>
+<address class="vcard author">
+      by <a class="url fn" href="./author/lingxiaoyang.html">Lingxiao.Yang</a>
+</address> in <a href="./category/visual-tracking.html">Visual Tracking</a> Tagged <a href="./tag/visual-tracking.html">Visual Tracking </a><a href="./tag/correlation-filter.html">Correlation Filter </a><a href="./tag/long-term-tracking.html">Long-Term Tracking </a> </footer><!-- /.post-info -->
+</section>
+<div class="comment">
+<div id="disqus_thread"></div> <!-- comment app container -->
+</div>
+<!-- Comment BEGIN -->
+<script type="text/javascript">
+        var disqus_shortname = 'zjjconan'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<!-- Comment END -->
+<footer class="footer" id="contentinfo">
+<nav class="pull-right bottom-nav">
+<a href="https://zjjconan.github.io/None">RSS</a>
+</nav>
+<address class="vcard body" id="about">
+                    © <a href=".">Lingxiao's World</a> Proudly powered by <a href="http://getpelican.com/">Pelican</a>
+</address><!-- /#about -->
+</footer><!-- /#contentinfo -->
+</div><!-- container -->
+</body>
+</html>
