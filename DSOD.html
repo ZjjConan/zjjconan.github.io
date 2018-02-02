@@ -1,64 +1,50 @@
-<!DOCTYPE html>
+<!DOCTYPE doctype html>
 
-<html lang="english">
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<meta content="IE=edge" http-equiv="X-UA-Compatible">
-<meta content="width=device-width, initial-scale=1" name="viewport">
-<meta content="概述¶ 论文出处 CVPR2017。 本文主要是考虑如何在小数据下成功训练 deep networks for object detection. Detector的整体结构¶ 上图左给除了SSD [1]的结构，而上图右则给出了本文基于SSD改进的DSOD的结构。从整体结构来看，右图与左图最主要的区别在于其利用到了Dense Connection..." name="description">
-<meta content="Object Detection, SSD" name="keywords">
-<link href="https://zjjconan.github.io/favicon.ico" rel="icon">
-<title>Paper Reading: <span class="caps">DSOD</span>: Learning Deeply Supervised Object Detectors from Scratch - Lingxiao's World</title>
-<!-- Stylesheets -->
-<link href="https://zjjconan.github.io/theme/css/all.min.css" rel="stylesheet">
-<!-- /Stylesheets -->
-<!-- RSS Feeds -->
-<!-- /RSS Feeds -->
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-</link></link></meta></meta></meta></meta></meta></head>
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="Lingxiao's World, " name="description">
+<link href="https://zjjconan.github.io/feeds/all.atom.xml" rel="alternate" title="Lingxiao's World Full Atom Feed" type="application/atom+xml"/>
+<title>Paper Reading: DSOD: Learning Deeply Supervised Object Detectors from Scratch // Lingxiao's World // </title>
+<link href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css" rel="stylesheet">
+<link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://zjjconan.github.io/theme/css/pure.css" rel="stylesheet">
+<link href="https://zjjconan.github.io/theme/css/pygments.css" rel="stylesheet">
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/fitvids/1.0.1/jquery.fitvids.min.js"></script>
+<script>
+        $(document).ready(function(){
+            $(".content").fitVids();
+        });
+    </script>
+</link></link></link></link></meta></meta></meta></head>
 <body>
-<!-- Header -->
-<div class="header-container gradient">
-<!-- Static navbar -->
-<div class="container">
-<div class="header-nav">
-<div class="header-logo">
-<a class="pull-left" href="https://zjjconan.github.io/"><img alt="logo" class="mr20" src="https://zjjconan.github.io/images/logo.png">Lingxiao's World</img></a>
+<div class="pure-g-r" id="layout">
+<div class="sidebar sidebar-article pure-u">
+<header class="header-article">
+<hgroup>
+<a href="https://zjjconan.github.io/author/lingxiaoyang.html" title="See posts by Lingxiao.Yang">
+</a>
+<h2 class="article-info">Lingxiao.Yang</h2>
+<small class="about-author"></small>
+<h5>Published</h5>
+<p>周一 04 十二月 2017</p>
+<a href="/">←Home</a>
+</hgroup>
+</header>
 </div>
-<div class="nav pull-right">
-<a href="https://zjjconan.github.io/">Homepage</a>
-<a href="https://zjjconan.github.io/categories.html">Categories</a>
-</div>
-</div>
-</div>
-<!-- /Static navbar -->
-<!-- Header -->
-<!-- Header -->
-<div class="container header-wrapper">
-<div class="row">
-<div class="col-lg-12">
-<div class="header-content">
-<h1 class="header-title">Paper Reading: <span class="caps">DSOD</span>: Learning Deeply Supervised Object Detectors from Scratch</h1>
-<p class="header-date">By <a href="https://zjjconan.github.io/author/lingxiaoyang.html">Lingxiao.Yang</a>, 周一 04 十二月 2017, in category <a href="https://zjjconan.github.io/category/object-detection.html">Object detection</a></p>
-<div class="header-underline"></div>
-<div class="clearfix"></div>
-<p class="pull-right header-tags">
-<span aria-hidden="true" class="glyphicon glyphicon-tags mr5"></span>
-<a href="https://zjjconan.github.io/tag/object-detection.html">Object Detection</a>, <a href="https://zjjconan.github.io/tag/ssd.html">SSD</a> </p>
-</div>
-</div>
-</div>
-</div>
-<!-- /Header -->
-<!-- /Header -->
-</div>
-<!-- /Header -->
-<!-- Content -->
-<div class="container content">
+<div class="pure-u">
+<div class="content">
+<section class="post">
+<header class="post-header">
+<h1>Paper Reading: <span class="caps">DSOD</span>: Learning Deeply Supervised Object Detectors from Scratch</h1>
+<p class="post-meta">
+                            // under                                 <a class="post-category" href="https://zjjconan.github.io/tag/object-detection.html">Object Detection</a>
+<a class="post-category" href="https://zjjconan.github.io/tag/ssd.html">SSD</a>
+</p>
+</header>
+</section>
 <h2 id="_1">概述<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>论文出处 <a href="http://openaccess.thecvf.com/content_ICCV_2017/papers/Shen_DSOD_Learning_Deeply_ICCV_2017_paper.pdf"><span class="caps">CVPR2017</span></a>。 本文主要是考虑如何在小数据下成功训练 <em>deep networks for object detection.</em></p>
 <hr/>
@@ -95,54 +81,54 @@
 <h2 id="_3">参考文献<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <p>[1] Liu W, Anguelov D, Erhan D, et al. Ssd: Single shot multibox detector[C]. European conference on computer vision. Springer, Cham, 2016: 21-37.</p>
 <p>[2] Huang G, Liu Z, Weinberger K Q, et al. Densely connected convolutional networks. arXiv preprint arXiv:1608.06993, 2016.</p>
+<div class="hr"></div>
+<a class="go-top" href="#">Go Top</a>
 <div class="comments">
 <div id="disqus_thread"></div>
 <script type="text/javascript">
-                var disqus_shortname = 'zjjconan';
-                var disqus_identifier = 'DSOD.html';
-                var disqus_url = 'https://zjjconan.github.io/DSOD.html';
-                (function() {
-                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                })();
-            </script>
-<noscript>Please enable JavaScript to view the comments.</noscript>
-</div>
-</div>
-<!-- /Content -->
-<!-- Footer -->
-<div class="footer gradient-2">
-<div class="container footer-container ">
-<div class="row">
-<div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
-<div class="footer-title">Sitemap</div>
-<ul class="list-unstyled">
-<li><a href="https://zjjconan.github.io/archives.html">Archives</a></li>
-<li><a href="https://zjjconan.github.io/tags.html">Tags</a></li>
-<li><a href="https://zjjconan.github.io/authors.html">Authors</a></li>
-</ul>
-</div>
-<div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
-<div class="footer-title">Social</div>
-<ul class="list-unstyled">
-<li><a href="https://github.com/ZjjConan" target="_blank">github</a></li>
-<li><a href="https://www.linkedin.com/feed/?trk=" target="_blank">linkedin</a></li>
-<li><a href="lingxiao.yang717@gmail.com" target="_blank">email</a></li>
-</ul>
-</div>
-<div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
-</div>
-<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-<p class="pull-right text-right">
-<small><em>Proudly powered by <a href="http://docs.getpelican.com/" target="_blank">pelican</a></em></small><br/>
-<small><em>Theme and code by <a href="https://github.com/molivier" target="_blank">molivier</a></em></small><br/>
-<small></small>
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = "zjjconan"; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a class="dsq-brlink" href="http://disqus.com">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div><footer class="footer">
+<p>© Lingxiao's World –
+        Built with <a href="https://github.com/PurePelicanTheme/pure">Pure Theme</a>
+        for <a href="http://blog.getpelican.com/">Pelican</a>
 </p>
+</footer> </div>
 </div>
 </div>
-</div>
-</div>
-<!-- /Footer -->
+<script>
+        var $top = $('.go-top');
+
+        // Show or hide the sticky footer button
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 200) {
+                $top.fadeIn(200);
+            } else {
+                $top.fadeOut(200);
+            }
+        });
+
+        // Animate the scroll to top
+        $top.click(function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop: 0}, 300);
+        })
+
+        // Makes sure that the href="#" attached to the <a> elements
+        // don't scroll you back up the page.
+        $('body').on('click', 'a[href="#"]', function(event) {
+            event.preventDefault();
+        });
+    </script>
 </body>
 </html>
