@@ -1,78 +1,64 @@
 <!DOCTYPE html>
 
-<html lang="en-US">
+<html lang="english">
 <head>
 <meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<meta content="Lingxiao.Yang" name="author"/>
-<meta content="Lingxiao.Yang" name="copyright"/>
-<meta content="Object Detection, SSD, Object Detection, " name="keywords"/>
-<title>Paper Reading: <span class="caps">DSOD</span>: Learning Deeply Supervised Object Detectors from Scratch  · Lingxiao's World
-</title>
-<link href="http://cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
-<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
-<link href="https://zjjconan.github.io/theme/css/style.css" media="screen" rel="stylesheet" type="text/css">
-<link href="https://zjjconan.github.io/theme/css/solarizedlight.css" media="screen" rel="stylesheet" type="text/css">
-<link href="https://zjjconan.github.io/theme/images/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
-<link href="https://zjjconan.github.io/theme/images/apple-touch-icon.png" rel="apple-touch-icon"/>
-<link href="https://zjjconan.github.io/theme/images/apple-touch-icon-57x57.png" rel="apple-touch-icon" sizes="57x57"/>
-<link href="https://zjjconan.github.io/theme/images/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72"/>
-<link href="https://zjjconan.github.io/theme/images/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114"/>
-<link href="https://zjjconan.github.io/theme/images/apple-touch-icon-144x144.png" rel="apple-touch-icon" sizes="144x144"/>
-<link href="https://zjjconan.github.io/theme/images/apple-touch-icon-144x144.png" rel="icon"/>
-</link></link></link></link></meta></meta></head>
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content="概述¶ 论文出处 CVPR2017。 本文主要是考虑如何在小数据下成功训练 deep networks for object detection. Detector的整体结构¶ 上图左给除了SSD [1]的结构，而上图右则给出了本文基于SSD改进的DSOD的结构。从整体结构来看，右图与左图最主要的区别在于其利用到了Dense Connection..." name="description">
+<meta content="Object Detection, SSD" name="keywords">
+<link href="https://zjjconan.github.io/favicon.ico" rel="icon">
+<title>Paper Reading: <span class="caps">DSOD</span>: Learning Deeply Supervised Object Detectors from Scratch - Lingxiao's World</title>
+<!-- Stylesheets -->
+<link href="https://zjjconan.github.io/theme/css/all.min.css" rel="stylesheet">
+<!-- /Stylesheets -->
+<!-- RSS Feeds -->
+<!-- /RSS Feeds -->
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+</link></link></meta></meta></meta></meta></meta></head>
 <body>
-<div id="content-sans-footer">
-<div class="navbar navbar-static-top">
-<div class="navbar-inner">
+<!-- Header -->
+<div class="header-container gradient">
+<!-- Static navbar -->
 <div class="container">
-<a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-</a>
-<a class="brand" href="https://zjjconan.github.io/"><span class="site-name">Lingxiao's World</span></a>
-<div class="nav-collapse collapse">
-<ul class="nav pull-right top-menu">
-<li><a href="https://zjjconan.github.io">Home</a></li>
-<li><a href="https://zjjconan.github.io/about">About</a></li>
-<li><a href="https://zjjconan.github.io/categories.html">Categories</a></li>
-<li><a href="https://zjjconan.github.io/tags.html">Tags</a></li>
-<li><a href="https://zjjconan.github.io/archives.html">Archives</a></li>
-<li><form action="https://zjjconan.github.io/search.html" class="navbar-search" onsubmit="return validateForm(this.elements['q'].value);"> <input class="search-query" id="tipue_search_input" name="q" placeholder="Search" type="text"/></form></li>
-</ul>
+<div class="header-nav">
+<div class="header-logo">
+<a class="pull-left" href="https://zjjconan.github.io/"><img alt="logo" class="mr20" src="https://zjjconan.github.io/images/logo.png">Lingxiao's World</img></a>
+</div>
+<div class="nav pull-right">
+<a href="https://zjjconan.github.io/">Homepage</a>
+<a href="https://zjjconan.github.io/categories.html">Categories</a>
+</div>
+</div>
+</div>
+<!-- /Static navbar -->
+<!-- Header -->
+<!-- Header -->
+<div class="container header-wrapper">
+<div class="row">
+<div class="col-lg-12">
+<div class="header-content">
+<h1 class="header-title">Paper Reading: <span class="caps">DSOD</span>: Learning Deeply Supervised Object Detectors from Scratch</h1>
+<p class="header-date">By <a href="https://zjjconan.github.io/author/lingxiaoyang.html">Lingxiao.Yang</a>, 周一 04 十二月 2017, in category <a href="https://zjjconan.github.io/category/object-detection.html">Object detection</a></p>
+<div class="header-underline"></div>
+<div class="clearfix"></div>
+<p class="pull-right header-tags">
+<span aria-hidden="true" class="glyphicon glyphicon-tags mr5"></span>
+<a href="https://zjjconan.github.io/tag/object-detection.html">Object Detection</a>, <a href="https://zjjconan.github.io/tag/ssd.html">SSD</a> </p>
 </div>
 </div>
 </div>
 </div>
-<div class="container-fluid">
-<div class="row-fluid">
-<div class="span1"></div>
-<div class="span10">
-<article>
-<div class="row-fluid">
-<header class="page_header span10 offset2">
-<h1><a href="https://zjjconan.github.io/DSOD"> Paper Reading: <span class="caps">DSOD</span>: Learning Deeply Supervised Object Detectors from Scratch  </a></h1>
-</header>
+<!-- /Header -->
+<!-- /Header -->
 </div>
-<div class="row-fluid">
-<div class="span2 table-of-content">
-<nav>
-<h4>Contents</h4>
-<div class="toc">
-<ul>
-<li><a href="#_1">概述</a></li>
-<li><a href="#detector">Detector的整体结构</a><ul>
-<li><a href="#findings">Findings</a></li>
-<li><a href="#_2">结果分析</a></li>
-</ul>
-</li>
-<li><a href="#_3">参考文献</a></li>
-</ul>
-</div>
-</nav>
-</div>
-<div class="span8 article-content">
+<!-- /Header -->
+<!-- Content -->
+<div class="container content">
 <h2 id="_1">概述<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>论文出处 <a href="http://openaccess.thecvf.com/content_ICCV_2017/papers/Shen_DSOD_Learning_Deeply_ICCV_2017_paper.pdf"><span class="caps">CVPR2017</span></a>。 本文主要是考虑如何在小数据下成功训练 <em>deep networks for object detection.</em></p>
 <hr/>
@@ -109,107 +95,54 @@
 <h2 id="_3">参考文献<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <p>[1] Liu W, Anguelov D, Erhan D, et al. Ssd: Single shot multibox detector[C]. European conference on computer vision. Springer, Cham, 2016: 21-37.</p>
 <p>[2] Huang G, Liu Z, Weinberger K Q, et al. Densely connected convolutional networks. arXiv preprint arXiv:1608.06993, 2016.</p>
-<section>
-<div class="accordion" id="accordion2">
-<div class="accordion-group">
-<div class="accordion-heading">
-<a class="accordion-toggle disqus-comment-count" data-parent="#accordion2" data-toggle="collapse" href="https://zjjconan.github.io/DSOD#disqus_thread">
-                Comments
-            </a>
-</div>
-<div class="accordion-body collapse" id="disqus_thread">
-<div class="accordion-inner">
 <div class="comments">
 <div id="disqus_thread"></div>
 <script type="text/javascript">
-    var disqus_shortname = 'zjjconan';
-        var disqus_identifier = 'https://zjjconan.github.io/DSOD';
-    var disqus_url = 'https://zjjconan.github.io/DSOD';
-
-    (function() {
-         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-     })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a class="dsq-brlink" href="http://disqus.com">comments powered by <span class="logo-disqus">Disqus</span></a> </div>
+                var disqus_shortname = 'zjjconan';
+                var disqus_identifier = 'DSOD.html';
+                var disqus_url = 'https://zjjconan.github.io/DSOD.html';
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+<noscript>Please enable JavaScript to view the comments.</noscript>
 </div>
 </div>
-</div>
-</div>
-</section>
-<aside>
-<hr/>
-<nav>
-<ul class="articles_timeline">
-<li class="previous_article">« <a href="https://zjjconan.github.io/BranchOut" title="Previous: Paper Reading: BranchOut: Regularization for Online Ensemble Tracking with Convolutional Neural Networks">Paper Reading: BranchOut: Regularization for Online Ensemble Tracking with Convolutional Neural Networks</a></li>
-<li class="next_article"><a caps"="" href="https://zjjconan.github.io/MAVOT" title="Next: Paper Reading: &lt;span class=">MAVOT</a></li></ul></nav></aside></div></div></article></div></div></div></div></body></html>: Memory-Augmented Video Object Tracking"&gt;Paper Reading: <span class="caps">MAVOT</span>: Memory-Augmented Video Object Tracking »
-
-
-
-
-<section>
-<div class="span2" style="float:right;font-size:0.9em;">
-<h4>Published</h4>
-<time datetime="2017-12-04T15:43:00+01:00" pubdate="pubdate">12月 4, 2017</time>
-<h4>Category</h4>
-<a class="category-link" href="/categories.html#Object-Detection-ref">Object Detection</a>
-<h4>Tags</h4>
-<ul class="list-of-tags tags-in-article">
-<li><a href="/tags.html#Object-Detection-ref">Object Detection
-                    <span>1</span>
-</a></li>
-<li><a href="/tags.html#SSD-ref">SSD
-                    <span>1</span>
-</a></li>
+<!-- /Content -->
+<!-- Footer -->
+<div class="footer gradient-2">
+<div class="container footer-container ">
+<div class="row">
+<div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+<div class="footer-title">Sitemap</div>
+<ul class="list-unstyled">
+<li><a href="https://zjjconan.github.io/archives.html">Archives</a></li>
+<li><a href="https://zjjconan.github.io/tags.html">Tags</a></li>
+<li><a href="https://zjjconan.github.io/authors.html">Authors</a></li>
 </ul>
 </div>
-</section>
-
-
-
-<div class="span1"></div>
-
-
-
-<footer>
-<div id="footer">
-<ul class="footer-content">
-<li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+<div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+<div class="footer-title">Social</div>
+<ul class="list-unstyled">
+<li><a href="https://github.com/ZjjConan" target="_blank">github</a></li>
+<li><a href="https://www.linkedin.com/feed/?trk=" target="_blank">linkedin</a></li>
+<li><a href="lingxiao.yang717@gmail.com" target="_blank">email</a></li>
 </ul>
 </div>
-</footer> <script src="http://code.jquery.com/jquery.min.js"></script>
-<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
-<script>
-            function validateForm(query)
-            {
-                return (query.length > 0);
-            }
-        </script>
-<script type="text/javascript">
-    var disqus_shortname = 'zjjconan';
-
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-    </script>
-<script language="javascript" type="text/javascript">
-            function uncollapse() {
-                var hash_str = window.location.hash;
-                if (window.location.hash.match(/^#comment-\d+$/))
-                {
-                    var hash_str = '#disqus_thread';
-                }
-                $(hash_str).collapse({
-                    toggle: true
-                    })
-            }
-        </script>
-<script language="JavaScript" type="text/javascript">
-            uncollapse(); 
-        </script>
-
+<div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+</div>
+<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+<p class="pull-right text-right">
+<small><em>Proudly powered by <a href="http://docs.getpelican.com/" target="_blank">pelican</a></em></small><br/>
+<small><em>Theme and code by <a href="https://github.com/molivier" target="_blank">molivier</a></em></small><br/>
+<small></small>
+</p>
+</div>
+</div>
+</div>
+</div>
+<!-- /Footer -->
+</body>
+</html>
