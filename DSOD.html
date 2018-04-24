@@ -7,14 +7,14 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible">
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<link href="http://localhost:8000/DSOD.html" rel="canonical">
+<link href="https://zjjconan.github.io/DSOD.html" rel="canonical">
 <meta content="Lingxiao.Yang" name="author"/>
 <meta content="Object Detection,SSD" name="keywords"/>
 <meta content="主要探讨如何在小数据下成功训练一个SOA的detector出来。" name="description"/>
 <meta content="Lingxiao's World" property="og:site_name"/>
 <meta content="article" property="og:type"/>
 <meta content="论文笔记《DSOD: Learning Deeply Supervised Object Detectors from Scratch》" property="og:title"/>
-<meta content="http://localhost:8000/DSOD.html" property="og:url"/>
+<meta content="https://zjjconan.github.io/DSOD.html" property="og:url"/>
 <meta content="主要探讨如何在小数据下成功训练一个SOA的detector出来。" property="og:description"/>
 <meta content="2017-12-04" property="article:published_time"/>
 <meta content="Object Detection" property="article:section"/>
@@ -22,13 +22,13 @@
 <meta content="SSD" property="article:tag"/>
 <meta content="Lingxiao.Yang" property="article:author"/>
 <!-- Bootstrap -->
-<link href="http://localhost:8000/theme/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-<link href="http://localhost:8000/theme/css/font-awesome.min.css" rel="stylesheet">
-<link href="http://localhost:8000/theme/css/pygments/native.css" rel="stylesheet">
-<link href="http://localhost:8000/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
-<link href="http://localhost:8000/theme/css/typogrify.css" rel="stylesheet">
-<link href="http://localhost:8000/theme/css/style.css" rel="stylesheet" type="text/css"/>
-<link href="http://localhost:8000/static/custom.css" rel="stylesheet">
+<link href="https://zjjconan.github.io/theme/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<link href="https://zjjconan.github.io/theme/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://zjjconan.github.io/theme/css/pygments/native.css" rel="stylesheet">
+<link href="https://zjjconan.github.io/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
+<link href="https://zjjconan.github.io/theme/css/typogrify.css" rel="stylesheet">
+<link href="https://zjjconan.github.io/theme/css/style.css" rel="stylesheet" type="text/css"/>
+<link href="https://zjjconan.github.io/static/custom.css" rel="stylesheet">
 </link></link></link></link></link></link></meta></meta></meta></head>
 <body>
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -40,14 +40,14 @@
 <span class="icon-bar"></span>
 <span class="icon-bar"></span>
 </button>
-<a class="navbar-brand" href="http://localhost:8000/">
+<a class="navbar-brand" href="https://zjjconan.github.io/">
 Lingxiao's World            </a>
 </div>
 <div class="collapse navbar-collapse navbar-ex1-collapse">
 <ul class="nav navbar-nav">
 <li><a href="/archives.html">Archives</a></li>
 <li><a href="/categories.html">Categories</a></li>
-<li><a href="http://localhost:8000/pages/about-me.html">
+<li><a href="https://zjjconan.github.io/pages/about-me.html">
                              About Me
                           </a></li>
 </ul>
@@ -65,7 +65,7 @@ Lingxiao's World            </a>
 <!-- Banner -->
 <style>
 	#banner{
-	    background-image:url("http://localhost:8000/images/Banner/researcher.jpg");
+	    background-image:url("https://zjjconan.github.io/images/Banner/researcher.jpg");
 	}
 </style>
 <div id="banner">
@@ -79,14 +79,14 @@ Lingxiao's World            </a>
 <div class="row">
 <div class="col-sm-9">
 <ol class="breadcrumb">
-<li><a href="http://localhost:8000" title="Lingxiao's World"><i class="fa fa-home fa-lg"></i></a></li>
+<li><a href="https://zjjconan.github.io" title="Lingxiao's World"><i class="fa fa-home fa-lg"></i></a></li>
 <li class="active">论文笔记《<span class="caps">DSOD</span>: Learning Deeply Supervised Object Detectors from Scratch》</li>
 </ol>
 <section id="content">
 <article>
 <header class="page-header">
 <h2>
-<a href="http://localhost:8000/DSOD.html" rel="bookmark" title="Permalink to 论文笔记《DSOD: Learning Deeply Supervised Object Detectors from Scratch》">
+<a href="https://zjjconan.github.io/DSOD.html" rel="bookmark" title="Permalink to 论文笔记《DSOD: Learning Deeply Supervised Object Detectors from Scratch》">
                         论文笔记《<span class="caps">DSOD</span>: Learning Deeply Supervised Object Detectors from Scratch》
                     </a>
 </h2>
@@ -100,9 +100,9 @@ Lingxiao's World            </a>
 <i class="fa fa-calendar"></i><time datetime="2017-12-04T15:43:00+01:00"> 十二月 04, 2017</time>
 </span>
 <span class="label label-default">Tags</span>
-<a href="http://localhost:8000/tag/object-detection.html">Object Detection</a>
+<a href="https://zjjconan.github.io/tag/object-detection.html">Object Detection</a>
         /
-	<a href="http://localhost:8000/tag/ssd.html">SSD</a>
+	<a href="https://zjjconan.github.io/tag/ssd.html">SSD</a>
 </footer><!-- /.post-info --> </div>
 </div>
 <h2 id="_1">概述<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
@@ -110,7 +110,7 @@ Lingxiao's World            </a>
 <hr/>
 <h2 id="detector">Detector的整体结构<a class="headerlink" href="#detector" title="Permanent link">¶</a></h2>
 <div style="text-align:center">
-<img alt="DSOD-pipeline" class="image-process-article-image" src="http://localhost:8000/images/Object-Detection/DSOD\.\article-image\pipeline.png">
+<img alt="DSOD-pipeline" class="image-process-article-image" src="https://zjjconan.github.io/images/Object-Detection/DSOD\.\article-image\pipeline.png">
 </img></div>
 <p>上图左给除了<span class="caps">SSD</span> [1]的结构，而上图右则给出了本文基于<span class="caps">SSD</span>改进的<span class="caps">DSOD</span>的结构。从整体结构来看，右图与左图最主要的区别在于其利用到了Dense Connection [2]的思想，使得卷积网络靠前的层与靠后的层有一个融合过程，融合之后在进行前向传播。</p>
 <h3 id="findings">Findings<a class="headerlink" href="#findings" title="Permanent link">¶</a></h3>
@@ -134,7 +134,7 @@ Lingxiao's World            </a>
 <hr/>
 <h3 id="_2">结果分析<a class="headerlink" href="#_2" title="Permanent link">¶</a></h3>
 <div style="text-align:center">
-<img alt="DSOD-comp" class="image-process-article-image" src="http://localhost:8000/images/Object-Detection/DSOD\.\article-image\DSOD_comp.png">
+<img alt="DSOD-comp" class="image-process-article-image" src="https://zjjconan.github.io/images/Object-Detection/DSOD\.\article-image\DSOD_comp.png">
 </img></div>
 <p>上图是本文探索的几个问题的对比。基本上可以看出对于performance影响最大的几个tech是：1) 在transition layer并不减少feature map的数量（hi-comp factor）；2）在bottleneck layer中，用更多的feature map数量（wide bottleneck）；3）每一层用到的filter number数量足够多（bi growth rate）以及4）第一层的卷积核的大小为3x3（stem block）。</p>
 <hr/>
@@ -159,7 +159,7 @@ Lingxiao's World            </a>
             /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
             var disqus_shortname = 'zjjconan'; // required: replace example with your forum shortname
 
-                var disqus_url = 'http://localhost:8000/DSOD.html';
+                var disqus_url = 'https://zjjconan.github.io/DSOD.html';
 
             var disqus_config = function () {
                 this.language = "en";
@@ -198,31 +198,31 @@ Lingxiao's World            </a>
 <!-- End Sidebar/Social -->
 <!-- Sidebar/Tag Cloud -->
 <li class="list-group-item">
-<a href="http://localhost:8000/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+<a href="https://zjjconan.github.io/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
 <ul class="list-group " id="tags">
 <li class="list-group-item tag-1">
-<a href="http://localhost:8000/tag/visual-tracking.html">Visual Tracking</a>
+<a href="https://zjjconan.github.io/tag/visual-tracking.html">Visual Tracking</a>
 </li>
 <li class="list-group-item tag-2">
-<a href="http://localhost:8000/tag/convolutional-neural-networks.html">Convolutional Neural Networks</a>
+<a href="https://zjjconan.github.io/tag/convolutional-neural-networks.html">Convolutional Neural Networks</a>
 </li>
 <li class="list-group-item tag-2">
-<a href="http://localhost:8000/tag/deep-neural-networks.html">Deep Neural Networks</a>
+<a href="https://zjjconan.github.io/tag/deep-neural-networks.html">Deep Neural Networks</a>
 </li>
 <li class="list-group-item tag-2">
-<a href="http://localhost:8000/tag/real-time-tracking.html">Real-Time Tracking</a>
+<a href="https://zjjconan.github.io/tag/real-time-tracking.html">Real-Time Tracking</a>
 </li>
 <li class="list-group-item tag-4">
-<a href="http://localhost:8000/tag/ssd.html">SSD</a>
+<a href="https://zjjconan.github.io/tag/ssd.html">SSD</a>
 </li>
 <li class="list-group-item tag-4">
-<a href="http://localhost:8000/tag/object-detection.html">Object Detection</a>
+<a href="https://zjjconan.github.io/tag/object-detection.html">Object Detection</a>
 </li>
 <li class="list-group-item tag-4">
-<a href="http://localhost:8000/tag/one-shot-learning.html">One-shot learning</a>
+<a href="https://zjjconan.github.io/tag/one-shot-learning.html">One-shot learning</a>
 </li>
 <li class="list-group-item tag-4">
-<a href="http://localhost:8000/tag/ensemble-tracking.html">Ensemble Tracking</a>
+<a href="https://zjjconan.github.io/tag/ensemble-tracking.html">Ensemble Tracking</a>
 </li>
 </ul>
 </li>
@@ -245,12 +245,12 @@ Lingxiao's World            </a>
 </div>
 </hr></div>
 </footer>
-<script src="http://localhost:8000/theme/js/jquery.min.js"></script>
+<script src="https://zjjconan.github.io/theme/js/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="http://localhost:8000/theme/js/bootstrap.min.js"></script>
+<script src="https://zjjconan.github.io/theme/js/bootstrap.min.js"></script>
 <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
-<script src="http://localhost:8000/theme/js/respond.min.js"></script>
-<script src="http://localhost:8000/theme/js/bodypadding.js"></script>
+<script src="https://zjjconan.github.io/theme/js/respond.min.js"></script>
+<script src="https://zjjconan.github.io/theme/js/bodypadding.js"></script>
 <!-- Disqus -->
 <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */

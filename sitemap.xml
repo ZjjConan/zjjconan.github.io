@@ -4,147 +4,147 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitem
 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-<loc>http://localhost:8000/</loc>
-<lastmod>2018-04-24T19:40:10-00:00</lastmod>
+<loc>https://zjjconan.github.io/</loc>
+<lastmod>2018-04-24T19:42:07-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>http://localhost:8000/archives.html</loc>
-<lastmod>2018-04-24T19:40:10-00:00</lastmod>
+<loc>https://zjjconan.github.io/archives.html</loc>
+<lastmod>2018-04-24T19:42:07-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>http://localhost:8000/categories.html</loc>
-<lastmod>2018-04-24T19:40:10-00:00</lastmod>
+<loc>https://zjjconan.github.io/categories.html</loc>
+<lastmod>2018-04-24T19:42:07-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>http://localhost:8000/pages/about-me.html</loc>
+<loc>https://zjjconan.github.io/pages/about-me.html</loc>
 <lastmod>2017-05-20T00:00:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://localhost:8000/Real-Time-Tracking-DNN-Part-2.html</loc>
+<loc>https://zjjconan.github.io/Real-Time-Tracking-DNN-Part-2.html</loc>
 <lastmod>2018-03-30T14:20:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>http://localhost:8000/MAVOT.html</loc>
+<loc>https://zjjconan.github.io/MAVOT.html</loc>
 <lastmod>2017-12-25T22:00:00+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>http://localhost:8000/DSOD.html</loc>
+<loc>https://zjjconan.github.io/DSOD.html</loc>
 <lastmod>2017-12-04T15:43:00+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>http://localhost:8000/BranchOut.html</loc>
+<loc>https://zjjconan.github.io/BranchOut.html</loc>
 <lastmod>2017-09-20T13:55:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>http://localhost:8000/Real-Time-Tracking-DNN-Part-1.html</loc>
+<loc>https://zjjconan.github.io/Real-Time-Tracking-DNN-Part-1.html</loc>
 <lastmod>2017-05-20T21:33:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>http://localhost:8000/MDNet.html</loc>
+<loc>https://zjjconan.github.io/MDNet.html</loc>
 <lastmod>2017-05-20T21:33:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>http://localhost:8000/category/object-detection.html</loc>
+<loc>https://zjjconan.github.io/category/object-detection.html</loc>
 <lastmod>2017-12-04T15:43:00+00:09</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>http://localhost:8000/category/visual-tracking.html</loc>
+<loc>https://zjjconan.github.io/category/visual-tracking.html</loc>
 <lastmod>2018-03-30T14:20:00+00:09</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>http://localhost:8000/tag/object-detection.html</loc>
+<loc>https://zjjconan.github.io/tag/object-detection.html</loc>
 <lastmod>2017-12-04T15:43:00+00:09</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>http://localhost:8000/tag/visual-tracking.html</loc>
+<loc>https://zjjconan.github.io/tag/visual-tracking.html</loc>
 <lastmod>2018-03-30T14:20:00+00:09</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>http://localhost:8000/tag/ensemble-tracking.html</loc>
+<loc>https://zjjconan.github.io/tag/ensemble-tracking.html</loc>
 <lastmod>2017-09-20T13:55:00+00:09</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>http://localhost:8000/tag/convolutional-neural-networks.html</loc>
+<loc>https://zjjconan.github.io/tag/convolutional-neural-networks.html</loc>
 <lastmod>2017-09-20T13:55:00+00:09</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>http://localhost:8000/tag/one-shot-learning.html</loc>
+<loc>https://zjjconan.github.io/tag/one-shot-learning.html</loc>
 <lastmod>2017-12-25T22:00:00+00:09</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>http://localhost:8000/tag/deep-neural-networks.html</loc>
+<loc>https://zjjconan.github.io/tag/deep-neural-networks.html</loc>
 <lastmod>2018-03-30T14:20:00+00:09</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>http://localhost:8000/tag/real-time-tracking.html</loc>
+<loc>https://zjjconan.github.io/tag/real-time-tracking.html</loc>
 <lastmod>2018-03-30T14:20:00+00:09</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>http://localhost:8000/tag/ssd.html</loc>
+<loc>https://zjjconan.github.io/tag/ssd.html</loc>
 <lastmod>2017-12-04T15:43:00+00:09</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>http://localhost:8000/author/lingxiaoyang.html</loc>
+<loc>https://zjjconan.github.io/author/lingxiaoyang.html</loc>
 <lastmod>2018-03-30T14:20:00+00:09</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
