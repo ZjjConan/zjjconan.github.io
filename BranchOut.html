@@ -4,13 +4,13 @@
 <head>
 <title>论文笔记《BranchOut: Regularization for Online Ensemble Tracking with Convolutional Neural Networks》 - Lingxiao's World</title>
 <!-- Using the latest rendering mode for IE -->
-<meta content="IE=edge" http-equiv="X-UA-Compatible">
-<meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<link href="https://zjjconan.github.io/BranchOut.html" rel="canonical">
-<meta content="Lingxiao.Yang" name="author"/>
-<meta content="Visual Tracking,Convolutional Neural Networks,Ensemble Tracking" name="keywords"/>
-<meta content="考虑如何更好的在线进行tracker的ensembling工作。" name="description"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://zjjconan.github.io/BranchOut.html" rel="canonical"/>
+<meta content="Lingxiao.Yang" name="author">
+<meta content="Visual Tracking,Convolutional Neural Networks,Ensemble Tracking" name="keywords">
+<meta content="考虑如何更好的在线进行tracker的ensembling工作。" name="description">
 <meta content="Lingxiao's World" property="og:site_name"/>
 <meta content="article" property="og:type"/>
 <meta content="论文笔记《BranchOut: Regularization for Online Ensemble Tracking with Convolutional Neural Networks》" property="og:title"/>
@@ -23,14 +23,14 @@
 <meta content="Ensemble Tracking" property="article:tag"/>
 <meta content="Lingxiao.Yang" property="article:author"/>
 <!-- Bootstrap -->
-<link href="https://zjjconan.github.io/theme/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-<link href="https://zjjconan.github.io/theme/css/font-awesome.min.css" rel="stylesheet">
-<link href="https://zjjconan.github.io/theme/css/pygments/native.css" rel="stylesheet">
-<link href="https://zjjconan.github.io/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
-<link href="https://zjjconan.github.io/theme/css/typogrify.css" rel="stylesheet">
-<link href="https://zjjconan.github.io/theme/css/style.css" rel="stylesheet" type="text/css"/>
-<link href="https://zjjconan.github.io/static/custom.css" rel="stylesheet">
-</link></link></link></link></link></link></meta></meta></meta></head>
+<link href="https://zjjconan.github.io/theme/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="https://zjjconan.github.io/theme/css/font-awesome.min.css" rel="stylesheet"/>
+<link href="https://zjjconan.github.io/theme/css/pygments/native.css" rel="stylesheet"/>
+<link href="https://zjjconan.github.io/theme/tipuesearch/tipuesearch.css" rel="stylesheet"/>
+<link href="https://zjjconan.github.io/theme/css/typogrify.css" rel="stylesheet"/>
+<link href="https://zjjconan.github.io/theme/css/style.css" rel="stylesheet" type="text/css">
+<link href="https://zjjconan.github.io/static/custom.css" rel="stylesheet"/>
+</link></link></meta></meta></meta></head>
 <body>
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
 <div class="container">
@@ -55,8 +55,8 @@ Lingxiao's World            </a>
 <ul class="nav navbar-nav navbar-right">
 <li><span>
 <form action="/search.html" class="navbar-search">
-<input class="search-query" id="tipue_search_input" name="q" placeholder="Search" required="" type="text">
-</input></form></span>
+<input class="search-query" id="tipue_search_input" name="q" placeholder="Search" required="" type="text"/>
+</form></span>
 </li>
 </ul>
 </div>
@@ -113,9 +113,9 @@ Lingxiao's World            </a>
 <hr/>
 <h2 id="tracker">Tracker的整体结构<a class="headerlink" href="#tracker" title="Permanent link">¶</a></h2>
 <div style="text-align:center">
-<img alt="BranchOut-pipeline" class="image-process-article-image" src="https://zjjconan.github.io/images/BranchOut\.\article-image\BranchOut-pipeline.png">
-</img></div>
-<p>上图给出了该ensembling的基本框架。网络整体简单类似MDNet [2] 以及<span class="caps">TCNN</span> [3]。只不过设计了多条<strong>支路</strong>的tracker（见图fc4以后）。最终，利用average pooling将tracker的预测pool到一起，得到最终的预测分数。但是，简单直接的ensembling的框架会有两个缺点：</p>
+<img alt="BranchOut-pipeline" class="image-process-article-image" src="https://zjjconan.github.io/images/BranchOut\.\article-image\BranchOut-pipeline.png"/>
+</div>
+<p>上图给出了该ensembling的基本框架。网络整体简单类似MDNet [2] 以及TCNN [3]。只不过设计了多条<strong>支路</strong>的tracker（见图fc4以后）。最终，利用average pooling将tracker的预测pool到一起，得到最终的预测分数。但是，简单直接的ensembling的框架会有两个缺点：</p>
 <blockquote>
 <ol>
 <li>
@@ -167,7 +167,7 @@ Lingxiao's World            </a>
 </tr>
 </tbody>
 </table>
-<p>上表可以看出，BranchOut还是起到了一点作用的。而MDNet-Navie基本上没有什么作用。可能也是论文里面提到的，navie的融合会使得所有的支路overfitting到同样的一些样本了吧。同时作者也给出了在<span class="caps">VOT2015</span>上的结果（见论文），结果显示，这篇文章与<span class="caps">TCNN</span> [3] 的表现很接近。但是比较奇怪的是C-<span class="caps">COT</span>这个算法在这个数据上结果非常的差。作者给出的解释 是C-<span class="caps">COT</span> [4] 的默认参数可能过拟合了其论文里面报的数据集。</p>
+<p>上表可以看出，BranchOut还是起到了一点作用的。而MDNet-Navie基本上没有什么作用。可能也是论文里面提到的，navie的融合会使得所有的支路overfitting到同样的一些样本了吧。同时作者也给出了在VOT2015上的结果（见论文），结果显示，这篇文章与TCNN [3] 的表现很接近。但是比较奇怪的是C-COT这个算法在这个数据上结果非常的差。作者给出的解释 是C-<span class="caps">COT</span> [4] 的默认参数可能过拟合了其论文里面报的数据集。</p>
 <hr/>
 <h2 id="_3">参考文献<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <p>[1] Srivastava N, Hinton G E, Krizhevsky A, et al. Dropout: a simple way to prevent neural networks from overfitting [J]. Journal of machine learning research, 2014, 15(1): 1929-1958.</p>
@@ -181,8 +181,8 @@ Lingxiao's World            </a>
 <ul>
 <li><a href="https://zjjconan.github.io/MDNet.html">论文分析《Learning Multi-domain Convolutional Neural Networks for Visual Tracking》</a></li>
 <li><a href="https://zjjconan.github.io/MAVOT.html">论文笔记《<span class="caps">MAVOT</span>: Memory-Augmented Video Object Tracking》</a></li>
-<li><a href="https://zjjconan.github.io/Real-Time-Tracking-DNN-Part-1.html">论文集《Real-Time Tracking Methods (<span class="caps">DNN</span>-Part I)》</a></li>
 <li><a href="https://zjjconan.github.io/Real-Time-Tracking-DNN-Part-2.html">论文集《Real-Time Tracking Methods (<span class="caps">DNN</span>-Part <span class="caps">II</span>)》</a></li>
+<li><a href="https://zjjconan.github.io/Real-Time-Tracking-DNN-Part-1.html">论文集《Real-Time Tracking Methods (<span class="caps">DNN</span>-Part I)》</a></li>
 </ul>
 </section>
 <hr/>
@@ -246,25 +246,25 @@ Lingxiao's World            </a>
 <a href="https://zjjconan.github.io/tag/visual-tracking.html">Visual Tracking</a>
 </li>
 <li class="list-group-item tag-2">
-<a href="https://zjjconan.github.io/tag/convolutional-neural-networks.html">Convolutional Neural Networks</a>
+<a href="https://zjjconan.github.io/tag/real-time-tracking.html">Real-Time Tracking</a>
 </li>
 <li class="list-group-item tag-2">
 <a href="https://zjjconan.github.io/tag/deep-neural-networks.html">Deep Neural Networks</a>
 </li>
 <li class="list-group-item tag-2">
-<a href="https://zjjconan.github.io/tag/real-time-tracking.html">Real-Time Tracking</a>
+<a href="https://zjjconan.github.io/tag/convolutional-neural-networks.html">Convolutional Neural Networks</a>
+</li>
+<li class="list-group-item tag-4">
+<a href="https://zjjconan.github.io/tag/ensemble-tracking.html">Ensemble Tracking</a>
 </li>
 <li class="list-group-item tag-4">
 <a href="https://zjjconan.github.io/tag/ssd.html">SSD</a>
 </li>
 <li class="list-group-item tag-4">
-<a href="https://zjjconan.github.io/tag/object-detection.html">Object Detection</a>
-</li>
-<li class="list-group-item tag-4">
 <a href="https://zjjconan.github.io/tag/one-shot-learning.html">One-shot learning</a>
 </li>
 <li class="list-group-item tag-4">
-<a href="https://zjjconan.github.io/tag/ensemble-tracking.html">Ensemble Tracking</a>
+<a href="https://zjjconan.github.io/tag/object-detection.html">Object Detection</a>
 </li>
 </ul>
 </li>
@@ -277,7 +277,7 @@ Lingxiao's World            </a>
 </div>
 <footer>
 <div class="container">
-<hr>
+<hr/>
 <div class="row">
 <div class="col-xs-10">© 2018 
             · Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
@@ -285,7 +285,7 @@ Lingxiao's World            </a>
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a> </div>
 <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
 </div>
-</hr></div>
+</div>
 </footer>
 <script src="https://zjjconan.github.io/theme/js/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->

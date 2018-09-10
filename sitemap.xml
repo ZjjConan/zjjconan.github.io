@@ -5,21 +5,21 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://zjjconan.github.io/</loc>
-<lastmod>2018-04-24T19:42:07-00:00</lastmod>
+<lastmod>2018-09-10T15:22:19-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>https://zjjconan.github.io/archives.html</loc>
-<lastmod>2018-04-24T19:42:07-00:00</lastmod>
+<lastmod>2018-09-10T15:22:19-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>https://zjjconan.github.io/categories.html</loc>
-<lastmod>2018-04-24T19:42:07-00:00</lastmod>
+<lastmod>2018-09-10T15:22:19-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
@@ -33,7 +33,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://zjjconan.github.io/Real-Time-Tracking-DNN-Part-2.html</loc>
-<lastmod>2018-03-30T14:20:00+02:00</lastmod>
+<lastmod>2018-09-10T13:45:00+02:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.6</priority>
 </url>
@@ -82,34 +82,48 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://zjjconan.github.io/category/visual-tracking.html</loc>
-<lastmod>2018-03-30T14:20:00+00:09</lastmod>
+<lastmod>2018-09-10T13:45:00+00:09</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>https://zjjconan.github.io/tag/object-detection.html</loc>
-<lastmod>2017-12-04T15:43:00+00:09</lastmod>
+<loc>https://zjjconan.github.io/tag/real-time-tracking.html</loc>
+<lastmod>2018-09-10T13:45:00+00:09</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>https://zjjconan.github.io/tag/visual-tracking.html</loc>
-<lastmod>2018-03-30T14:20:00+00:09</lastmod>
+<lastmod>2018-09-10T13:45:00+00:09</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>https://zjjconan.github.io/tag/ensemble-tracking.html</loc>
-<lastmod>2017-09-20T13:55:00+00:09</lastmod>
+<loc>https://zjjconan.github.io/tag/deep-neural-networks.html</loc>
+<lastmod>2018-09-10T13:45:00+00:09</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>https://zjjconan.github.io/tag/convolutional-neural-networks.html</loc>
+<lastmod>2017-09-20T13:55:00+00:09</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.6</priority>
+</url>
+
+<url>
+<loc>https://zjjconan.github.io/tag/ssd.html</loc>
+<lastmod>2017-12-04T15:43:00+00:09</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.6</priority>
+</url>
+
+<url>
+<loc>https://zjjconan.github.io/tag/ensemble-tracking.html</loc>
 <lastmod>2017-09-20T13:55:00+00:09</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
@@ -123,21 +137,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>https://zjjconan.github.io/tag/deep-neural-networks.html</loc>
-<lastmod>2018-03-30T14:20:00+00:09</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.6</priority>
-</url>
-
-<url>
-<loc>https://zjjconan.github.io/tag/real-time-tracking.html</loc>
-<lastmod>2018-03-30T14:20:00+00:09</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.6</priority>
-</url>
-
-<url>
-<loc>https://zjjconan.github.io/tag/ssd.html</loc>
+<loc>https://zjjconan.github.io/tag/object-detection.html</loc>
 <lastmod>2017-12-04T15:43:00+00:09</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
@@ -145,7 +145,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://zjjconan.github.io/author/lingxiaoyang.html</loc>
-<lastmod>2018-03-30T14:20:00+00:09</lastmod>
+<lastmod>2018-09-10T13:45:00+00:09</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>

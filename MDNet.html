@@ -4,13 +4,13 @@
 <head>
 <title>论文分析《Learning Multi-domain Convolutional Neural Networks for Visual Tracking》 - Lingxiao's World</title>
 <!-- Using the latest rendering mode for IE -->
-<meta content="IE=edge" http-equiv="X-UA-Compatible">
-<meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<link href="https://zjjconan.github.io/MDNet.html" rel="canonical">
-<meta content="Lingxiao.Yang" name="author"/>
-<meta content="Visual Tracking,Convolutional Neural Networks" name="keywords"/>
-<meta content="利用tracking videos以及detection的一些tricks来做visual tracking的论文。" name="description"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://zjjconan.github.io/MDNet.html" rel="canonical"/>
+<meta content="Lingxiao.Yang" name="author">
+<meta content="Visual Tracking,Convolutional Neural Networks" name="keywords">
+<meta content="利用tracking videos以及detection的一些tricks来做visual tracking的论文。" name="description">
 <meta content="Lingxiao's World" property="og:site_name"/>
 <meta content="article" property="og:type"/>
 <meta content="论文分析《Learning Multi-domain Convolutional Neural Networks for Visual Tracking》" property="og:title"/>
@@ -22,14 +22,14 @@
 <meta content="Convolutional Neural Networks" property="article:tag"/>
 <meta content="Lingxiao.Yang" property="article:author"/>
 <!-- Bootstrap -->
-<link href="https://zjjconan.github.io/theme/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-<link href="https://zjjconan.github.io/theme/css/font-awesome.min.css" rel="stylesheet">
-<link href="https://zjjconan.github.io/theme/css/pygments/native.css" rel="stylesheet">
-<link href="https://zjjconan.github.io/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
-<link href="https://zjjconan.github.io/theme/css/typogrify.css" rel="stylesheet">
-<link href="https://zjjconan.github.io/theme/css/style.css" rel="stylesheet" type="text/css"/>
-<link href="https://zjjconan.github.io/static/custom.css" rel="stylesheet">
-</link></link></link></link></link></link></meta></meta></meta></head>
+<link href="https://zjjconan.github.io/theme/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="https://zjjconan.github.io/theme/css/font-awesome.min.css" rel="stylesheet"/>
+<link href="https://zjjconan.github.io/theme/css/pygments/native.css" rel="stylesheet"/>
+<link href="https://zjjconan.github.io/theme/tipuesearch/tipuesearch.css" rel="stylesheet"/>
+<link href="https://zjjconan.github.io/theme/css/typogrify.css" rel="stylesheet"/>
+<link href="https://zjjconan.github.io/theme/css/style.css" rel="stylesheet" type="text/css">
+<link href="https://zjjconan.github.io/static/custom.css" rel="stylesheet"/>
+</link></link></meta></meta></meta></head>
 <body>
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
 <div class="container">
@@ -54,8 +54,8 @@ Lingxiao's World            </a>
 <ul class="nav navbar-nav navbar-right">
 <li><span>
 <form action="/search.html" class="navbar-search">
-<input class="search-query" id="tipue_search_input" name="q" placeholder="Search" required="" type="text">
-</input></form></span>
+<input class="search-query" id="tipue_search_input" name="q" placeholder="Search" required="" type="text"/>
+</form></span>
 </li>
 </ul>
 </div>
@@ -105,7 +105,7 @@ Lingxiao's World            </a>
 	<a href="https://zjjconan.github.io/tag/convolutional-neural-networks.html">Convolutional Neural Networks</a>
 </footer><!-- /.post-info --> </div>
 </div>
-<p>该论文出处 <a href="http://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Nam_Learning_Multi-Domain_Convolutional_CVPR_2016_paper.pdf"><span class="caps">CVPR2016</span></a>，是当年<span class="caps">VOT2016</span>跟踪挑战赛的冠军，远高于其他算法。</p>
+<p>该论文出处 <a href="http://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Nam_Learning_Multi-Domain_Convolutional_CVPR_2016_paper.pdf"><span class="caps">CVPR2016</span></a>，是当年VOT2016跟踪挑战赛的冠军，远高于其他算法。</p>
 <hr/>
 <h2 id="_1">概述<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>本文提出了一种新的基于Convolutional Neural Networks (CNNs) 来做跟踪的pipeline，简单总结如下：</p>
@@ -122,9 +122,9 @@ Lingxiao's World            </a>
 <hr/>
 <h2 id="cnn"><span class="caps">CNN</span> 网络的训练<a class="headerlink" href="#cnn" title="Permanent link">¶</a></h2>
 <div style="text-align:center">
-<img alt="MDNet-pipeline" class="image-process-article-image" src="https://zjjconan.github.io/images/MDNet\.\article-image\MDNet-Pipeline.png">
-</img></div>
-<p>上图给出了本文利用<span class="caps">CNN</span>在额外的videos上进行训练的网络结构。在单目标跟踪的情况下，object可能在一个视频中是待跟踪的目标，而在另外的视频中可能会成为背景。作者认为这种不一致的情况会使得<span class="caps">CNN</span>的训练变得苦难，所以提出了新的架构，如果中<strong>fc6</strong>分支。具体来说可以认为作者将每一video当作一个特定的domain，然后对于每一个domain单独训练一个二分类器，即图中<strong>fc6</strong>分支。训练过程中，每一次的迭代会更新：1）当前domain的分类器以及2）前面权值共享部分（i.e. conv1 -&gt; fc5）。这也是本文题目”Multi-Domain”的由来。另外，为了更好的适应跟踪这个特定的问题，作者对于<span class="caps">CNN</span>网络进行了改动。比如，将输入图像的size变小（224 -&gt; 107）。同时，跟踪的训练样本很少，不足以很好的训练一个大型的<span class="caps">CNN</span>网络，所以作者利用在ImageNet上训练好的<span class="caps">VGG</span>-M的前三层来进行网络的初始化，以学习到更好的feature。网络额训练则是通过传统的<span class="caps">SGD</span> + Momentum方法。</p>
+<img alt="MDNet-pipeline" class="image-process-article-image" src="https://zjjconan.github.io/images/MDNet\.\article-image\MDNet-Pipeline.png"/>
+</div>
+<p>上图给出了本文利用CNN在额外的videos上进行训练的网络结构。在单目标跟踪的情况下，object可能在一个视频中是待跟踪的目标，而在另外的视频中可能会成为背景。作者认为这种不一致的情况会使得CNN的训练变得苦难，所以提出了新的架构，如果中<strong>fc6</strong>分支。具体来说可以认为作者将每一video当作一个特定的domain，然后对于每一个domain单独训练一个二分类器，即图中<strong>fc6</strong>分支。训练过程中，每一次的迭代会更新：1）当前domain的分类器以及2）前面权值共享部分（i.e. conv1 -&gt; fc5）。这也是本文题目”Multi-Domain”的由来。另外，为了更好的适应跟踪这个特定的问题，作者对于CNN网络进行了改动。比如，将输入图像的size变小（224 -&gt; 107）。同时，跟踪的训练样本很少，不足以很好的训练一个大型的CNN网络，所以作者利用在ImageNet上训练好的VGG-M的前三层来进行网络的初始化，以学习到更好的feature。网络额训练则是通过传统的SGD + Momentum方法。</p>
 <p>注意，这里作者有几个重要的claims:</p>
 <blockquote>
 <ol>
@@ -142,46 +142,46 @@ Lingxiao's World            </a>
 </li>
 </ol>
 </blockquote>
-<p><strong>个人看法：</strong>  由于tracking的训练样本比较少，针对第一以及第四点的claims，个人觉得没有什么问题。确实利用小的<span class="caps">CNN</span>网络可以在一方面避免训练阶段的过拟合状态，同时也可以提高tracking的跟踪速度（汗，1fps）。但是第二以及第三点的claims是有问题的：</p>
+<p><strong>个人看法：</strong> 由于tracking的训练样本比较少，针对第一以及第四点的claims，个人觉得没有什么问题。确实利用小的CNN网络可以在一方面避免训练阶段的过拟合状态，同时也可以提高tracking的跟踪速度（汗，1fps）。但是第二以及第三点的claims是有问题的：</p>
 <blockquote>
-<p>Re - 2. 更深的网络确实损失一部分spatial信息，但这种损失在这里的影响可以忽略不计。本篇论文对于feature的提取是先利用<span class="caps">ROI</span> crop出来一个区域，然后将cropped的区域进行resize，再利用<span class="caps">CNN</span>对每一个<span class="caps">ROI</span>提取feature（这也是MDNet跟踪速度的瓶颈）。实际上spatial的信息对于这种方式的操作并不是非常的重要，毕竟<span class="caps">CNN</span>会在每一个区域上都进行单独的操作。</p>
+<p>Re - 2. 更深的网络确实损失一部分spatial信息，但这种损失在这里的影响可以忽略不计。本篇论文对于feature的提取是先利用ROI crop出来一个区域，然后将cropped的区域进行resize，再利用CNN对每一个ROI提取feature（这也是MDNet跟踪速度的瓶颈）。实际上spatial的信息对于这种方式的操作并不是非常的重要，毕竟CNN会在每一个区域上都进行单独的操作。</p>
 <p>Re - 3. Tracking跟踪的目标一般都比较小（应该是数据库中的目标都比较小），但这并不代表我们需要将输入变得很小。相反，根据个人经验以及很多detection的系统，在小目标的周围进行crop，然后resize到一个相对大一点的size，例如224，对于小目标的定位以及跟踪是很有帮助的。</p>
 </blockquote>
 <hr/>
 <h2 id="_2">在线跟踪<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
 <p>在线跟踪的pipeline比较简单，直接将训练好的网络应用到相应的视频中即可。不过这里作者去掉了预训练的<strong>fc6</strong> ，重新初始化一个二分类器用于跟踪。跟踪的具体操作与传统的方法类似，即利用前一帧的位置进行采样，将这些candidates送给当前的tracker选择出最好的结果来（<em>实际上在代码中，作者取了跟踪最好的5个bounding box的平均值来代替最好，可能是因为这样比较稳定吧</em>）。为了提高tracking的稳定性以及performance，作者从detection领域引入了两个tricks：1) online hard negative mining 以及 2) bounding box regression。实际上这两部分对于本论文的tracker来说，至关重要。下面依次来解释。</p>
 <h3 id="online-hard-negative-mining">Online Hard Negative Mining<a class="headerlink" href="#online-hard-negative-mining" title="Permanent link">¶</a></h3>
-<p>Detection的研究中经常会用到Hard Negative Mining (<span class="caps">HNM</span>)，这里的用法基本上没有区别。简单来说，即先用现有的模型进行一次预测，然后从预测中选择最合适的样本来进行下一次的训练。每次重复这样的过程直到满足某些设定的条件。这里的“最合适”的选择条件比较简单，即在模型的测试后，选择分数最大的一部分来当做<span class="caps">HNM</span>的样本进行后续的训练（可能会有别的更好的选择条件）。从下图中，可以看到，迭代到后面挑选出来的样本更难。例如第一个视频中，我们需要跟踪到赛跑中的某一个人，而其余的人都可以认为是干扰目标。在经过迭代挑选之后，选择出来的负样本基本上都是人，将这些样本加入训练的话，可以尽可能的减小tracker受到到相似目标干扰的情况。这里有一个可以思考的问题：如果我对正负样本都进行这种类似的选择会不会提高tracking的结果？</p>
+<p>Detection的研究中经常会用到Hard Negative Mining (<span class="caps">HNM</span>)，这里的用法基本上没有区别。简单来说，即先用现有的模型进行一次预测，然后从预测中选择最合适的样本来进行下一次的训练。每次重复这样的过程直到满足某些设定的条件。这里的“最合适”的选择条件比较简单，即在模型的测试后，选择分数最大的一部分来当做HNM的样本进行后续的训练（可能会有别的更好的选择条件）。从下图中，可以看到，迭代到后面挑选出来的样本更难。例如第一个视频中，我们需要跟踪到赛跑中的某一个人，而其余的人都可以认为是干扰目标。在经过迭代挑选之后，选择出来的负样本基本上都是人，将这些样本加入训练的话，可以尽可能的减小tracker受到到相似目标干扰的情况。这里有一个可以思考的问题：如果我对正负样本都进行这种类似的选择会不会提高tracking的结果？</p>
 <div style="text-align:center">
-<img alt="OHEM" class="image-process-article-image" src="https://zjjconan.github.io/images/MDNet\.\article-image\MDNet-HNM.png">
-</img></div>
+<img alt="OHEM" class="image-process-article-image" src="https://zjjconan.github.io/images/MDNet\.\article-image\MDNet-HNM.png"/>
+</div>
 <h3 id="bounding-box-regression">Bounding Box Regression<a class="headerlink" href="#bounding-box-regression" title="Permanent link">¶</a></h3>
-<p>论文包括作者自己的报告中指出Bounding Box Regression (<span class="caps">BBR</span>) 主要是用来提高tracking跟踪结果的准确度，类似锦上添花的效果。如下图所示，<span class="caps">BBR</span>有能力将跟踪结果不是很准确的Bounding Box进行矫正。经过个人的实验结果发现，<span class="caps">BBR</span>在某些情况下可以使得跟踪的非常不准确甚至于跟踪错误的情况拉回来。这样，<span class="caps">BBR</span>的作用不仅仅只是“提高”，某些情况更像是改错。</p>
+<p>论文包括作者自己的报告中指出Bounding Box Regression (<span class="caps">BBR</span>) 主要是用来提高tracking跟踪结果的准确度，类似锦上添花的效果。如下图所示，BBR有能力将跟踪结果不是很准确的Bounding Box进行矫正。经过个人的实验结果发现，BBR在某些情况下可以使得跟踪的非常不准确甚至于跟踪错误的情况拉回来。这样，BBR的作用不仅仅只是“提高”，某些情况更像是改错。</p>
 <div style="text-align:center">
-<img alt="BBR" class="image-process-article-image" src="https://zjjconan.github.io/images/MDNet\.\article-image\MDNet-BBR.png">
-</img></div>
+<img alt="BBR" class="image-process-article-image" src="https://zjjconan.github.io/images/MDNet\.\article-image\MDNet-BBR.png"/>
+</div>
 <hr/>
 <h2 id="_3">结果分析<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <div style="text-align:center">
-<img alt="OTB2015" class="image-process-article-image" src="https://zjjconan.github.io/images/MDNet\.\article-image\MDNet-OTB100.png">
-</img></div>
-<p>上图给出了在标准100个测试集合上的结果，可以看出MDNet的结果要比当年最好的一些结果提高不好。例如其”successful plots”要比当时最好的算法（MUSter）高了接近10个点。这个结果是非常的惊人的。实际上，即使过了两年左右的时间，这个结果依然是top3。最近才刚刚被两个算法SANet [1]以及<span class="caps">ECO</span> [2]超越，足以见得这个框架的实力。由于这篇文章更像是在做一个tracking的系统，里面包含太多的部件，所以本人也做了一点额外的实验来具体分析这个算法的成功之处，以下逐个来分析。</p>
+<img alt="OTB2015" class="image-process-article-image" src="https://zjjconan.github.io/images/MDNet\.\article-image\MDNet-OTB100.png"/>
+</div>
+<p>上图给出了在标准100个测试集合上的结果，可以看出MDNet的结果要比当年最好的一些结果提高不好。例如其”successful plots”要比当时最好的算法（MUSter）高了接近10个点。这个结果是非常的惊人的。实际上，即使过了两年左右的时间，这个结果依然是top3。最近才刚刚被两个算法SANet [1]以及ECO [2]超越，足以见得这个框架的实力。由于这篇文章更像是在做一个tracking的系统，里面包含太多的部件，所以本人也做了一点额外的实验来具体分析这个算法的成功之处，以下逐个来分析。</p>
 <h3 id="_4">外部数据训练问题<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
-<p>MDNet在<span class="caps">VOT2015</span>上的结果是远远高于其他参赛的算法，很多人认为此算法利用到了tracking的videos进行网络的训练，不是很公平。现阶段有相当一部分人不是很认可这种利用tracking videos来进行网络训练的方法，例如SANet虽然结果非常高，但最终只中了<span class="caps">CVPR</span>的一个workshop。这个可以从<span class="caps">VOT</span>的比赛看出一些端倪。例如<span class="caps">VOT2016</span>以及<span class="caps">VOT2017</span>明确禁止了这种行为，可参考 <a href="http://www.votchallenge.net/vot2017/participation.html"><span class="caps">VOT2017</span></a> 的声明:</p>
+<p>MDNet在VOT2015上的结果是远远高于其他参赛的算法，很多人认为此算法利用到了tracking的videos进行网络的训练，不是很公平。现阶段有相当一部分人不是很认可这种利用tracking videos来进行网络训练的方法，例如SANet虽然结果非常高，但最终只中了CVPR的一个workshop。这个可以从VOT的比赛看出一些端倪。例如VOT2016以及VOT2017明确禁止了这种行为，可参考 <a href="http://www.votchallenge.net/vot2017/participation.html"><span class="caps">VOT2017</span></a> 的声明:</p>
 <blockquote>
 <p>Learning from the tracking datasets (<span class="caps">OTB</span>, <span class="caps">VOT</span>, <span class="caps">ALOV</span>, <span class="caps">NUSPRO</span>) is prohibited. The use of class labels specific to <span class="caps">VOT</span> is not allowed (i.e., identifying a target class in each sequence and applying pretrained class-specific trackers is not allowed).</p>
 </blockquote>
-<p>在<span class="caps">VOT2016</span>的时候，此文作者还专门用MDNet跑了一个结果，只不过没有利用tracking的videos来进行fine-tuning。看<span class="caps">VOT2016</span>的报告发现，其结果非常的差。本人自己在<span class="caps">OTB100</span>上也做了相关的实验，结果如下图所示：</p>
+<p>在VOT2016的时候，此文作者还专门用MDNet跑了一个结果，只不过没有利用tracking的videos来进行fine-tuning。看VOT2016的报告发现，其结果非常的差。本人自己在OTB100上也做了相关的实验，结果如下图所示：</p>
 <div style="text-align:center">
-<img alt="OTB2015-NoPretrained" class="image-process-article-image" src="https://zjjconan.github.io/images/MDNet\.\article-image\MDNet-NoPre.png">
-</img></div>
-<p>上图主要report其中一个常用的评测机制：success plots。只不过用不同的标准。例如，左图是利用曲线下面积<span class="caps">AUC</span>（Area-Under-Curve），而右图主要是计算tracker在所有视频中success plot为0.5的平均值。图中MDNet是本文的算法，而<strong>MDNet-<span class="caps">NH</span></strong>以及<strong>MDNet-<span class="caps">NL</span></strong> 则是没有利用videos进行fine-tuning的结果。方法<strong><span class="caps">NL</span></strong>是利用该论文给定的学习参数，而<strong><span class="caps">NH</span></strong>则是将学习率提高10倍得到的结果。从图中可以证明本文的一个观点：tracking的videos有助于提高最终的结果。</p>
+<img alt="OTB2015-NoPretrained" class="image-process-article-image" src="https://zjjconan.github.io/images/MDNet\.\article-image\MDNet-NoPre.png"/>
+</div>
+<p>上图主要report其中一个常用的评测机制：success plots。只不过用不同的标准。例如，左图是利用曲线下面积AUC（Area-Under-Curve），而右图主要是计算tracker在所有视频中success plot为0.5的平均值。图中MDNet是本文的算法，而<strong>MDNet-<span class="caps">NH</span></strong>以及<strong>MDNet-<span class="caps">NL</span></strong> 则是没有利用videos进行fine-tuning的结果。方法<strong><span class="caps">NL</span></strong>是利用该论文给定的学习参数，而<strong><span class="caps">NH</span></strong>则是将学习率提高10倍得到的结果。从图中可以证明本文的一个观点：tracking的videos有助于提高最终的结果。</p>
 <h3 id="hnm"><span class="caps">HNM</span><a class="headerlink" href="#hnm" title="Permanent link">¶</a></h3>
-<p>论文中倒是自己评测了每一个小的部分，例如hard negative mining （<span class="caps">HNM</span>）以及bounding box regression （<span class="caps">BBR</span>）的技术。本着怀疑一切的态度，本人也经过的一些测试，发现<span class="caps">BBR</span>基本上与论文里面得出的结果比较一致。而<span class="caps">OHNM</span>的结果与论文中给出的有一定的出入。具体来说则是<span class="caps">OHNM</span>对于结果有一定的提升，但并没有论文中对比的结果那么明显，下图左给出的原论文中自己的对比实验结果，而在右图中本人自己跑了一个没有<span class="caps">HNM</span>的结果，标记为 <strong><span class="caps">NHNM</span></strong> 。注意：本人跑的结果基于没有利用tracking videos训练的网络。</p>
+<p>论文中倒是自己评测了每一个小的部分，例如hard negative mining （<span class="caps">HNM</span>）以及bounding box regression （<span class="caps">BBR</span>）的技术。本着怀疑一切的态度，本人也经过的一些测试，发现BBR基本上与论文里面得出的结果比较一致。而OHNM的结果与论文中给出的有一定的出入。具体来说则是OHNM对于结果有一定的提升，但并没有论文中对比的结果那么明显，下图左给出的原论文中自己的对比实验结果，而在右图中本人自己跑了一个没有HNM的结果，标记为 <strong><span class="caps">NHNM</span></strong> 。注意：本人跑的结果基于没有利用tracking videos训练的网络。</p>
 <div style="text-align:center">
-<img alt="OTB2015-NoHNM" class="image-process-article-image" src="https://zjjconan.github.io/images/MDNet\.\article-image\MDNet-NoHNM.png">
-</img></div>
-<p>从上图中可以看出，本人自己跑的结果比原论文给出的结果要好处不少（0.865 vs 0.816）。这里需要注意两点：1）在我们自己跑的结果中利用到了<span class="caps">BBR</span>技术；以及2）本人的网络没有利用外部数据进行fine-tuning。虽然对比不是绝对的公平，但是鉴于以上两点，我们可以初步认为<span class="caps">HNM</span>有一定的提升（请看右图中<strong>MDNet-<span class="caps">NH</span></strong>与<strong>MDNet-<span class="caps">NH</span>-<span class="caps">NHNM</span></strong>的对比结果），但是没有原始论文中claim的那样暴力（提升了将近10个点）。另外，原始论文中（如上图左）提到，在没有利用multi-domain思想进行训练的情况下（SDNet），跟踪的结果远不及利用了该思想的结果。而事实上，在论文SANet中，也对这一现象进行了简单的测试，发现multi-domain的训练方式对最终的结果影响并没有这么大（1~2%）。这也是为什么本人比较怀疑该论文自己的对比实验的原因。</p>
+<img alt="OTB2015-NoHNM" class="image-process-article-image" src="https://zjjconan.github.io/images/MDNet\.\article-image\MDNet-NoHNM.png"/>
+</div>
+<p>从上图中可以看出，本人自己跑的结果比原论文给出的结果要好处不少（0.865 vs 0.816）。这里需要注意两点：1）在我们自己跑的结果中利用到了BBR技术；以及2）本人的网络没有利用外部数据进行fine-tuning。虽然对比不是绝对的公平，但是鉴于以上两点，我们可以初步认为HNM有一定的提升（请看右图中<strong>MDNet-<span class="caps">NH</span></strong>与<strong>MDNet-<span class="caps">NH</span>-<span class="caps">NHNM</span></strong>的对比结果），但是没有原始论文中claim的那样暴力（提升了将近10个点）。另外，原始论文中（如上图左）提到，在没有利用multi-domain思想进行训练的情况下（SDNet），跟踪的结果远不及利用了该思想的结果。而事实上，在论文SANet中，也对这一现象进行了简单的测试，发现multi-domain的训练方式对最终的结果影响并没有这么大（1~2%）。这也是为什么本人比较怀疑该论文自己的对比实验的原因。</p>
 <hr/>
 <h2 id="_5">参考文献<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
 <p>[1] Fan H, Ling H. Sanet: Structure-aware network for visual tracking[C]. Computer Vision and Pattern Recognition Workshops (<span class="caps">CVPRW</span>), 2017 <span class="caps">IEEE</span> Conference on. <span class="caps">IEEE</span>, 2017: 2217-2224.</p>
@@ -193,8 +193,8 @@ Lingxiao's World            </a>
 <ul>
 <li><a href="https://zjjconan.github.io/BranchOut.html">论文笔记《BranchOut: Regularization for Online Ensemble Tracking with Convolutional Neural Networks》</a></li>
 <li><a href="https://zjjconan.github.io/MAVOT.html">论文笔记《<span class="caps">MAVOT</span>: Memory-Augmented Video Object Tracking》</a></li>
-<li><a href="https://zjjconan.github.io/Real-Time-Tracking-DNN-Part-1.html">论文集《Real-Time Tracking Methods (<span class="caps">DNN</span>-Part I)》</a></li>
 <li><a href="https://zjjconan.github.io/Real-Time-Tracking-DNN-Part-2.html">论文集《Real-Time Tracking Methods (<span class="caps">DNN</span>-Part <span class="caps">II</span>)》</a></li>
+<li><a href="https://zjjconan.github.io/Real-Time-Tracking-DNN-Part-1.html">论文集《Real-Time Tracking Methods (<span class="caps">DNN</span>-Part I)》</a></li>
 </ul>
 </section>
 <hr/>
@@ -258,25 +258,25 @@ Lingxiao's World            </a>
 <a href="https://zjjconan.github.io/tag/visual-tracking.html">Visual Tracking</a>
 </li>
 <li class="list-group-item tag-2">
-<a href="https://zjjconan.github.io/tag/convolutional-neural-networks.html">Convolutional Neural Networks</a>
+<a href="https://zjjconan.github.io/tag/real-time-tracking.html">Real-Time Tracking</a>
 </li>
 <li class="list-group-item tag-2">
 <a href="https://zjjconan.github.io/tag/deep-neural-networks.html">Deep Neural Networks</a>
 </li>
 <li class="list-group-item tag-2">
-<a href="https://zjjconan.github.io/tag/real-time-tracking.html">Real-Time Tracking</a>
+<a href="https://zjjconan.github.io/tag/convolutional-neural-networks.html">Convolutional Neural Networks</a>
+</li>
+<li class="list-group-item tag-4">
+<a href="https://zjjconan.github.io/tag/ensemble-tracking.html">Ensemble Tracking</a>
 </li>
 <li class="list-group-item tag-4">
 <a href="https://zjjconan.github.io/tag/ssd.html">SSD</a>
 </li>
 <li class="list-group-item tag-4">
-<a href="https://zjjconan.github.io/tag/object-detection.html">Object Detection</a>
-</li>
-<li class="list-group-item tag-4">
 <a href="https://zjjconan.github.io/tag/one-shot-learning.html">One-shot learning</a>
 </li>
 <li class="list-group-item tag-4">
-<a href="https://zjjconan.github.io/tag/ensemble-tracking.html">Ensemble Tracking</a>
+<a href="https://zjjconan.github.io/tag/object-detection.html">Object Detection</a>
 </li>
 </ul>
 </li>
@@ -289,7 +289,7 @@ Lingxiao's World            </a>
 </div>
 <footer>
 <div class="container">
-<hr>
+<hr/>
 <div class="row">
 <div class="col-xs-10">© 2018 
             · Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
@@ -297,7 +297,7 @@ Lingxiao's World            </a>
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a> </div>
 <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
 </div>
-</hr></div>
+</div>
 </footer>
 <script src="https://zjjconan.github.io/theme/js/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->

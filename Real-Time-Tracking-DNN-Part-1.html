@@ -4,13 +4,13 @@
 <head>
 <title>论文集《Real-Time Tracking Methods (DNN-Part I)》 - Lingxiao's World</title>
 <!-- Using the latest rendering mode for IE -->
-<meta content="IE=edge" http-equiv="X-UA-Compatible">
-<meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<link href="https://zjjconan.github.io/Real-Time-Tracking-DNN-Part-1.html" rel="canonical">
-<meta content="Lingxiao.Yang" name="author"/>
-<meta content="Visual Tracking,Deep Neural Networks,Real-Time Tracking" name="keywords"/>
-<meta content="Deep Learning for Real-Time Visual Object Tracking (Part 1)。" name="description"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://zjjconan.github.io/Real-Time-Tracking-DNN-Part-1.html" rel="canonical"/>
+<meta content="Lingxiao.Yang" name="author">
+<meta content="Visual Tracking,Deep Neural Networks,Real-Time Tracking" name="keywords">
+<meta content="Deep Learning for Real-Time Visual Object Tracking (Part 1)。" name="description">
 <meta content="Lingxiao's World" property="og:site_name"/>
 <meta content="article" property="og:type"/>
 <meta content="论文集《Real-Time Tracking Methods (DNN-Part I)》" property="og:title"/>
@@ -23,14 +23,14 @@
 <meta content="Real-Time Tracking" property="article:tag"/>
 <meta content="Lingxiao.Yang" property="article:author"/>
 <!-- Bootstrap -->
-<link href="https://zjjconan.github.io/theme/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-<link href="https://zjjconan.github.io/theme/css/font-awesome.min.css" rel="stylesheet">
-<link href="https://zjjconan.github.io/theme/css/pygments/native.css" rel="stylesheet">
-<link href="https://zjjconan.github.io/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
-<link href="https://zjjconan.github.io/theme/css/typogrify.css" rel="stylesheet">
-<link href="https://zjjconan.github.io/theme/css/style.css" rel="stylesheet" type="text/css"/>
-<link href="https://zjjconan.github.io/static/custom.css" rel="stylesheet">
-</link></link></link></link></link></link></meta></meta></meta></head>
+<link href="https://zjjconan.github.io/theme/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="https://zjjconan.github.io/theme/css/font-awesome.min.css" rel="stylesheet"/>
+<link href="https://zjjconan.github.io/theme/css/pygments/native.css" rel="stylesheet"/>
+<link href="https://zjjconan.github.io/theme/tipuesearch/tipuesearch.css" rel="stylesheet"/>
+<link href="https://zjjconan.github.io/theme/css/typogrify.css" rel="stylesheet"/>
+<link href="https://zjjconan.github.io/theme/css/style.css" rel="stylesheet" type="text/css">
+<link href="https://zjjconan.github.io/static/custom.css" rel="stylesheet"/>
+</link></link></meta></meta></meta></head>
 <body>
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
 <div class="container">
@@ -55,8 +55,8 @@ Lingxiao's World            </a>
 <ul class="nav navbar-nav navbar-right">
 <li><span>
 <form action="/search.html" class="navbar-search">
-<input class="search-query" id="tipue_search_input" name="q" placeholder="Search" required="" type="text">
-</input></form></span>
+<input class="search-query" id="tipue_search_input" name="q" placeholder="Search" required="" type="text"/>
+</form></span>
 </li>
 </ul>
 </div>
@@ -111,59 +111,59 @@ Lingxiao's World            </a>
 <h3 id="parallel-tracking-and-verifying-a-framework-for-real-time-and-high-accuracy-visual-tracking-iccv-2017"><a href="https://arxiv.org/pdf/1708.00153.pdf">Parallel Tracking and Verifying: A Framework for Real-Time and High Accuracy Visual Tracking</a> (<span class="caps">ICCV</span> 2017)<a class="headerlink" href="#parallel-tracking-and-verifying-a-framework-for-real-time-and-high-accuracy-visual-tracking-iccv-2017" title="Permanent link">¶</a></h3>
 <p><em>Heng Fan</em> and <em>Haibin Ling</em></p>
 <div style="text-align:center">
-<img alt="PTAV-pipeline" class="image-process-article-image" src="https://zjjconan.github.io/images/RTT-DNN-Part-1\.\article-image\PTAV-pipeline.png">
-</img></div>
+<img alt="PTAV-pipeline" class="image-process-article-image" src="https://zjjconan.github.io/images/RTT-DNN-Part-1\.\article-image\PTAV-pipeline.png"/>
+</div>
 <p>个人感觉这篇文章有点过于工程化了。实际上本文主要利用两部分信息来进行跟踪：1）跟踪器以及2）检测子。具体做法如图所示，即利用快速的跟踪器对每一帧进行相应的处理，同时利用另外一个线程运行较为准确的检测子，然后每隔<em>N</em>帧来进行一次检测。在双线程汇聚的帧上，选择更为可靠的一个结果作为最终的跟踪结果。论文给出的最终结果：<span class="caps">OTB100</span>: Prec - 84.9, Succ - 63.5, Speed - 25 fps. </p>
 <hr/>
 <h3 id="re3-real-time-recurrent-regression-networks-for-object-tracking"><a href="https://arxiv.org/pdf/1705.06368.pdf">Re3: Real-Time Recurrent Regression Networks for Object Tracking</a><a class="headerlink" href="#re3-real-time-recurrent-regression-networks-for-object-tracking" title="Permanent link">¶</a></h3>
 <p><em>Daniel Gordon1</em>, <em>Ali Farhadi1</em> and <em>Dieter Fox</em></p>
 <div style="text-align:center">
-<img alt="Re3-pipeline" class="image-process-article-image" src="https://zjjconan.github.io/images/RTT-DNN-Part-1\.\article-image\Re3-pipeline.png">
-</img></div>
-<p>这篇文章算是利用Recurrent Network做single-object tracking为数不多的几篇文章之一。实际上与<span class="caps">GOTURN</span> [1]类似。只不过具体的网络结构不一样罢了。最终的结果确实比<span class="caps">GOTURN</span>要好。个人认为可能有两个原因：1）利用<span class="caps">RNN</span>（<span class="caps">LSTM</span>）探索了更多的历史信息；2）在线跟踪的时候，会每个N帧reset <span class="caps">LSTM</span>里面的state，类似于在线的自适应。</p>
+<img alt="Re3-pipeline" class="image-process-article-image" src="https://zjjconan.github.io/images/RTT-DNN-Part-1\.\article-image\Re3-pipeline.png"/>
+</div>
+<p>这篇文章算是利用Recurrent Network做single-object tracking为数不多的几篇文章之一。实际上与GOTURN [1]类似。只不过具体的网络结构不一样罢了。最终的结果确实比GOTURN要好。个人认为可能有两个原因：1）利用RNN（<span class="caps">LSTM</span>）探索了更多的历史信息；2）在线跟踪的时候，会每个N帧reset LSTM里面的state，类似于在线的自适应。</p>
 <hr/>
 <h3 id="end-to-end-representation-learning-for-correlation-filter-based-tracking-cvpr-2017"><a href="https://arxiv.org/pdf/1704.06036.pdf">End-to-end representation learning for Correlation Filter based tracking</a> (<span class="caps">CVPR</span> 2017)<a class="headerlink" href="#end-to-end-representation-learning-for-correlation-filter-based-tracking-cvpr-2017" title="Permanent link">¶</a></h3>
 <p><em>Jack Valmadre</em>, <em>Luca Bertinetto</em>, <em>Joao F. Henriques</em>, <em>Andrea Vedaldi</em> and <em>Philip, <span class="caps">H. S.</span> Torr</em></p>
 <div style="text-align:center">
-<img alt="CFNet-pipeline" class="image-process-article-image" src="https://zjjconan.github.io/images/RTT-DNN-Part-1\.\article-image\CFNet-pipeline.png">
-</img></div>
-<p>这篇文章还蛮有意思的.是去年SiamFc[2]论文的一个扩展。主要是将当前流行的两个tracking工具: <span class="caps">CNN</span> 以及Correlation Filter做融合。论文中将<span class="caps">CF</span>设计成一层网络，并做了详细的推导（感觉一切都可以用来做成一层layer）。与SiamFc不一样的是：1）引入<span class="caps">CF</span>层，使得整个网络可以非常的小（<span class="caps">900KB</span>）既可以得到跟SiamFc（9M）差不多的结果。2）引入crop层，感觉这个crop层的存在是为了能够更好的在线更新模板。而SiamFc仅仅利用第一帧的信息。这部分可能也是结果可以很好的一个原因吧。</p>
+<img alt="CFNet-pipeline" class="image-process-article-image" src="https://zjjconan.github.io/images/RTT-DNN-Part-1\.\article-image\CFNet-pipeline.png"/>
+</div>
+<p>这篇文章还蛮有意思的.是去年SiamFc[2]论文的一个扩展。主要是将当前流行的两个tracking工具: <span class="caps">CNN</span> 以及Correlation Filter做融合。论文中将CF设计成一层网络，并做了详细的推导（感觉一切都可以用来做成一层layer）。与SiamFc不一样的是：1）引入CF层，使得整个网络可以非常的小（<span class="caps">900KB</span>）既可以得到跟SiamFc（9M）差不多的结果。2）引入crop层，感觉这个crop层的存在是为了能够更好的在线更新模板。而SiamFc仅仅利用第一帧的信息。这部分可能也是结果可以很好的一个原因吧。</p>
 <hr/>
 <h3 id="learning-policies-for-adaptive-tracking-with-deep-feature-cascades-iccv-2017"><a href="https://arxiv.org/pdf/1708.02973v1.pdf">Learning Policies for Adaptive Tracking with Deep Feature Cascades</a> (<span class="caps">ICCV</span> 2017)<a class="headerlink" href="#learning-policies-for-adaptive-tracking-with-deep-feature-cascades-iccv-2017" title="Permanent link">¶</a></h3>
 <p><em>Chen Huang</em>, <em>Simon Lucey</em> and <em>Deva Ramanan</em></p>
 <div style="text-align:center">
-<img alt="EAST-pipeline" class="image-process-article-image" src="https://zjjconan.github.io/images/RTT-DNN-Part-1\.\article-image\EAST-pipeline.png">
-</img></div>
+<img alt="EAST-pipeline" class="image-process-article-image" src="https://zjjconan.github.io/images/RTT-DNN-Part-1\.\article-image\EAST-pipeline.png"/>
+</div>
 <p>这篇文章主要是利用reinforcement learning做layer的挑选工作（如pipeline所示）。主要原理是考虑到一些比较简单的跟踪情况，可能只需要非常简单的feature就可以很好的做到跟踪，例如某些移动缓慢的目标，而对于非常有challenge的跟踪情况，如deformation非常大的情况，需要利用到更深的层次的layer。跟踪网络利用了速度比较快的SiamFc [1]架构，layer层的挑选则通过reinforcement learning进行。</p>
 <hr/>
 <h3 id="learning-background-aware-correlation-filters-for-visual-tracking-iccv-2017"><a href="https://arxiv.org/pdf/1703.04590.pdf">Learning Background-Aware Correlation Filters for Visual Tracking</a> (<span class="caps">ICCV</span> 2017)<a class="headerlink" href="#learning-background-aware-correlation-filters-for-visual-tracking-iccv-2017" title="Permanent link">¶</a></h3>
 <p><em>Hamed Kiani Galoogahi1</em>, <em>Ashton Fagg</em> and <em>Simon Lucey</em></p>
 <div style="text-align:center">
-<img alt="BACF" class="image-process-article-image" src="https://zjjconan.github.io/images/RTT-DNN-Part-1\.\article-image\BACF.png">
-</img></div>
-<p>这篇文章主要探索如何利用background的样本来增强<span class="caps">CF</span>学习到的目标模板。在原始的correlation filter的框架下，扩大训练时候的search region，同时自己定义了一个crop操作，将一个search region里面所有的负样本挑选出来进行训练。crop的操作是可以预先定义好的，所有并没有太多额外的计算负担。</p>
+<img alt="BACF" class="image-process-article-image" src="https://zjjconan.github.io/images/RTT-DNN-Part-1\.\article-image\BACF.png"/>
+</div>
+<p>这篇文章主要探索如何利用background的样本来增强CF学习到的目标模板。在原始的correlation filter的框架下，扩大训练时候的search region，同时自己定义了一个crop操作，将一个search region里面所有的负样本挑选出来进行训练。crop的操作是可以预先定义好的，所有并没有太多额外的计算负担。</p>
 <hr/>
 <h3 id="learning-dynamic-siamese-network-for-visual-object-tracking-iccv-2017"><a href="https://www.researchgate.net/publication/318910124_Learning_Dynamic_Siamese_Network_for_Visual_Object_Tracking">Learning Dynamic Siamese Network for Visual Object Tracking</a> (<span class="caps">ICCV</span> 2017)<a class="headerlink" href="#learning-dynamic-siamese-network-for-visual-object-tracking-iccv-2017" title="Permanent link">¶</a></h3>
 <p><em>Qing Guo</em>, <em>Wei Feng</em>, <em>Ce Zhou</em>, <em>Rui Huang</em>, <em>Liang Wan</em> and <em>Song Wang</em></p>
 <div style="text-align:center">
-<img alt="DSiam-pipeline" class="image-process-article-image" src="https://zjjconan.github.io/images/RTT-DNN-Part-1\.\article-image\DSiam-pipeline.png">
-</img></div>
+<img alt="DSiam-pipeline" class="image-process-article-image" src="https://zjjconan.github.io/images/RTT-DNN-Part-1\.\article-image\DSiam-pipeline.png"/>
+</div>
 <p>这篇文章实际上是[2]的一个扩展，与<em>End-to-End</em>那篇目的类似，为了能够使得SiamFc在线快速的更新模板。这篇文章主要引用了两个重要的参数。其中一个重要的参数是为了能够让第一帧的模板<em>transform</em>到前一帧的模板。
 而第二个参数是为了能够更好的保证当前的feature与前景尽可能的相似。为了能够学习这两个参数，作者直接利用<em>Regularized linear regression</em>来model这一部分，这样做也是为了在线能够更好的更新，因为<em><span class="caps">RLS</span></em>可以在频域下快速求解。</p>
 <hr/>
 <h3 id="recurrent-filter-learning-for-visual-tracking-iccvw-2017"><a href="https://arxiv.org/pdf/1708.03874.pdf">Recurrent Filter Learning for Visual Tracking</a> (<span class="caps">ICCVW</span> 2017)<a class="headerlink" href="#recurrent-filter-learning-for-visual-tracking-iccvw-2017" title="Permanent link">¶</a></h3>
 <p><em>Tianyu Yang</em> and <em>Antoni B. Chan</em></p>
 <div style="text-align:center">
-<img alt="RFL-pipeline" class="image-process-article-image" src="https://zjjconan.github.io/images/RTT-DNN-Part-1\.\article-image\RFL-pipeline.png">
-</img></div>
-<p>这篇文章与SiamFc[2]蛮像的，算是在这个工作上的一个改进。主要贡献是利用ConvLSTM[3]来加入一些temporal的信息。利用temporal的信息来产生目标模板。除去<span class="caps">LSTM</span>部分，其他的具体操作类似SiamFc。但是作者认为模板的更新对于跟踪很重要，所以作者在跟踪到目标后还专门对模板进行了在线的跟踪。这一部分也是常用的模板加权平均的策略。但个人比较好奇的是，跟踪是一个跟temporal信息非常相关的课题，为什么这里融合了temporal信息之后，反倒还没有原始的SiamFc的结果好。这一部分可能需要仔细研究一下。</p>
+<img alt="RFL-pipeline" class="image-process-article-image" src="https://zjjconan.github.io/images/RTT-DNN-Part-1\.\article-image\RFL-pipeline.png"/>
+</div>
+<p>这篇文章与SiamFc[2]蛮像的，算是在这个工作上的一个改进。主要贡献是利用ConvLSTM[3]来加入一些temporal的信息。利用temporal的信息来产生目标模板。除去LSTM部分，其他的具体操作类似SiamFc。但是作者认为模板的更新对于跟踪很重要，所以作者在跟踪到目标后还专门对模板进行了在线的跟踪。这一部分也是常用的模板加权平均的策略。但个人比较好奇的是，跟踪是一个跟temporal信息非常相关的课题，为什么这里融合了temporal信息之后，反倒还没有原始的SiamFc的结果好。这一部分可能需要仔细研究一下。</p>
 <hr/>
 <h3 id="action-decision-networks-for-visual-tracking-with-deep-reinforcement-learning-cvpr-2017"><a href="http://openaccess.thecvf.com/content_cvpr_2017/papers/Yun_Action-Decision_Networks_for_CVPR_2017_paper.pdf">Action-Decision Networks for Visual Tracking with Deep Reinforcement Learning</a> (<span class="caps">CVPR</span> 2017)<a class="headerlink" href="#action-decision-networks-for-visual-tracking-with-deep-reinforcement-learning-cvpr-2017" title="Permanent link">¶</a></h3>
 <p><em>Sangdoo Yun</em>, <em>Jongwon Choi</em>, <em>Youngjoon Yoo</em>, <em>Kimin Yun</em> and <em>Jin Young Choi</em></p>
 <div style="text-align:center">
-<img alt="ADNet-pipeline" class="image-process-article-image" src="https://zjjconan.github.io/images/RTT-DNN-Part-1\.\article-image\ADNet-pipeline.png">
-</img></div>
-<p>这篇文章主体是利用Reinforcement Learning去做跟踪。具体做法如pipeline图所示。首先，人为定义一些目标在运动中的运动中action，例如上下左右，变大或变小。在预测过程中，每一帧的预测结果同时输入到网络中对当前帧的目标状态进行预测。实际上可以认为这里做了一个简单的状态转移的预测。在状态转移预测过程中，一旦发现预测不准确，则利用传统tracking-by-detection（<span class="caps">TBD</span>）的方式重新找回目标。所以与传统的<span class="caps">TBD</span>框架相比，实际上这里大量的操作都是状态转移，所以在论文中，作者给出了一个Fast版本，结果实际上没有降太多，速度倒是接近实时（15fps）。仔细思考之后发现，这里ADNet预测状态转移的过程实质上就是Conv+<span class="caps">RNN</span>以及Conv+<span class="caps">LSTM</span>的过程。</p>
+<img alt="ADNet-pipeline" class="image-process-article-image" src="https://zjjconan.github.io/images/RTT-DNN-Part-1\.\article-image\ADNet-pipeline.png"/>
+</div>
+<p>这篇文章主体是利用Reinforcement Learning去做跟踪。具体做法如pipeline图所示。首先，人为定义一些目标在运动中的运动中action，例如上下左右，变大或变小。在预测过程中，每一帧的预测结果同时输入到网络中对当前帧的目标状态进行预测。实际上可以认为这里做了一个简单的状态转移的预测。在状态转移预测过程中，一旦发现预测不准确，则利用传统tracking-by-detection（<span class="caps">TBD</span>）的方式重新找回目标。所以与传统的TBD框架相比，实际上这里大量的操作都是状态转移，所以在论文中，作者给出了一个Fast版本，结果实际上没有降太多，速度倒是接近实时（15fps）。仔细思考之后发现，这里ADNet预测状态转移的过程实质上就是Conv+RNN以及Conv+LSTM的过程。</p>
 <hr/>
 <h1 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">¶</a></h1>
 <p>[1] Held D, Thrun S, Savarese S. Learning to track at 100 fps with deep regression networks[C]. European Conference on Computer Vision. Springer International Publishing, 2016: 749-765.</p>
@@ -241,25 +241,25 @@ Lingxiao's World            </a>
 <a href="https://zjjconan.github.io/tag/visual-tracking.html">Visual Tracking</a>
 </li>
 <li class="list-group-item tag-2">
-<a href="https://zjjconan.github.io/tag/convolutional-neural-networks.html">Convolutional Neural Networks</a>
+<a href="https://zjjconan.github.io/tag/real-time-tracking.html">Real-Time Tracking</a>
 </li>
 <li class="list-group-item tag-2">
 <a href="https://zjjconan.github.io/tag/deep-neural-networks.html">Deep Neural Networks</a>
 </li>
 <li class="list-group-item tag-2">
-<a href="https://zjjconan.github.io/tag/real-time-tracking.html">Real-Time Tracking</a>
+<a href="https://zjjconan.github.io/tag/convolutional-neural-networks.html">Convolutional Neural Networks</a>
+</li>
+<li class="list-group-item tag-4">
+<a href="https://zjjconan.github.io/tag/ensemble-tracking.html">Ensemble Tracking</a>
 </li>
 <li class="list-group-item tag-4">
 <a href="https://zjjconan.github.io/tag/ssd.html">SSD</a>
 </li>
 <li class="list-group-item tag-4">
-<a href="https://zjjconan.github.io/tag/object-detection.html">Object Detection</a>
-</li>
-<li class="list-group-item tag-4">
 <a href="https://zjjconan.github.io/tag/one-shot-learning.html">One-shot learning</a>
 </li>
 <li class="list-group-item tag-4">
-<a href="https://zjjconan.github.io/tag/ensemble-tracking.html">Ensemble Tracking</a>
+<a href="https://zjjconan.github.io/tag/object-detection.html">Object Detection</a>
 </li>
 </ul>
 </li>
@@ -272,7 +272,7 @@ Lingxiao's World            </a>
 </div>
 <footer>
 <div class="container">
-<hr>
+<hr/>
 <div class="row">
 <div class="col-xs-10">© 2018 
             · Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
@@ -280,7 +280,7 @@ Lingxiao's World            </a>
             <a href="http://getbootstrap.com" target="_blank">Bootstrap</a> </div>
 <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
 </div>
-</hr></div>
+</div>
 </footer>
 <script src="https://zjjconan.github.io/theme/js/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
