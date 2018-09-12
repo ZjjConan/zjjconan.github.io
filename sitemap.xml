@@ -5,21 +5,21 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://zjjconan.github.io/</loc>
-<lastmod>2018-09-12T17:25:08-00:00</lastmod>
+<lastmod>2018-09-12T18:42:18-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>https://zjjconan.github.io/archives.html</loc>
-<lastmod>2018-09-12T17:25:08-00:00</lastmod>
+<lastmod>2018-09-12T18:42:18-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>https://zjjconan.github.io/categories.html</loc>
-<lastmod>2018-09-12T17:25:08-00:00</lastmod>
+<lastmod>2018-09-12T18:42:18-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
@@ -102,8 +102,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>https://zjjconan.github.io/tag/real-time-tracking.html</loc>
-<lastmod>2018-09-10T13:45:00+00:09</lastmod>
+<loc>https://zjjconan.github.io/tag/ssd.html</loc>
+<lastmod>2017-12-04T15:43:00+00:09</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
@@ -123,8 +123,29 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>https://zjjconan.github.io/tag/visual-tracking.html</loc>
+<lastmod>2018-09-12T16:36:00+00:09</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.6</priority>
+</url>
+
+<url>
 <loc>https://zjjconan.github.io/tag/mdnet.html</loc>
 <lastmod>2018-09-12T16:36:00+00:09</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.6</priority>
+</url>
+
+<url>
+<loc>https://zjjconan.github.io/tag/scale-invariance.html</loc>
+<lastmod>2018-09-10T15:43:00+00:09</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.6</priority>
+</url>
+
+<url>
+<loc>https://zjjconan.github.io/tag/deep-neural-networks.html</loc>
+<lastmod>2018-09-10T13:45:00+00:09</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
@@ -144,29 +165,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>https://zjjconan.github.io/tag/visual-tracking.html</loc>
-<lastmod>2018-09-12T16:36:00+00:09</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.6</priority>
-</url>
-
-<url>
-<loc>https://zjjconan.github.io/tag/ssd.html</loc>
-<lastmod>2017-12-04T15:43:00+00:09</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.6</priority>
-</url>
-
-<url>
-<loc>https://zjjconan.github.io/tag/deep-neural-networks.html</loc>
+<loc>https://zjjconan.github.io/tag/real-time-tracking.html</loc>
 <lastmod>2018-09-10T13:45:00+00:09</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.6</priority>
-</url>
-
-<url>
-<loc>https://zjjconan.github.io/tag/scale-invariance.html</loc>
-<lastmod>2018-09-10T15:43:00+00:09</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
