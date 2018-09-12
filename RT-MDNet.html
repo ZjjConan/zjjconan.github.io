@@ -2,25 +2,25 @@
 
 <html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-<title>论文笔记《FCLT – A Fully-Correlational Long-Term Tracker》 - Lingxiao's World</title>
+<title>论文笔记《Real-Time MDNet》 - Lingxiao's World</title>
 <!-- Using the latest rendering mode for IE -->
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<link href="https://zjjconan.github.io/drafts/FCLT.html" rel="canonical"/>
+<link href="https://zjjconan.github.io/RT-MDNet.html" rel="canonical"/>
 <meta content="Lingxiao.Yang" name="author">
-<meta content="Visual Tracking,Correlation Filter,Long-Term Tracking" name="keywords">
-<meta content="利用correaltion filter来做long-term tracking" name="description">
+<meta content="MDNet,Visual Tracking,Convolutional Neural Networks" name="keywords">
+<meta content="考虑将MDNet做到实时" name="description">
 <meta content="Lingxiao's World" property="og:site_name"/>
 <meta content="article" property="og:type"/>
-<meta content="论文笔记《FCLT – A Fully-Correlational Long-Term Tracker》" property="og:title"/>
-<meta content="https://zjjconan.github.io/drafts/FCLT.html" property="og:url"/>
-<meta content="利用correaltion filter来做long-term tracking" property="og:description"/>
-<meta content="2018-02-02" property="article:published_time"/>
+<meta content="论文笔记《Real-Time MDNet》" property="og:title"/>
+<meta content="https://zjjconan.github.io/RT-MDNet.html" property="og:url"/>
+<meta content="考虑将MDNet做到实时" property="og:description"/>
+<meta content="2018-09-12" property="article:published_time"/>
 <meta content="Visual Tracking" property="article:section"/>
+<meta content="MDNet" property="article:tag"/>
 <meta content="Visual Tracking" property="article:tag"/>
-<meta content="Correlation Filter" property="article:tag"/>
-<meta content="Long-Term Tracking" property="article:tag"/>
+<meta content="Convolutional Neural Networks" property="article:tag"/>
 <meta content="Lingxiao.Yang" property="article:author"/>
 <!-- Bootstrap -->
 <link href="https://zjjconan.github.io/theme/css/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -81,14 +81,14 @@ Lingxiao's World            </a>
 <div class="col-sm-9">
 <ol class="breadcrumb">
 <li><a href="https://zjjconan.github.io" title="Lingxiao's World"><i class="fa fa-home fa-lg"></i></a></li>
-<li class="active">论文笔记《<span class="caps">FCLT</span> – A Fully-Correlational Long-Term Tracker》</li>
+<li class="active">论文笔记《Real-Time MDNet》</li>
 </ol>
 <section id="content">
 <article>
 <header class="page-header">
 <h2>
-<a href="https://zjjconan.github.io/drafts/FCLT.html" rel="bookmark" title="Permalink to 论文笔记《FCLT – A Fully-Correlational Long-Term Tracker》">
-                        论文笔记《<span class="caps">FCLT</span> – A Fully-Correlational Long-Term Tracker》
+<a href="https://zjjconan.github.io/RT-MDNet.html" rel="bookmark" title="Permalink to 论文笔记《Real-Time MDNet》">
+                        论文笔记《Real-Time MDNet》
                     </a>
 </h2>
 </header>
@@ -98,38 +98,164 @@ Lingxiao's World            </a>
 <footer class="post-info">
 <span class="label label-default">Date</span>
 <span class="published">
-<i class="fa fa-calendar"></i><time datetime="2018-02-02T20:55:00+01:00"> 二月 02, 2018</time>
+<i class="fa fa-calendar"></i><time datetime="2018-09-12T16:36:00+02:00"> 九月 12, 2018</time>
 </span>
 <span class="label label-default">Tags</span>
-<a href="https://zjjconan.github.io/tag/visual-tracking.html">Visual Tracking</a>
+<a href="https://zjjconan.github.io/tag/mdnet.html">MDNet</a>
         /
-	<a href="https://zjjconan.github.io/tag/correlation-filter.html">Correlation Filter</a>
+	<a href="https://zjjconan.github.io/tag/visual-tracking.html">Visual Tracking</a>
         /
-	<a href="https://zjjconan.github.io/tag/long-term-tracking.html">Long-Term Tracking</a>
+	<a href="https://zjjconan.github.io/tag/convolutional-neural-networks.html">Convolutional Neural Networks</a>
 </footer><!-- /.post-info --> </div>
 </div>
 <h2 id="_1">概述<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
-<p>该论文出处 <a href="https://arxiv.org/pdf/1711.09594.pdf">Arxiv</a>。论文中使用的base model是今年VOT2017表现最好的实时tracker(<span class="caps">CSRDCF</span>)。</p>
+<p>论文出处<a href="https://arxiv.org/pdf/1808.08834.pdf"><span class="caps">ECCV201</span></a>。本文主要思想是利用最近的ROIalign来提升MDNet[1]的速度。由于本人一直关注MDNet的相关工作，所以还算比较仔细的阅读了这篇论文。</p>
+<p>本文主要有以下2点创新：</p>
+<blockquote>
+<ol>
+<li>
+<p>引入RoIAlign做速度的提升。并提出了一种增强版的ROIAlign[3]，进一步提升跟踪准确度。</p>
+</li>
+<li>
+<p>Multi-domain learning并没有解决好instance之间的区分度，所以引入discriminative instance loss来做相关学习。</p>
+</li>
+</ol>
+</blockquote>
 <hr/>
-<p>本文主要是考虑做long-term tracking的问题，考虑如何在跟踪失败或者目标消失的情况下提升跟踪的准确度。简单总结如下：</p>
-<div class="highlight"><pre><span></span>1. 结合跟踪与检测进行长时间跟踪，跟踪以及检测器都是基于corraltion filter的模型。本文中采用的base model是CSRDCF[1]。
+<h2 id="tracker">Tracker的整体结构<a class="headerlink" href="#tracker" title="Permanent link">¶</a></h2>
+<div style="text-align:center">
+<img alt="RTMDNet-pipeline" class="image-process-article-image" src="https://zjjconan.github.io/images/RTMDNet\.\article-image\RTMDNet-pipeline.png"/>
+</div>
+<p>上图给出了该论文的基本网络结构。简单来说即将[1]中的feature network这一部分改成利用Fast-<span class="caps">RCNN</span>[2]形式，然后为了提高tracking的结果，利用ROIAlign[3]来代替ROIPooling。这也可以很好的做出解释。因为tracking，detection，甚至于所有的关于目标定位的任务，我们都需要position-sensitive的feature，而不应该是原始CNN中position-invariance的feature。这样会使得结果更加精确。但是本文发现，直接利用
+原始的ROIAlign会有一个问题，即：由于ROIAlign中的点是利用最近邻的4个点做插值得到，如果在ROI的区域大于feature map的情况下，得到的feature的discriminative并不足够好。所以作者提出两个改进方法：（1）去掉conv2后面的maxpooling，保持较大的feature map。（2）提出利用ROIAlign中的bin个数来自动决定每一个bin的宽度，即：<span class="math">\([w/w^']\)</span>。对于Network的改进如下图所示：</p>
+<div style="text-align:center">
+<img alt="RTMDNet-network" class="image-process-article-image" src="https://zjjconan.github.io/images/RTMDNet\.\article-image\RTMDNet-network.png"/>
+</div>
+<p>论文中第二部分的改进来自一个简单的假设，虽然利用multi-domain来学习，可以使得不同domain之间的信息（1）共享，（2）简单区分。但是，不同domain之间的区分度不足够，所以论文在这里引入一个新的loss来增加domain之间的discriminative。实际上就是在不同domain之间利用一个softmax来进行学习。作者认为增加一个domain之间的loss可以更好的区分不同的instance。</p>
+<div style="text-align:center">
+<img alt="RTMDNet-instanceloss" class="image-process-article-image" src="https://zjjconan.github.io/images/RTMDNet\.\article-image\RTMDNet-instanceloss.png"/>
+</div>
+<p><strong>在线跟踪过程与MDNet基本一致 .</strong></p>
+<hr/>
+<h2 id="_2">结果分析<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
+<p>这里仅仅给出一些简单的分析结果：</p>
+<table>
+<thead>
+<tr>
+<th align="left">Tracker</th>
+<th align="center"><span class="caps">DSST</span></th>
+<th align="center">SiamFc</th>
+<th align="center">CFNet</th>
+<th align="center"><span class="caps">BACF</span></th>
+<th align="center"><span class="caps">PTAV</span></th>
+<th align="center"><span class="caps">ECO</span>-<span class="caps">HC</span></th>
+<th align="center"><span class="caps">RT</span>-MDNet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Succ <span class="math">\((\%)\)</span></td>
+<td align="center">51.3</td>
+<td align="center">58.2</td>
+<td align="center">58.6</td>
+<td align="center">62.7</td>
+<td align="center">63.5</td>
+<td align="center">64.3</td>
+<td align="center">65.0</td>
+</tr>
+<tr>
+<td align="left">Prec <span class="math">\((\%)\)</span></td>
+<td align="center">68.0</td>
+<td align="center">77.1</td>
+<td align="center">77.7</td>
+<td align="center">82.7</td>
+<td align="center">84.8</td>
+<td align="center">85.6</td>
+<td align="center">88.5</td>
+</tr>
+<tr>
+<td align="left"><span class="caps">FPS</span></td>
+<td align="center">24</td>
+<td align="center">86</td>
+<td align="center">43</td>
+<td align="center">35</td>
+<td align="center">25</td>
+<td align="center">60</td>
+<td align="center">46/52</td>
+</tr>
+</tbody>
+</table>
+<p>从上表可以看出，其速度还是非常可观的。这里我个人有一个疑问。如果跟踪过程与MDNet一致的话，感觉该跟踪tracker会在分数小于某个阈值的时候进行不断的fine-tuning。势必会造成在线不停的学习的过程。速度必然会降下来。所以个人对最终的速度表示怀疑。当然，如果作者取消这样的一个学习过程，即仅仅只是每隔10帧更新一次的话，在线学习的速度基本上也不会特别影响最终的平均FPS。这一部分看看作者是否会放出源码。</p>
+<hr/>
+<h2 id="_3">参考文献<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
+<p>[1] Nam H, Han B. Learning multi-domain convolutional neural networks for visual tracking [C]. Proceedings of the <span class="caps">IEEE</span> Conference on Computer Vision and Pattern Recognition. 2016: 4293-4302.</p>
+<p>[2] Girshick R. Fast r-cnn[C]. Proceedings of the <span class="caps">IEEE</span> international conference on computer vision. 2015: 1440-1448.</p>
+<p>[3] He K, Gkioxari G, Dollár P, et al. Mask r-cnn[J]. <span class="caps">IEEE</span> transactions on pattern analysis and machine intelligence, 2018.</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
 
-2. 跟踪部分基本上没有改变，而对于检测部分，论文直接将CSRDCF应用在全图上做定位。为了更准确的定位，这里利用高斯motion来进行加权。
-</pre></div>
-<h1 id="short-term-tracker-csrdcf">Short-term Tracker (<span class="caps">CSRDCF</span>)<a class="headerlink" href="#short-term-tracker-csrdcf" title="Permanent link">¶</a></h1>
-<h1 id="_2">参考文献<a class="headerlink" href="#_2" title="Permanent link">¶</a></h1>
-<p>[1] Lukežič A, Vojíř T, Čehovin L, et al. Discriminative Correlation Filter with Channel and Spatial Reliability[J]. arXiv preprint arXiv:1611.08461, 2016.</p>
-<p>[2] Danelljan M, Bhat G, Khan F S, et al. <span class="caps">ECO</span>: Efficient Convolution Operators for Tracking[J]. arXiv preprint arXiv:1611.09224, 2016.</p>
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
 </div>
 <!-- /.entry-content -->
 <section class="well" id="related-posts">
 <h4>Related Posts:</h4>
 <ul>
+<li><a href="https://zjjconan.github.io/BranchOut.html">论文笔记《BranchOut: Regularization for Online Ensemble Tracking with Convolutional Neural Networks》</a></li>
+<li><a href="https://zjjconan.github.io/MDNet.html">论文分析《Learning Multi-domain Convolutional Neural Networks for Visual Tracking》</a></li>
 <li><a href="https://zjjconan.github.io/Real-Time-Tracking-DNN-Part-2.html">论文集《Real-Time Tracking Methods (<span class="caps">DNN</span>-Part <span class="caps">II</span>)》</a></li>
 <li><a href="https://zjjconan.github.io/Real-Time-Tracking-DNN-Part-1.html">论文集《Real-Time Tracking Methods (<span class="caps">DNN</span>-Part I)》</a></li>
 <li><a href="https://zjjconan.github.io/MAVOT.html">论文笔记《<span class="caps">MAVOT</span>: Memory-Augmented Video Object Tracking》</a></li>
-<li><a href="https://zjjconan.github.io/BranchOut.html">论文笔记《BranchOut: Regularization for Online Ensemble Tracking with Convolutional Neural Networks》</a></li>
-<li><a href="https://zjjconan.github.io/MDNet.html">论文分析《Learning Multi-domain Convolutional Neural Networks for Visual Tracking》</a></li>
 </ul>
 </section>
 <hr/>
@@ -148,7 +274,7 @@ Lingxiao's World            </a>
             /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
             var disqus_shortname = 'zjjconan'; // required: replace example with your forum shortname
 
-                var disqus_url = 'https://zjjconan.github.io/drafts/FCLT.html';
+                var disqus_url = 'https://zjjconan.github.io/RT-MDNet.html';
 
             var disqus_config = function () {
                 this.language = "en";
