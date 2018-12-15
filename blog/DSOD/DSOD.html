@@ -2,25 +2,24 @@
 
 <html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-<title>论文笔记《FCLT – A Fully-Correlational Long-Term Tracker》 - Lingxiao's World</title>
+<title>论文笔记《DSOD: Learning Deeply Supervised Object Detectors from Scratch》 - Lingxiao's World</title>
 <!-- Using the latest rendering mode for IE -->
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<link href="/drafts/FCLT.html" rel="canonical"/>
+<link href="/blog/DSOD/DSOD.html" rel="canonical"/>
 <meta content="Lingxiao.Yang" name="author">
-<meta content="Visual Tracking,Correlation Filter,Long-Term Tracking" name="keywords">
-<meta content="利用correaltion filter来做long-term tracking" name="description">
+<meta content="Object Detection,SSD" name="keywords">
+<meta content="主要探讨如何在小数据下成功训练一个SOA的detector出来。" name="description">
 <meta content="Lingxiao's World" property="og:site_name"/>
 <meta content="article" property="og:type"/>
-<meta content="论文笔记《FCLT – A Fully-Correlational Long-Term Tracker》" property="og:title"/>
-<meta content="/drafts/FCLT.html" property="og:url"/>
-<meta content="利用correaltion filter来做long-term tracking" property="og:description"/>
-<meta content="2018-02-02" property="article:published_time"/>
-<meta content="Visual Tracking" property="article:section"/>
-<meta content="Visual Tracking" property="article:tag"/>
-<meta content="Correlation Filter" property="article:tag"/>
-<meta content="Long-Term Tracking" property="article:tag"/>
+<meta content="论文笔记《DSOD: Learning Deeply Supervised Object Detectors from Scratch》" property="og:title"/>
+<meta content="/blog/DSOD/DSOD.html" property="og:url"/>
+<meta content="主要探讨如何在小数据下成功训练一个SOA的detector出来。" property="og:description"/>
+<meta content="2017-12-04" property="article:published_time"/>
+<meta content="Object Detection" property="article:section"/>
+<meta content="Object Detection" property="article:tag"/>
+<meta content="SSD" property="article:tag"/>
 <meta content="Lingxiao.Yang" property="article:author"/>
 <!-- Bootstrap -->
 <link href="/theme/css/bootstrap.cerulean.min.css" rel="stylesheet" type="text/css">
@@ -31,7 +30,7 @@
 <link href="/theme/css/style.css" rel="stylesheet" type="text/css">
 <link href="/static/custom.css" rel="stylesheet"/>
 <link href="/feeds/all.atom.xml" rel="alternate" title="Lingxiao's World ATOM Feed" type="application/atom+xml">
-<link href="/feeds/visual-tracking.atom.xml" rel="alternate" title="Lingxiao's World Visual Tracking ATOM Feed" type="application/atom+xml">
+<link href="/feeds/object-detection.atom.xml" rel="alternate" title="Lingxiao's World Object Detection ATOM Feed" type="application/atom+xml">
 </link></link></link></link></meta></meta></meta></head>
 <body>
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -83,14 +82,14 @@ Lingxiao's World            </a>
 <div class="col-sm-9">
 <ol class="breadcrumb">
 <li><a href="" title="Lingxiao's World"><i class="fa fa-home fa-lg"></i></a></li>
-<li class="active">论文笔记《<span class="caps">FCLT</span> – A Fully-Correlational Long-Term Tracker》</li>
+<li class="active">论文笔记《<span class="caps">DSOD</span>: Learning Deeply Supervised Object Detectors from Scratch》</li>
 </ol>
 <section id="content">
 <article>
 <header class="page-header">
 <h2>
-<a href="/drafts/FCLT.html" rel="bookmark" title="Permalink to 论文笔记《FCLT – A Fully-Correlational Long-Term Tracker》">
-                        论文笔记《<span class="caps">FCLT</span> – A Fully-Correlational Long-Term Tracker》
+<a href="/blog/DSOD/DSOD.html" rel="bookmark" title="Permalink to 论文笔记《DSOD: Learning Deeply Supervised Object Detectors from Scratch》">
+                        论文笔记《<span class="caps">DSOD</span>: Learning Deeply Supervised Object Detectors from Scratch》
                     </a>
 </h2>
 </header>
@@ -100,40 +99,52 @@ Lingxiao's World            </a>
 <footer class="post-info">
 <span class="label label-default">Date</span>
 <span class="published">
-<i class="fa fa-calendar"></i><time datetime="2018-02-02T20:55:00+01:00"> 二月 02, 2018</time>
+<i class="fa fa-calendar"></i><time datetime="2017-12-04T15:43:00+01:00"> 十二月 04, 2017</time>
 </span>
 <span class="label label-default">Tags</span>
-<a href="/tag/visual-tracking.html">Visual Tracking</a>
+<a href="/tag/object-detection.html">Object Detection</a>
         /
-	<a href="/tag/correlation-filter.html">Correlation Filter</a>
-        /
-	<a href="/tag/long-term-tracking.html">Long-Term Tracking</a>
+	<a href="/tag/ssd.html">SSD</a>
 </footer><!-- /.post-info --> </div>
 </div>
 <h2 id="_1">概述</h2>
-<p>该论文出处 <a href="https://arxiv.org/pdf/1711.09594.pdf">Arxiv</a>。论文中使用的base model是今年VOT2017表现最好的实时tracker(<span class="caps">CSRDCF</span>)。</p>
+<p>论文出处 <a href="http://openaccess.thecvf.com/content_ICCV_2017/papers/Shen_DSOD_Learning_Deeply_ICCV_2017_paper.pdf"><span class="caps">CVPR2017</span></a>。 本文主要是考虑如何在小数据下成功训练 <em>deep networks for object detection.</em></p>
 <hr/>
-<p>本文主要是考虑做long-term tracking的问题，考虑如何在跟踪失败或者目标消失的情况下提升跟踪的准确度。简单总结如下：</p>
-<div class="highlight"><pre><span></span>1. 结合跟踪与检测进行长时间跟踪，跟踪以及检测器都是基于corraltion filter的模型。本文中采用的base model是CSRDCF[1]。
-
-2. 跟踪部分基本上没有改变，而对于检测部分，论文直接将CSRDCF应用在全图上做定位。为了更准确的定位，这里利用高斯motion来进行加权。
-</pre></div>
-<h1 id="short-term-tracker-csrdcf">Short-term Tracker (<span class="caps">CSRDCF</span>)</h1>
-<h1 id="_2">参考文献</h1>
-<p>[1] Lukežič A, Vojíř T, Čehovin L, et al. Discriminative Correlation Filter with Channel and Spatial Reliability[J]. arXiv preprint arXiv:1611.08461, 2016.</p>
-<p>[2] Danelljan M, Bhat G, Khan F S, et al. <span class="caps">ECO</span>: Efficient Convolution Operators for Tracking[J]. arXiv preprint arXiv:1611.09224, 2016.</p>
+<h2 id="detector">Detector的整体结构</h2>
+<div style="text-align:center">
+<img alt="DSOD-pipeline" class="image-process-article-image" src="/images/Object-Detection/DSOD\.\article-image\pipeline.png"/>
+</div>
+<p>上图左给除了SSD [1]的结构，而上图右则给出了本文基于SSD改进的DSOD的结构。从整体结构来看，右图与左图最主要的区别在于其利用到了Dense Connection [2]的思想，使得卷积网络靠前的层与靠后的层有一个融合过程，融合之后在进行前向传播。</p>
+<h3 id="findings">Findings</h3>
+<p>本文在研究中，通过实验有了如下findings:</p>
+<blockquote>
+<ol>
+<li>
+<p>目前的object detector中，只有single-stage(proposal-free)的detector能够很成功的从小数据学习到足够优秀的detector。而two-stage的detector，诸如Faster-RCNN以及R-FCN由于有RoI pooling层的存在，使得在学习过程中，梯度的传递不是很smooth。所以训练起来比较难以收敛（这里关于RoI pooling的解释不足够深入）。</p>
+</li>
+<li>
+<p>deep supervision对于训练深度网络非常有效，尤其在小数据下进行训练。本文虽然只利用到一个loss function，但是由于有dense connection操作的存在，使得梯度可以很好的回传到前面的层。这种结构可以认为是implicit加入了supervision。</p>
+</li>
+<li>
+<p>将densenet中第一个部分，由原始的7x7改成3x3的结构，这样可以更好的保存原始图片的信息。</p>
+</li>
+<li>
+<p>Multiscale的融合策略。在原始的SSD框架下（如图左），仅仅直接feed所有层的预测。而在DSOD（图右）中，所有层的预测一方面送入最终的分类部分，同时也通过subsampling与后续层进行相应的融合。这样，后续的层可以接受到更多信息。</p>
+</li>
+</ol>
+</blockquote>
+<hr/>
+<h3 id="_2">结果分析</h3>
+<div style="text-align:center">
+<img alt="DSOD-comp" class="image-process-article-image" src="/images/Object-Detection/DSOD\.\article-image\DSOD_comp.png"/>
+</div>
+<p>上图是本文探索的几个问题的对比。基本上可以看出对于performance影响最大的几个tech是：1) 在transition layer并不减少feature map的数量（hi-comp factor）；2）在bottleneck layer中，用更多的feature map数量（wide bottleneck）；3）每一层用到的filter number数量足够多（bi growth rate）以及4）第一层的卷积核的大小为3x3（stem block）。</p>
+<hr/>
+<h2 id="_3">参考文献</h2>
+<p>[1] Liu W, Anguelov D, Erhan D, et al. Ssd: Single shot multibox detector[C]. European conference on computer vision. Springer, Cham, 2016: 21-37.</p>
+<p>[2] Huang G, Liu Z, Weinberger K Q, et al. Densely connected convolutional networks. arXiv preprint arXiv:1608.06993, 2016.</p>
 </div>
 <!-- /.entry-content -->
-<section class="well" id="related-posts">
-<h4>Related Posts:</h4>
-<ul>
-<li><a href="/blog/Real-Time-Tracking-DNN-Part-1/Real-Time-Tracking-DNN-Part-1.html">论文集《Real-Time Tracking Methods (<span class="caps">DNN</span>-Part I)》</a></li>
-<li><a href="/blog/BranchOut/BranchOut.html">论文笔记《BranchOut: Regularization for Online Ensemble Tracking with Convolutional Neural Networks》</a></li>
-<li><a href="/blog/Real-Time-Tracking-DNN-Part-2/Real-Time-Tracking-DNN-Part-2.html">论文集《Real-Time Tracking Methods (<span class="caps">DNN</span>-Part <span class="caps">II</span>)》</a></li>
-<li><a href="/blog/MDNet/MDNet.html">论文分析《Learning Multi-domain Convolutional Neural Networks for Visual Tracking》</a></li>
-<li><a href="/blog/RT-MDNet/RT-MDNet.html">论文笔记《Real-Time MDNet》</a></li>
-</ul>
-</section>
 <hr>
 <!-- AddThis Button BEGIN -->
 <div class="addthis_toolbox addthis_default_style">
@@ -142,7 +153,7 @@ Lingxiao's World            </a>
 <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
 </div>
 <!-- AddThis Button END -->
-<hr/>
+<hr>
 <section class="comments" id="comments">
 <h2>Comments</h2>
 <div id="disqus_thread"></div>
@@ -150,7 +161,7 @@ Lingxiao's World            </a>
             /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
             var disqus_shortname = 'zjjconan'; // required: replace example with your forum shortname
 
-                var disqus_url = '/drafts/FCLT.html';
+                var disqus_url = '/blog/DSOD/DSOD.html';
 
             var disqus_config = function () {
                 this.language = "en";
@@ -169,7 +180,7 @@ Lingxiao's World            </a>
             Disqus.</a></noscript>
 <a class="dsq-brlink" href="http://disqus.com">comments powered by <span class="logo-disqus">Disqus</span></a>
 </section>
-</hr></article>
+</hr></hr></article>
 </section>
 </div>
 <div class="col-sm-3" id="sidebar">

@@ -7,14 +7,14 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<link href="https://zjjconan.github.io/RT-MDNet.html" rel="canonical"/>
+<link href="/blog/RT-MDNet/RT-MDNet.html" rel="canonical"/>
 <meta content="Lingxiao.Yang" name="author">
 <meta content="MDNet,Visual Tracking,Convolutional Neural Networks" name="keywords">
 <meta content="考虑将MDNet做到实时" name="description">
 <meta content="Lingxiao's World" property="og:site_name"/>
 <meta content="article" property="og:type"/>
 <meta content="论文笔记《Real-Time MDNet》" property="og:title"/>
-<meta content="https://zjjconan.github.io/RT-MDNet.html" property="og:url"/>
+<meta content="/blog/RT-MDNet/RT-MDNet.html" property="og:url"/>
 <meta content="考虑将MDNet做到实时" property="og:description"/>
 <meta content="2018-09-12" property="article:published_time"/>
 <meta content="Visual Tracking" property="article:section"/>
@@ -23,14 +23,16 @@
 <meta content="Convolutional Neural Networks" property="article:tag"/>
 <meta content="Lingxiao.Yang" property="article:author"/>
 <!-- Bootstrap -->
-<link href="https://zjjconan.github.io/theme/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<link href="https://zjjconan.github.io/theme/css/font-awesome.min.css" rel="stylesheet"/>
-<link href="https://zjjconan.github.io/theme/css/pygments/native.css" rel="stylesheet"/>
-<link href="https://zjjconan.github.io/theme/tipuesearch/tipuesearch.css" rel="stylesheet"/>
-<link href="https://zjjconan.github.io/theme/css/typogrify.css" rel="stylesheet"/>
-<link href="https://zjjconan.github.io/theme/css/style.css" rel="stylesheet" type="text/css">
-<link href="https://zjjconan.github.io/static/custom.css" rel="stylesheet"/>
-</link></link></meta></meta></meta></head>
+<link href="/theme/css/bootstrap.cerulean.min.css" rel="stylesheet" type="text/css">
+<link href="/theme/css/font-awesome.min.css" rel="stylesheet"/>
+<link href="/theme/css/pygments/native.css" rel="stylesheet"/>
+<link href="/theme/tipuesearch/tipuesearch.css" rel="stylesheet"/>
+<link href="/theme/css/typogrify.css" rel="stylesheet"/>
+<link href="/theme/css/style.css" rel="stylesheet" type="text/css">
+<link href="/static/custom.css" rel="stylesheet"/>
+<link href="/feeds/all.atom.xml" rel="alternate" title="Lingxiao's World ATOM Feed" type="application/atom+xml">
+<link href="/feeds/visual-tracking.atom.xml" rel="alternate" title="Lingxiao's World Visual Tracking ATOM Feed" type="application/atom+xml">
+</link></link></link></link></meta></meta></meta></head>
 <body>
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
 <div class="container">
@@ -41,14 +43,14 @@
 <span class="icon-bar"></span>
 <span class="icon-bar"></span>
 </button>
-<a class="navbar-brand" href="https://zjjconan.github.io/">
+<a class="navbar-brand" href="/">
 Lingxiao's World            </a>
 </div>
 <div class="collapse navbar-collapse navbar-ex1-collapse">
 <ul class="nav navbar-nav">
 <li><a href="/archives.html">Archives</a></li>
 <li><a href="/categories.html">Categories</a></li>
-<li><a href="https://zjjconan.github.io/pages/about-me.html">
+<li><a href="/about-me.html">
                              About Me
                           </a></li>
 </ul>
@@ -66,7 +68,7 @@ Lingxiao's World            </a>
 <!-- Banner -->
 <style>
 	#banner{
-	    background-image:url("https://zjjconan.github.io/images/Banner/researcher.jpg");
+	    background-image:url("/images/Banner/banner.jpg");
 	}
 </style>
 <div id="banner">
@@ -80,14 +82,14 @@ Lingxiao's World            </a>
 <div class="row">
 <div class="col-sm-9">
 <ol class="breadcrumb">
-<li><a href="https://zjjconan.github.io" title="Lingxiao's World"><i class="fa fa-home fa-lg"></i></a></li>
+<li><a href="" title="Lingxiao's World"><i class="fa fa-home fa-lg"></i></a></li>
 <li class="active">论文笔记《Real-Time MDNet》</li>
 </ol>
 <section id="content">
 <article>
 <header class="page-header">
 <h2>
-<a href="https://zjjconan.github.io/RT-MDNet.html" rel="bookmark" title="Permalink to 论文笔记《Real-Time MDNet》">
+<a href="/blog/RT-MDNet/RT-MDNet.html" rel="bookmark" title="Permalink to 论文笔记《Real-Time MDNet》">
                         论文笔记《Real-Time MDNet》
                     </a>
 </h2>
@@ -101,14 +103,14 @@ Lingxiao's World            </a>
 <i class="fa fa-calendar"></i><time datetime="2018-09-12T16:36:00+02:00"> 九月 12, 2018</time>
 </span>
 <span class="label label-default">Tags</span>
-<a href="https://zjjconan.github.io/tag/mdnet.html">MDNet</a>
+<a href="/tag/mdnet.html">MDNet</a>
         /
-	<a href="https://zjjconan.github.io/tag/visual-tracking.html">Visual Tracking</a>
+	<a href="/tag/visual-tracking.html">Visual Tracking</a>
         /
-	<a href="https://zjjconan.github.io/tag/convolutional-neural-networks.html">Convolutional Neural Networks</a>
+	<a href="/tag/convolutional-neural-networks.html">Convolutional Neural Networks</a>
 </footer><!-- /.post-info --> </div>
 </div>
-<h2 id="_1">概述<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
+<h2 id="_1">概述</h2>
 <p>论文出处<a href="https://arxiv.org/pdf/1808.08834.pdf"><span class="caps">ECCV201</span></a>。本文主要思想是利用最近的ROIalign来提升MDNet[1]的速度。由于本人一直关注MDNet的相关工作，所以还算比较仔细的阅读了这篇论文。</p>
 <p>本文主要有以下2点创新：</p>
 <blockquote>
@@ -122,22 +124,22 @@ Lingxiao's World            </a>
 </ol>
 </blockquote>
 <hr/>
-<h2 id="tracker">Tracker的整体结构<a class="headerlink" href="#tracker" title="Permanent link">¶</a></h2>
+<h2 id="tracker">Tracker的整体结构</h2>
 <div style="text-align:center">
-<img alt="RTMDNet-pipeline" class="image-process-article-image" src="https://zjjconan.github.io/images/RTMDNet\.\article-image\RTMDNet-pipeline.png"/>
+<img alt="RTMDNet-pipeline" class="image-process-article-image" src="/images/RTMDNet\.\article-image\RTMDNet-pipeline.png"/>
 </div>
 <p>上图给出了该论文的基本网络结构。简单来说即将[1]中的feature network这一部分改成利用Fast-<span class="caps">RCNN</span>[2]形式，然后为了提高tracking的结果，利用ROIAlign[3]来代替ROIPooling。这也可以很好的做出解释。因为tracking，detection，甚至于所有的关于目标定位的任务，我们都需要position-sensitive的feature，而不应该是原始CNN中position-invariance的feature。这样会使得结果更加精确。但是本文发现，直接利用
 原始的ROIAlign会有一个问题，即：由于ROIAlign中的点是利用最近邻的4个点做插值得到，如果在ROI的区域大于feature map的情况下，得到的feature的discriminative并不足够好。所以作者提出两个改进方法：（1）去掉conv2后面的maxpooling，保持较大的feature map。（2）提出利用ROIAlign中的bin个数来自动决定每一个bin的宽度，即：<span class="math">\([w/w^']\)</span>。对于Network的改进如下图所示：</p>
 <div style="text-align:center">
-<img alt="RTMDNet-network" class="image-process-article-image" src="https://zjjconan.github.io/images/RTMDNet\.\article-image\RTMDNet-network.png"/>
+<img alt="RTMDNet-network" class="image-process-article-image" src="/images/RTMDNet\.\article-image\RTMDNet-network.png"/>
 </div>
 <p>论文中第二部分的改进来自一个简单的假设，虽然利用multi-domain来学习，可以使得不同domain之间的信息（1）共享，（2）简单区分。但是，不同domain之间的区分度不足够，所以论文在这里引入一个新的loss来增加domain之间的discriminative。实际上就是在不同domain之间利用一个softmax来进行学习。作者认为增加一个domain之间的loss可以更好的区分不同的instance。</p>
 <div style="text-align:center">
-<img alt="RTMDNet-instanceloss" class="image-process-article-image" src="https://zjjconan.github.io/images/RTMDNet\.\article-image\RTMDNet-instanceloss.png"/>
+<img alt="RTMDNet-instanceloss" class="image-process-article-image" src="/images/RTMDNet\.\article-image\RTMDNet-instanceloss.png"/>
 </div>
-<h2 id="mdnet">在线跟踪过程与MDNet基本一致<a class="headerlink" href="#mdnet" title="Permanent link">¶</a></h2>
+<h2 id="mdnet">在线跟踪过程与MDNet基本一致</h2>
 <hr/>
-<h2 id="_2">结果分析<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
+<h2 id="_2">结果分析</h2>
 <p>这里仅仅给出一些简单的分析结果：</p>
 <table>
 <thead>
@@ -185,9 +187,10 @@ Lingxiao's World            </a>
 </tr>
 </tbody>
 </table>
+<p></p>
 <p>从上表可以看出，其速度还是非常可观的。这里我个人有一个疑问。如果跟踪过程与MDNet一致的话，感觉该跟踪tracker会在分数小于某个阈值的时候进行不断的fine-tuning。势必会造成在线不停的学习的过程。速度必然会降下来。所以个人对最终的速度表示怀疑。当然，如果作者取消这样的一个学习过程，即仅仅只是每隔10帧更新一次的话，在线学习的速度基本上也不会特别影响最终的平均FPS。这一部分看看作者是否会放出源码。</p>
 <hr/>
-<h2 id="_3">参考文献<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
+<h2 id="_3">参考文献</h2>
 <p>[1] Nam H, Han B. Learning multi-domain convolutional neural networks for visual tracking [C]. Proceedings of the <span class="caps">IEEE</span> Conference on Computer Vision and Pattern Recognition. 2016: 4293-4302.</p>
 <p>[2] Girshick R. Fast r-cnn[C]. Proceedings of the <span class="caps">IEEE</span> international conference on computer vision. 2015: 1440-1448.</p>
 <p>[3] He K, Gkioxari G, Dollár P, et al. Mask r-cnn[J]. <span class="caps">IEEE</span> transactions on pattern analysis and machine intelligence, 2018.</p>
@@ -251,14 +254,14 @@ Lingxiao's World            </a>
 <section class="well" id="related-posts">
 <h4>Related Posts:</h4>
 <ul>
-<li><a href="https://zjjconan.github.io/MDNet.html">论文分析《Learning Multi-domain Convolutional Neural Networks for Visual Tracking》</a></li>
-<li><a href="https://zjjconan.github.io/BranchOut.html">论文笔记《BranchOut: Regularization for Online Ensemble Tracking with Convolutional Neural Networks》</a></li>
-<li><a href="https://zjjconan.github.io/MAVOT.html">论文笔记《<span class="caps">MAVOT</span>: Memory-Augmented Video Object Tracking》</a></li>
-<li><a href="https://zjjconan.github.io/Real-Time-Tracking-DNN-Part-2.html">论文集《Real-Time Tracking Methods (<span class="caps">DNN</span>-Part <span class="caps">II</span>)》</a></li>
-<li><a href="https://zjjconan.github.io/Real-Time-Tracking-DNN-Part-1.html">论文集《Real-Time Tracking Methods (<span class="caps">DNN</span>-Part I)》</a></li>
+<li><a href="/blog/BranchOut/BranchOut.html">论文笔记《BranchOut: Regularization for Online Ensemble Tracking with Convolutional Neural Networks》</a></li>
+<li><a href="/blog/MDNet/MDNet.html">论文分析《Learning Multi-domain Convolutional Neural Networks for Visual Tracking》</a></li>
+<li><a href="/blog/Real-Time-Tracking-DNN-Part-1/Real-Time-Tracking-DNN-Part-1.html">论文集《Real-Time Tracking Methods (<span class="caps">DNN</span>-Part I)》</a></li>
+<li><a href="/blog/Real-Time-Tracking-DNN-Part-2/Real-Time-Tracking-DNN-Part-2.html">论文集《Real-Time Tracking Methods (<span class="caps">DNN</span>-Part <span class="caps">II</span>)》</a></li>
+<li><a href="/blog/MAVOT/MAVOT.html">论文笔记《<span class="caps">MAVOT</span>: Memory-Augmented Video Object Tracking》</a></li>
 </ul>
 </section>
-<hr/>
+<hr>
 <!-- AddThis Button BEGIN -->
 <div class="addthis_toolbox addthis_default_style">
 <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
@@ -266,7 +269,7 @@ Lingxiao's World            </a>
 <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
 </div>
 <!-- AddThis Button END -->
-<hr/>
+<hr>
 <section class="comments" id="comments">
 <h2>Comments</h2>
 <div id="disqus_thread"></div>
@@ -274,7 +277,7 @@ Lingxiao's World            </a>
             /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
             var disqus_shortname = 'zjjconan'; // required: replace example with your forum shortname
 
-                var disqus_url = 'https://zjjconan.github.io/RT-MDNet.html';
+                var disqus_url = '/blog/RT-MDNet/RT-MDNet.html';
 
             var disqus_config = function () {
                 this.language = "en";
@@ -293,7 +296,7 @@ Lingxiao's World            </a>
             Disqus.</a></noscript>
 <a class="dsq-brlink" href="http://disqus.com">comments powered by <span class="logo-disqus">Disqus</span></a>
 </section>
-</article>
+</hr></hr></article>
 </section>
 </div>
 <div class="col-sm-3" id="sidebar">
@@ -313,37 +316,34 @@ Lingxiao's World            </a>
 <!-- End Sidebar/Social -->
 <!-- Sidebar/Tag Cloud -->
 <li class="list-group-item">
-<a href="https://zjjconan.github.io/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+<a href="/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
 <ul class="list-group " id="tags">
 <li class="list-group-item tag-0">
-<a href="https://zjjconan.github.io/tag/visual-tracking.html">Visual Tracking</a>
+<a href="/tag/visual-tracking.html">Visual Tracking</a>
 </li>
 <li class="list-group-item tag-2">
-<a href="https://zjjconan.github.io/tag/object-detection.html">Object Detection</a>
+<a href="/tag/convolutional-neural-networks.html">Convolutional Neural Networks</a>
 </li>
 <li class="list-group-item tag-2">
-<a href="https://zjjconan.github.io/tag/convolutional-neural-networks.html">Convolutional Neural Networks</a>
+<a href="/tag/deep-neural-networks.html">Deep Neural Networks</a>
 </li>
 <li class="list-group-item tag-2">
-<a href="https://zjjconan.github.io/tag/real-time-tracking.html">Real-Time Tracking</a>
-</li>
-<li class="list-group-item tag-2">
-<a href="https://zjjconan.github.io/tag/deep-neural-networks.html">Deep Neural Networks</a>
+<a href="/tag/real-time-tracking.html">Real-Time Tracking</a>
 </li>
 <li class="list-group-item tag-4">
-<a href="https://zjjconan.github.io/tag/ssd.html">SSD</a>
+<a href="/tag/one-shot-learning.html">One-shot learning</a>
 </li>
 <li class="list-group-item tag-4">
-<a href="https://zjjconan.github.io/tag/one-shot-learning.html">One-shot learning</a>
+<a href="/tag/ensemble-tracking.html">Ensemble Tracking</a>
 </li>
 <li class="list-group-item tag-4">
-<a href="https://zjjconan.github.io/tag/ensemble-tracking.html">Ensemble Tracking</a>
+<a href="/tag/object-detection.html">Object Detection</a>
 </li>
 <li class="list-group-item tag-4">
-<a href="https://zjjconan.github.io/tag/mdnet.html">MDNet</a>
+<a href="/tag/mdnet.html">MDNet</a>
 </li>
 <li class="list-group-item tag-4">
-<a href="https://zjjconan.github.io/tag/scale-invariance.html">Scale Invariance</a>
+<a href="/tag/ssd.html">SSD</a>
 </li>
 </ul>
 </li>
@@ -366,12 +366,12 @@ Lingxiao's World            </a>
 </div>
 </div>
 </footer>
-<script src="https://zjjconan.github.io/theme/js/jquery.min.js"></script>
+<script src="/theme/js/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="https://zjjconan.github.io/theme/js/bootstrap.min.js"></script>
+<script src="/theme/js/bootstrap.min.js"></script>
 <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
-<script src="https://zjjconan.github.io/theme/js/respond.min.js"></script>
-<script src="https://zjjconan.github.io/theme/js/bodypadding.js"></script>
+<script src="/theme/js/respond.min.js"></script>
+<script src="/theme/js/bodypadding.js"></script>
 <!-- Disqus -->
 <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */

@@ -1,0 +1,44 @@
+table {
+    margin-left:auto; 
+    margin-right:auto;
+    width: 95%;
+    border: 1px solid black;
+}
+
+th, td {
+    height: 25px;
+    border-collapse: collapse;
+    border: 1px solid black;
+    text-align: center;
+}
+
+body {
+    font-size: 14px;
+    line-height: 1.628571;
+    color: black;
+}
+
+blockquote {
+    /* margin-left: 14px; */
+    font-size: 20px;
+}
+
+li {
+    line-height: 25px;
+}
+
+h3 {
+    line-height: 20px;
+}
+
+h4 {
+    line-height: 15px;
+}
+
+div.summary {
+    font-size: 15px; 
+}
+
+a.btn,btn-default,btn-xs{
+    font-size: 13px;
+}
