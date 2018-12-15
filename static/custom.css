@@ -20,8 +20,8 @@ body {
 
 blockquote {
     /* margin-left: 14px; */
-    font-size: 20px;
-    line-height: 25px;
+    font-size: 15px;
+    /* line-height: 25px; */
 }
 
 /* li {
@@ -29,11 +29,11 @@ blockquote {
 } */
 
 h3 {
-    line-height: 20px;
+    line-height: 25px;
 }
 
 h4 {
-    line-height: 15px;
+    line-height: 20px;
 }
 
 div.summary {
