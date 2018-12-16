@@ -105,18 +105,19 @@ Lingxiao's World            </a>
 	<a href="https://zjjconan.github.io/tag/one-shot-learning.html">One-shot learning</a>
 </footer><!-- /.post-info --> </div>
 </div>
-<h2 id="_1">概述</h2>
+<h3 id="_1">概述</h3>
 <p>论文出处 <a href="https://arxiv.org/pdf/1711.09414.pdf">Arxiv</a>。 本篇文章主要是利用memory的思想来做目标跟踪，实际上类似于储存不同的跟踪模板来进行在线的匹配。</p>
 <hr/>
-<h2 id="_2">跟踪的整体流程</h2>
+<h3 id="_2">跟踪的整体流程</h3>
 <div style="text-align:center">
 <img alt="MAVOT-pipeline" class="image-process-article-image" src="https://zjjconan.github.io/images/MAVOT\.\article-image\MAVOT-pipeline.png"/>
 </div>
+<p></p>
 <p>上图给出了本文具体的跟踪流程。蓝色虚线框部分主要是template feature的提取过程。这里主要利用到了两部分信息，目标本身信息，以及目标周围的背景信息。背景部分的处理即简单将目标部分挖出来即可。作者在得到这样的patch之后，利用HALF-<span class="caps">VGG</span>-16来提取feature。得到两部分feature之后，去更新已有的memory信息，然后通过searching region得到合适的response map。并最终得到目标的位置。这一部分主要表示在红色的虚线框中。这篇文章最主要的部分在于如何建立，更新以及利用好memory信息。</p>
 <hr/>
-<h2 id="memory">Memory</h2>
+<h3 id="memory">Memory</h3>
 <p>文章在说明如何建立以及使用memory之前还提到了更多的实现细节，考虑到本文主要是在利用external memory信息来做tracking，这里仅仅具体介绍一下文中如何建立以及利用memory。在这里我们用 <span class="math">\(V^F, V^B\)</span> 来表示目标以及背景的feature。<span class="math">\(M\)</span> 来表示memory。<span class="math">\(M\)</span>的行表示memory的位置个数，列表示memory中feature的维度。<span class="math">\(t\)</span> 表示第<span class="math">\(t\)</span>帧。</p>
-<h3 id="memory-write">Memory Write</h3>
+<h4 id="memory-write">Memory Write</h4>
 <p>对于每一帧信息，在提取出searching region的feature<span class="math">\(V\)</span>后，利用<span class="math">\(S_{v}=max(M_{t}V)\)</span>, 来计算当前patch的feature与每一个memory中feature的相似度。论文作者认为，如果<span class="math">\(S_{v} &gt; 0.9\)</span>, 由于此时的已经有能够表达当前帧信息的memory unit，所以不再将此unit写入memory中。在测试或者说是跟踪的过程中，作者利用一个权值<span class="math">\(U_{t-1}\)</span> 来监视每一个unit被激活的次数。具体可以这么来理解，如果一个<span class="math">\(S_{v}\)</span>的分数小于0.9，作者会找到最近激活的unit，并产生一个one-hot权值<span class="math">\(W_{v}\)</span>。同时更新<span class="math">\(U_{t-1}\)</span>。其更新过程可以总结为3部分：1）reset，2）加上<span class="math">\(S_{v}\)</span>以及 3）decay。第三种更新法则遵循以下公式：</p>
 <div class="math">\begin{equation}
     U_{t} = (\gamma \times U_{t-1} + S_{v}) \otimes (1 - W_{v}) + W_{v} \otimes c
@@ -129,7 +130,7 @@ Lingxiao's World            </a>
     M_{t} = M^{'}_{t-1} + W_{v}V^{T}
 \end{equation}</div>
 <p>其中ones代表的全是1的向量。这两个公式的目的做了两件事情，1）将不常用的unit去除掉（公式2），2）将去除掉的部分利用当前的feature来代替（公式3）。不知道为什么不直接用文字解释。</p>
-<h3 id="memory-read">Memory Read</h3>
+<h4 id="memory-read">Memory Read</h4>
 <p>关于memory的read过程，作者做了5步操作来得到最终的response map。</p>
 <div class="math">\begin{equation}
     r_{i} = exp(M_{t}V_{i})
@@ -147,20 +148,22 @@ Lingxiao's World            </a>
     p_{i} = p_{i}^{F} - p_{i}^{B}
 \end{equation}</div>
 <p>而目标的最终位置则是<span class="math">\(p_{i}\)</span>最大值的位置。公式（6） ~ （8）比较容易理解，即利用每一个位置的feature与储存的memory进行比较。越大表示feature与memory中某些部分更相似。但是作者为什么要进行公式（4）（5）的操作，这一部分论文中没有给出比较明确的解释。</p>
-<h3 id="_3">其他</h3>
+<h4 id="_3">其他</h4>
 <p>整篇文章总结起来就是提出了一种收集template的策略，然后将收集到的template应用到跟踪中来。论文为了能够学习到更强的feature，作者采用了ImageNet <span class="caps">VID</span> [1]数据集进行训练。</p>
 <hr/>
-<h2 id="_4">实验部分</h2>
+<h3 id="_4">实验部分</h3>
 <div style="text-align:center">
 <img alt="MAVOT-VOT16" class="image-process-article-image" src="https://zjjconan.github.io/images/MAVOT\.\article-image\MAVOT-VOT16.png"/>
 </div>
+<p></p>
 <p>上图主要是数值结果。可以看出MAVOT的结果还是可以的。虽然没有做到非常好的结果，类似于CCOT [2], 但本文主要提供了一种新的思路去做template的收集。下图给出了两个video跟踪的结果。</p>
 <div style="text-align:center">
 <img alt="MAVOT-Result" class="image-process-article-image" src="https://zjjconan.github.io/images/MAVOT\.\article-image\MAVOT-Result.png"/>
 </div>
+<p></p>
 <p>实际上细读文章后，可以发现本文有些地方没有解释清楚，例如为什么要用到公式（4）（5），以及根据上图跟踪的结果来看，可以看出是有scale变换的，但是文章中没有说明如何来处理这种scale的变化。难道是利用image pyramid来进行操作。同时个人感觉这里不能算是真正意义上的one-shot learning吧。</p>
 <hr/>
-<h2 id="_5">参考文献</h2>
+<h3 id="_5">参考文献</h3>
 <p>[1] Russakovsky O, Deng J, Su H, et al. Imagenet large scale visual recognition challenge[J]. International Journal of Computer Vision, 2015, 115(3): 211-252.</p>
 <p>[2] Danelljan M, Robinson A, Khan F S, et al. Beyond correlation filters: Learning continuous convolution operators for visual tracking[C]. European Conference on Computer Vision. Springer International Publishing, 2016: 472-488.</p>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
@@ -223,10 +226,10 @@ Lingxiao's World            </a>
 <section class="well" id="related-posts">
 <h4>Related Posts:</h4>
 <ul>
-<li><a href="https://zjjconan.github.io/blog/BranchOut/BranchOut.html">论文笔记《BranchOut: Regularization for Online Ensemble Tracking with Convolutional Neural Networks》</a></li>
-<li><a href="https://zjjconan.github.io/blog/MDNet/MDNet.html">论文分析《Learning Multi-domain Convolutional Neural Networks for Visual Tracking》</a></li>
-<li><a href="https://zjjconan.github.io/blog/Real-Time-Tracking-DNN-Part-1/Real-Time-Tracking-DNN-Part-1.html">论文集《Real-Time Tracking Methods (<span class="caps">DNN</span>-Part I)》</a></li>
 <li><a href="https://zjjconan.github.io/blog/RT-MDNet/RT-MDNet.html">论文笔记《Real-Time MDNet》</a></li>
+<li><a href="https://zjjconan.github.io/blog/BranchOut/BranchOut.html">论文笔记《BranchOut: Regularization for Online Ensemble Tracking with Convolutional Neural Networks》</a></li>
+<li><a href="https://zjjconan.github.io/blog/Real-Time-Tracking-DNN-Part-1/Real-Time-Tracking-DNN-Part-1.html">论文集《Real-Time Tracking Methods (<span class="caps">DNN</span>-Part I)》</a></li>
+<li><a href="https://zjjconan.github.io/blog/MDNet/MDNet.html">论文分析《Learning Multi-domain Convolutional Neural Networks for Visual Tracking》</a></li>
 <li><a href="https://zjjconan.github.io/blog/Real-Time-Tracking-DNN-Part-2/Real-Time-Tracking-DNN-Part-2.html">论文集《Real-Time Tracking Methods (<span class="caps">DNN</span>-Part <span class="caps">II</span>)》</a></li>
 </ul>
 </section>
@@ -291,10 +294,10 @@ Lingxiao's World            </a>
 <a href="https://zjjconan.github.io/tag/visual-tracking.html">Visual Tracking</a>
 </li>
 <li class="list-group-item tag-2">
-<a href="https://zjjconan.github.io/tag/deep-neural-networks.html">Deep Neural Networks</a>
+<a href="https://zjjconan.github.io/tag/real-time-tracking.html">Real-Time Tracking</a>
 </li>
 <li class="list-group-item tag-2">
-<a href="https://zjjconan.github.io/tag/real-time-tracking.html">Real-Time Tracking</a>
+<a href="https://zjjconan.github.io/tag/deep-neural-networks.html">Deep Neural Networks</a>
 </li>
 <li class="list-group-item tag-2">
 <a href="https://zjjconan.github.io/tag/convolutional-neural-networks.html">Convolutional Neural Networks</a>
@@ -306,13 +309,13 @@ Lingxiao's World            </a>
 <a href="https://zjjconan.github.io/tag/mdnet.html">MDNet</a>
 </li>
 <li class="list-group-item tag-4">
-<a href="https://zjjconan.github.io/tag/one-shot-learning.html">One-shot learning</a>
-</li>
-<li class="list-group-item tag-4">
 <a href="https://zjjconan.github.io/tag/ssd.html">SSD</a>
 </li>
 <li class="list-group-item tag-4">
 <a href="https://zjjconan.github.io/tag/ensemble-tracking.html">Ensemble Tracking</a>
+</li>
+<li class="list-group-item tag-4">
+<a href="https://zjjconan.github.io/tag/one-shot-learning.html">One-shot learning</a>
 </li>
 </ul>
 </li>

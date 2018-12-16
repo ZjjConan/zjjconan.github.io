@@ -105,15 +105,16 @@ Lingxiao's World            </a>
 	<a href="https://zjjconan.github.io/tag/ssd.html">SSD</a>
 </footer><!-- /.post-info --> </div>
 </div>
-<h2 id="_1">概述</h2>
+<h3 id="_1">概述</h3>
 <p>论文出处 <a href="http://openaccess.thecvf.com/content_ICCV_2017/papers/Shen_DSOD_Learning_Deeply_ICCV_2017_paper.pdf"><span class="caps">CVPR2017</span></a>。 本文主要是考虑如何在小数据下成功训练 <em>deep networks for object detection.</em></p>
 <hr/>
-<h2 id="detector">Detector的整体结构</h2>
+<h3 id="detector">Detector的整体结构</h3>
 <div style="text-align:center">
 <img alt="DSOD-pipeline" class="image-process-article-image" src="https://zjjconan.github.io/images/Object-Detection/DSOD\.\article-image\pipeline.png"/>
 </div>
+<p></p>
 <p>上图左给除了SSD [1]的结构，而上图右则给出了本文基于SSD改进的DSOD的结构。从整体结构来看，右图与左图最主要的区别在于其利用到了Dense Connection [2]的思想，使得卷积网络靠前的层与靠后的层有一个融合过程，融合之后在进行前向传播。</p>
-<h3 id="findings">Findings</h3>
+<h4 id="findings">Findings</h4>
 <p>本文在研究中，通过实验有了如下findings:</p>
 <blockquote>
 <ol>
@@ -132,13 +133,14 @@ Lingxiao's World            </a>
 </ol>
 </blockquote>
 <hr/>
-<h3 id="_2">结果分析</h3>
+<h4 id="_2">结果分析</h4>
 <div style="text-align:center">
 <img alt="DSOD-comp" class="image-process-article-image" src="https://zjjconan.github.io/images/Object-Detection/DSOD\.\article-image\DSOD_comp.png"/>
 </div>
+<p></p>
 <p>上图是本文探索的几个问题的对比。基本上可以看出对于performance影响最大的几个tech是：1) 在transition layer并不减少feature map的数量（hi-comp factor）；2）在bottleneck layer中，用更多的feature map数量（wide bottleneck）；3）每一层用到的filter number数量足够多（bi growth rate）以及4）第一层的卷积核的大小为3x3（stem block）。</p>
 <hr/>
-<h2 id="_3">参考文献</h2>
+<h3 id="_3">参考文献</h3>
 <p>[1] Liu W, Anguelov D, Erhan D, et al. Ssd: Single shot multibox detector[C]. European conference on computer vision. Springer, Cham, 2016: 21-37.</p>
 <p>[2] Huang G, Liu Z, Weinberger K Q, et al. Densely connected convolutional networks. arXiv preprint arXiv:1608.06993, 2016.</p>
 </div>
@@ -204,10 +206,10 @@ Lingxiao's World            </a>
 <a href="https://zjjconan.github.io/tag/visual-tracking.html">Visual Tracking</a>
 </li>
 <li class="list-group-item tag-2">
-<a href="https://zjjconan.github.io/tag/deep-neural-networks.html">Deep Neural Networks</a>
+<a href="https://zjjconan.github.io/tag/real-time-tracking.html">Real-Time Tracking</a>
 </li>
 <li class="list-group-item tag-2">
-<a href="https://zjjconan.github.io/tag/real-time-tracking.html">Real-Time Tracking</a>
+<a href="https://zjjconan.github.io/tag/deep-neural-networks.html">Deep Neural Networks</a>
 </li>
 <li class="list-group-item tag-2">
 <a href="https://zjjconan.github.io/tag/convolutional-neural-networks.html">Convolutional Neural Networks</a>
@@ -219,13 +221,13 @@ Lingxiao's World            </a>
 <a href="https://zjjconan.github.io/tag/mdnet.html">MDNet</a>
 </li>
 <li class="list-group-item tag-4">
-<a href="https://zjjconan.github.io/tag/one-shot-learning.html">One-shot learning</a>
-</li>
-<li class="list-group-item tag-4">
 <a href="https://zjjconan.github.io/tag/ssd.html">SSD</a>
 </li>
 <li class="list-group-item tag-4">
 <a href="https://zjjconan.github.io/tag/ensemble-tracking.html">Ensemble Tracking</a>
+</li>
+<li class="list-group-item tag-4">
+<a href="https://zjjconan.github.io/tag/one-shot-learning.html">One-shot learning</a>
 </li>
 </ul>
 </li>

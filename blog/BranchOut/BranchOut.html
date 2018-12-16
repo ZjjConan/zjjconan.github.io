@@ -108,10 +108,10 @@ Lingxiao's World            </a>
 	<a href="https://zjjconan.github.io/tag/ensemble-tracking.html">Ensemble Tracking</a>
 </footer><!-- /.post-info --> </div>
 </div>
-<h2 id="_1">概述</h2>
+<h3 id="_1">概述</h3>
 <p>论文出处<a href="http://openaccess.thecvf.com/content_cvpr_2017/papers/Han_BranchOut_Regularization_for_CVPR_2017_paper.pdf"><span class="caps">CVPR2017</span></a>。本文主旨是在考虑如何做tracker的ensembling的工作。提出了一种类似dropout [1]的简单有效的算法。</p>
 <hr/>
-<h2 id="tracker">Tracker的整体结构</h2>
+<h3 id="tracker">Tracker的整体结构</h3>
 <div style="text-align:center">
 <img alt="BranchOut-pipeline" class="image-process-article-image" src="https://zjjconan.github.io/images/BranchOut\.\article-image\BranchOut-pipeline.png"/>
 </div>
@@ -139,7 +139,7 @@ Lingxiao's World            </a>
 </blockquote>
 <p><strong>在线跟踪过程与MDNet基本一致 .</strong></p>
 <hr/>
-<h2 id="_2">结果分析</h2>
+<h3 id="_2">结果分析</h3>
 <p>这里仅仅给出一些简单的分析结果：</p>
 <table>
 <thead>
@@ -170,7 +170,7 @@ Lingxiao's World            </a>
 <p></p>
 <p>上表可以看出，BranchOut还是起到了一点作用的。而MDNet-Navie基本上没有什么作用。可能也是论文里面提到的，navie的融合会使得所有的支路overfitting到同样的一些样本了吧。同时作者也给出了在VOT2015上的结果（见论文），结果显示，这篇文章与TCNN [3] 的表现很接近。但是比较奇怪的是C-COT这个算法在这个数据上结果非常的差。作者给出的解释 是C-<span class="caps">COT</span> [4] 的默认参数可能过拟合了其论文里面报的数据集。</p>
 <hr/>
-<h2 id="_3">参考文献</h2>
+<h3 id="_3">参考文献</h3>
 <p>[1] Srivastava N, Hinton G E, Krizhevsky A, et al. Dropout: a simple way to prevent neural networks from overfitting [J]. Journal of machine learning research, 2014, 15(1): 1929-1958.</p>
 <p>[2] Nam H, Han B. Learning multi-domain convolutional neural networks for visual tracking [C]. Proceedings of the <span class="caps">IEEE</span> Conference on Computer Vision and Pattern Recognition. 2016: 4293-4302.</p>
 <p>[3] Nam H, Baek M, Han B. Modeling and propagating cnns in a tree structure for visual tracking [J]. arXiv preprint arXiv:1608.07242, 2016.</p>
@@ -180,10 +180,10 @@ Lingxiao's World            </a>
 <section class="well" id="related-posts">
 <h4>Related Posts:</h4>
 <ul>
-<li><a href="https://zjjconan.github.io/blog/MDNet/MDNet.html">论文分析《Learning Multi-domain Convolutional Neural Networks for Visual Tracking》</a></li>
 <li><a href="https://zjjconan.github.io/blog/RT-MDNet/RT-MDNet.html">论文笔记《Real-Time MDNet》</a></li>
-<li><a href="https://zjjconan.github.io/blog/MAVOT/MAVOT.html">论文笔记《<span class="caps">MAVOT</span>: Memory-Augmented Video Object Tracking》</a></li>
+<li><a href="https://zjjconan.github.io/blog/MDNet/MDNet.html">论文分析《Learning Multi-domain Convolutional Neural Networks for Visual Tracking》</a></li>
 <li><a href="https://zjjconan.github.io/blog/Real-Time-Tracking-DNN-Part-1/Real-Time-Tracking-DNN-Part-1.html">论文集《Real-Time Tracking Methods (<span class="caps">DNN</span>-Part I)》</a></li>
+<li><a href="https://zjjconan.github.io/blog/MAVOT/MAVOT.html">论文笔记《<span class="caps">MAVOT</span>: Memory-Augmented Video Object Tracking》</a></li>
 <li><a href="https://zjjconan.github.io/blog/Real-Time-Tracking-DNN-Part-2/Real-Time-Tracking-DNN-Part-2.html">论文集《Real-Time Tracking Methods (<span class="caps">DNN</span>-Part <span class="caps">II</span>)》</a></li>
 </ul>
 </section>
@@ -248,10 +248,10 @@ Lingxiao's World            </a>
 <a href="https://zjjconan.github.io/tag/visual-tracking.html">Visual Tracking</a>
 </li>
 <li class="list-group-item tag-2">
-<a href="https://zjjconan.github.io/tag/deep-neural-networks.html">Deep Neural Networks</a>
+<a href="https://zjjconan.github.io/tag/real-time-tracking.html">Real-Time Tracking</a>
 </li>
 <li class="list-group-item tag-2">
-<a href="https://zjjconan.github.io/tag/real-time-tracking.html">Real-Time Tracking</a>
+<a href="https://zjjconan.github.io/tag/deep-neural-networks.html">Deep Neural Networks</a>
 </li>
 <li class="list-group-item tag-2">
 <a href="https://zjjconan.github.io/tag/convolutional-neural-networks.html">Convolutional Neural Networks</a>
@@ -263,13 +263,13 @@ Lingxiao's World            </a>
 <a href="https://zjjconan.github.io/tag/mdnet.html">MDNet</a>
 </li>
 <li class="list-group-item tag-4">
-<a href="https://zjjconan.github.io/tag/one-shot-learning.html">One-shot learning</a>
-</li>
-<li class="list-group-item tag-4">
 <a href="https://zjjconan.github.io/tag/ssd.html">SSD</a>
 </li>
 <li class="list-group-item tag-4">
 <a href="https://zjjconan.github.io/tag/ensemble-tracking.html">Ensemble Tracking</a>
+</li>
+<li class="list-group-item tag-4">
+<a href="https://zjjconan.github.io/tag/one-shot-learning.html">One-shot learning</a>
 </li>
 </ul>
 </li>

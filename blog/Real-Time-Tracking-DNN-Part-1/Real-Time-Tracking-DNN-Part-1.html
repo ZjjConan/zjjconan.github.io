@@ -163,9 +163,9 @@ Lingxiao's World            </a>
 <div style="text-align:center">
 <img alt="ADNet-pipeline" class="image-process-article-image" src="https://zjjconan.github.io/images/RTT-DNN-Part-1\.\article-image\ADNet-pipeline.png"/>
 </div>
-<p>这篇文章主体是利用Reinforcement Learning去做跟踪。具体做法如pipeline图所示。首先，人为定义一些目标在运动中的运动中action，例如上下左右，变大或变小。在预测过程中，每一帧的预测结果同时输入到网络中对当前帧的目标状态进行预测。实际上可以认为这里做了一个简单的状态转移的预测。在状态转移预测过程中，一旦发现预测不准确，则利用传统tracking-by-detection（<span class="caps">TBD</span>）的方式重新找回目标。所以与传统的TBD框架相比，实际上这里大量的操作都是状态转移，所以在论文中，作者给出了一个Fast版本，结果实际上没有降太多，速度倒是接近实时（15fps）。仔细思考之后发现，这里ADNet预测状态转移的过程实质上就是Conv+RNN以及Conv+LSTM的过程。</p>
+<p>这篇文章主体是利用Reinforcement Learning去做跟踪。具体做法如pipeline图所示。首先，人为定义一些目标在运动中的运动中action，例如上下左右，变大或变小。在预测过程中，每一帧的预测结果同时输入到网络中对当前帧的目标状态进行预测。实际上可以认为这里做了一个简单的状态转移的预测。在状态转移预测过程中，一旦发现预测不准确，则利用传统tracking-by-detection（<span class="caps">TBD</span>）的方式重新找回目标。所以与传统的TBD框架相比，实际上这里大量的操作都是状态转移，所以在论文中，作者给出了一个Fast版本，结果实际上没有降太多，速度倒是接近实时（15fps）。仔细思考之后发现，ADNet预测状态转移的过程实质上就是Conv+RNN以及Conv+LSTM的过程。</p>
 <hr/>
-<h1 id="reference">Reference</h1>
+<h3 id="reference">Reference</h3>
 <p>[1] Held D, Thrun S, Savarese S. Learning to track at 100 fps with deep regression networks[C]. European Conference on Computer Vision. Springer International Publishing, 2016: 749-765.</p>
 <p>[2] Bertinetto L, Valmadre J, Henriques J F, et al. Fully-convolutional siamese networks for object tracking[C]. European Conference on Computer Vision. Springer International Publishing, 2016: 850-865.</p>
 <p>[3] Xingjian S H I, Chen Z, Wang H, et al. Convolutional <span class="caps">LSTM</span> network: A machine learning approach for precipitation nowcasting[C]. Advances in neural information processing systems. 2015: 802-810.</p>
@@ -175,10 +175,10 @@ Lingxiao's World            </a>
 <h4>Related Posts:</h4>
 <ul>
 <li><a href="https://zjjconan.github.io/blog/Real-Time-Tracking-DNN-Part-2/Real-Time-Tracking-DNN-Part-2.html">论文集《Real-Time Tracking Methods (<span class="caps">DNN</span>-Part <span class="caps">II</span>)》</a></li>
+<li><a href="https://zjjconan.github.io/blog/RT-MDNet/RT-MDNet.html">论文笔记《Real-Time MDNet》</a></li>
 <li><a href="https://zjjconan.github.io/blog/BranchOut/BranchOut.html">论文笔记《BranchOut: Regularization for Online Ensemble Tracking with Convolutional Neural Networks》</a></li>
 <li><a href="https://zjjconan.github.io/blog/MAVOT/MAVOT.html">论文笔记《<span class="caps">MAVOT</span>: Memory-Augmented Video Object Tracking》</a></li>
 <li><a href="https://zjjconan.github.io/blog/MDNet/MDNet.html">论文分析《Learning Multi-domain Convolutional Neural Networks for Visual Tracking》</a></li>
-<li><a href="https://zjjconan.github.io/blog/RT-MDNet/RT-MDNet.html">论文笔记《Real-Time MDNet》</a></li>
 </ul>
 </section>
 <hr>
@@ -242,10 +242,10 @@ Lingxiao's World            </a>
 <a href="https://zjjconan.github.io/tag/visual-tracking.html">Visual Tracking</a>
 </li>
 <li class="list-group-item tag-2">
-<a href="https://zjjconan.github.io/tag/deep-neural-networks.html">Deep Neural Networks</a>
+<a href="https://zjjconan.github.io/tag/real-time-tracking.html">Real-Time Tracking</a>
 </li>
 <li class="list-group-item tag-2">
-<a href="https://zjjconan.github.io/tag/real-time-tracking.html">Real-Time Tracking</a>
+<a href="https://zjjconan.github.io/tag/deep-neural-networks.html">Deep Neural Networks</a>
 </li>
 <li class="list-group-item tag-2">
 <a href="https://zjjconan.github.io/tag/convolutional-neural-networks.html">Convolutional Neural Networks</a>
@@ -257,13 +257,13 @@ Lingxiao's World            </a>
 <a href="https://zjjconan.github.io/tag/mdnet.html">MDNet</a>
 </li>
 <li class="list-group-item tag-4">
-<a href="https://zjjconan.github.io/tag/one-shot-learning.html">One-shot learning</a>
-</li>
-<li class="list-group-item tag-4">
 <a href="https://zjjconan.github.io/tag/ssd.html">SSD</a>
 </li>
 <li class="list-group-item tag-4">
 <a href="https://zjjconan.github.io/tag/ensemble-tracking.html">Ensemble Tracking</a>
+</li>
+<li class="list-group-item tag-4">
+<a href="https://zjjconan.github.io/tag/one-shot-learning.html">One-shot learning</a>
 </li>
 </ul>
 </li>
