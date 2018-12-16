@@ -127,7 +127,7 @@ Lingxiao's World            </a>
 <img alt="RTMDNet-pipeline" class="image-process-article-image" src="https://zjjconan.github.io/images/RTMDNet\.\article-image\RTMDNet-pipeline.png"/>
 </div>
 <p>上图给出了该论文的基本网络结构。简单来说即将[1]中的feature network这一部分改成利用Fast-<span class="caps">RCNN</span>[2]形式，然后为了提高tracking的结果，利用ROIAlign[3]来代替ROIPooling。这也可以很好的做出解释。因为tracking，detection，甚至于所有的关于目标定位的任务，我们都需要position-sensitive的feature，而不应该是原始CNN中position-invariance的feature。这样会使得结果更加精确。但是本文发现，直接利用
-原始的ROIAlign会有一个问题，即：由于ROIAlign中的点是利用最近邻的4个点做插值得到，如果在ROI的区域大于feature map的情况下，得到的feature的discriminative并不足够好。所以作者提出两个改进方法：（1）去掉conv2后面的maxpooling，保持较大的feature map。（2）提出利用ROIAlign中的bin个数来自动决定每一个bin的宽度，即：<span class="math">\([w/w^']\)</span>。对于Network的改进如下图所示：</p>
+原始的ROIAlign会有一个问题，即：由于ROIAlign中的点是利用最近邻的4个点做插值得到，如果在ROI的区域大于feature map的情况下，得到的feature的discriminative并不足够好。所以作者提出两个改进方法：（1）去掉conv2后面的maxpooling，保持较大的feature map。（2）提出利用ROIAlign中的bin个数来自动决定每一个bin的宽度，即：<span class="math">\(w/w^'\)</span>。对于Network的改进如下图所示：</p>
 <div style="text-align:center">
 <img alt="RTMDNet-network" class="image-process-article-image" src="https://zjjconan.github.io/images/RTMDNet\.\article-image\RTMDNet-network.png"/>
 </div>
@@ -254,9 +254,9 @@ Lingxiao's World            </a>
 <ul>
 <li><a href="https://zjjconan.github.io/blog/BranchOut/BranchOut.html">论文笔记《BranchOut: Regularization for Online Ensemble Tracking with Convolutional Neural Networks》</a></li>
 <li><a href="https://zjjconan.github.io/blog/MDNet/MDNet.html">论文分析《Learning Multi-domain Convolutional Neural Networks for Visual Tracking》</a></li>
-<li><a href="https://zjjconan.github.io/blog/Real-Time-Tracking-DNN-Part-2/Real-Time-Tracking-DNN-Part-2.html">论文集《Real-Time Tracking Methods (<span class="caps">DNN</span>-Part <span class="caps">II</span>)》</a></li>
-<li><a href="https://zjjconan.github.io/blog/Real-Time-Tracking-DNN-Part-1/Real-Time-Tracking-DNN-Part-1.html">论文集《Real-Time Tracking Methods (<span class="caps">DNN</span>-Part I)》</a></li>
 <li><a href="https://zjjconan.github.io/blog/MAVOT/MAVOT.html">论文笔记《<span class="caps">MAVOT</span>: Memory-Augmented Video Object Tracking》</a></li>
+<li><a href="https://zjjconan.github.io/blog/Real-Time-Tracking-DNN-Part-1/Real-Time-Tracking-DNN-Part-1.html">论文集《Real-Time Tracking Methods (<span class="caps">DNN</span>-Part I)》</a></li>
+<li><a href="https://zjjconan.github.io/blog/Real-Time-Tracking-DNN-Part-2/Real-Time-Tracking-DNN-Part-2.html">论文集《Real-Time Tracking Methods (<span class="caps">DNN</span>-Part <span class="caps">II</span>)》</a></li>
 </ul>
 </section>
 <hr>
@@ -320,16 +320,19 @@ Lingxiao's World            </a>
 <a href="https://zjjconan.github.io/tag/visual-tracking.html">Visual Tracking</a>
 </li>
 <li class="list-group-item tag-2">
-<a href="https://zjjconan.github.io/tag/convolutional-neural-networks.html">Convolutional Neural Networks</a>
+<a href="https://zjjconan.github.io/tag/real-time-tracking.html">Real-Time Tracking</a>
 </li>
 <li class="list-group-item tag-2">
-<a href="https://zjjconan.github.io/tag/real-time-tracking.html">Real-Time Tracking</a>
+<a href="https://zjjconan.github.io/tag/convolutional-neural-networks.html">Convolutional Neural Networks</a>
 </li>
 <li class="list-group-item tag-2">
 <a href="https://zjjconan.github.io/tag/deep-neural-networks.html">Deep Neural Networks</a>
 </li>
 <li class="list-group-item tag-4">
-<a href="https://zjjconan.github.io/tag/mdnet.html">MDNet</a>
+<a href="https://zjjconan.github.io/tag/one-shot-learning.html">One-shot learning</a>
+</li>
+<li class="list-group-item tag-4">
+<a href="https://zjjconan.github.io/tag/ensemble-tracking.html">Ensemble Tracking</a>
 </li>
 <li class="list-group-item tag-4">
 <a href="https://zjjconan.github.io/tag/ssd.html">SSD</a>
@@ -338,10 +341,7 @@ Lingxiao's World            </a>
 <a href="https://zjjconan.github.io/tag/object-detection.html">Object Detection</a>
 </li>
 <li class="list-group-item tag-4">
-<a href="https://zjjconan.github.io/tag/ensemble-tracking.html">Ensemble Tracking</a>
-</li>
-<li class="list-group-item tag-4">
-<a href="https://zjjconan.github.io/tag/one-shot-learning.html">One-shot learning</a>
+<a href="https://zjjconan.github.io/tag/mdnet.html">MDNet</a>
 </li>
 </ul>
 </li>

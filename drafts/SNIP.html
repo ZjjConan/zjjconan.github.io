@@ -109,39 +109,42 @@ Lingxiao's World            </a>
 <p>论文出处 <a href="http://openaccess.thecvf.com/content_cvpr_2018/CameraReady/0552.pdf"><span class="caps">CVPR2018</span></a>。 本文主要在谈谈在利用CNN做detection中，关于scale的相关问题。</p>
 <hr/>
 <h3 id="_2">问题描述</h3>
-<div style="text-align:center">
-<img alt="DSOD-pipeline" class="image-process-article-image" src="{filename}/images/Object-Detection/DSOD\.\article-image\pipeline.png"/>
+<!--&#8212; <div style=&#8221;text-align:center&#8221;-->
+<img alt="”DSOD-pipeline”" class="”image-process-article-image”" src="”{filename}/images/Object-Detection/DSOD/pipeline.png”"/>
 </div>
-<p>上图左给除了SSD [1]的结构，而上图右则给出了本文基于SSD改进的DSOD的结构。从整体结构来看，右图与左图最主要的区别在于其利用到了Dense Connection [2]的思想，使得卷积网络靠前的层与靠后的层有一个融合过程，融合之后在进行前向传播。</p>
-<h3 id="findings">Findings</h3>
-<p>本文在研究中，通过实验有了如下findings:</p>
-<blockquote>
-<ol>
-<li>
-<p>目前的object detector中，只有single-stage(proposal-free)的detector能够很成功的从小数据学习到足够优秀的detector。而two-stage的detector，诸如Faster-RCNN以及R-FCN由于有RoI pooling层的存在，使得在学习过程中，梯度的传递不是很smooth。所以训练起来比较难以收敛（这里关于RoI pooling的解释不足够深入）。</p>
-</li>
-<li>
-<p>deep supervision对于训练深度网络非常有效，尤其在小数据下进行训练。本文虽然只利用到一个loss function，但是由于有dense connection操作的存在，使得梯度可以很好的回传到前面的层。这种结构可以认为是implicit加入了supervision。</p>
-</li>
-<li>
-<p>将densenet中第一个部分，由原始的7x7改成3x3的结构，这样可以更好的保存原始图片的信息。</p>
-</li>
-<li>
-<p>Multiscale的融合策略。在原始的SSD框架下（如图左），仅仅直接feed所有层的预测。而在DSOD（图右）中，所有层的预测一方面送入最终的分类部分，同时也通过subsampling与后续层进行相应的融合。这样，后续的层可以接受到更多信息。</p>
-</li>
-</ol>
-</blockquote>
-<hr/>
-<h3 id="_3">结果分析</h3>
-<div style="text-align:center">
-<img alt="DSOD-comp" class="image-process-article-image" src="https://zjjconan.github.io/images/Object-Detection/DSOD\.\article-image\DSOD_comp.png"/>
+
+上图左给除了SSD [1]的结构，而上图右则给出了本文基于SSD改进的DSOD的结构。从整体结构来看，右图与左图最主要的区别在于其利用到了Dense Connection [2]的思想，使得卷积网络靠前的层与靠后的层有一个融合过程，融合之后在进行前向传播。
+
+### Findings
+
+本文在研究中，通过实验有了如下findings:
+
+&gt; 1. 目前的object detector中，只有single-stage(proposal-free)的detector能够很成功的从小数据学习到足够优秀的detector。而two-stage的detector，诸如Faster-RCNN以及R-FCN由于有RoI pooling层的存在，使得在学习过程中，梯度的传递不是很smooth。所以训练起来比较难以收敛（这里关于RoI pooling的解释不足够深入）。
+
+&gt; 2. deep supervision对于训练深度网络非常有效，尤其在小数据下进行训练。本文虽然只利用到一个loss function，但是由于有dense connection操作的存在，使得梯度可以很好的回传到前面的层。这种结构可以认为是implicit加入了supervision。
+
+&gt; 3. 将densenet中第一个部分，由原始的7x7改成3x3的结构，这样可以更好的保存原始图片的信息。
+
+&gt; 4. Multiscale的融合策略。在原始的SSD框架下（如图左），仅仅直接feed所有层的预测。而在DSOD（图右）中，所有层的预测一方面送入最终的分类部分，同时也通过subsampling与后续层进行相应的融合。这样，后续的层可以接受到更多信息。
+
+———————————————-
+
+### 结果分析
+
+<div style="”text-align:center”">
+<img alt="”DSOD-comp”" class="”image-process-article-image”" src="”{filename}/images/Object-Detection/DSOD/DSOD_comp.png”"/>
 </div>
-<p>上图是本文探索的几个问题的对比。基本上可以看出对于performance影响最大的几个tech是：1) 在transition layer并不减少feature map的数量（hi-comp factor）；2）在bottleneck layer中，用更多的feature map数量（wide bottleneck）；3）每一层用到的filter number数量足够多（bi growth rate）以及4）第一层的卷积核的大小为3x3（stem block）。</p>
-<hr/>
-<h2 id="_4">参考文献</h2>
-<p>[1] Liu W, Anguelov D, Erhan D, et al. Ssd: Single shot multibox detector[C]. European conference on computer vision. Springer, Cham, 2016: 21-37.</p>
-<p>[2] Huang G, Liu Z, Weinberger K Q, et al. Densely connected convolutional networks. arXiv preprint arXiv:1608.06993, 2016.</p>
-</div>
+
+上图是本文探索的几个问题的对比。基本上可以看出对于performance影响最大的几个tech是：1) 在transition layer并不减少feature map的数量（hi-comp factor）；2）在bottleneck layer中，用更多的feature map数量（wide bottleneck）；3）每一层用到的filter number数量足够多（bi growth rate）以及4）第一层的卷积核的大小为3x3（stem block）。
+
+———————————————-
+
+## 参考文献
+
+[1] Liu W, Anguelov D, Erhan D, et al. Ssd: Single shot multibox detector[C]. European conference on computer vision. Springer, Cham, 2016: 21-37.
+
+[2] Huang G, Liu Z, Weinberger K Q, et al. Densely connected convolutional networks. arXiv preprint arXiv:1608.06993, 2016. —&gt;
+            </article></section></div>
 <!-- /.entry-content -->
 <section class="well" id="related-posts">
 <h4>Related Posts:</h4>
@@ -157,7 +160,7 @@ Lingxiao's World            </a>
 <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
 </div>
 <!-- AddThis Button END -->
-<hr>
+<hr/>
 <section class="comments" id="comments">
 <h2>Comments</h2>
 <div id="disqus_thread"></div>
@@ -184,9 +187,9 @@ Lingxiao's World            </a>
             Disqus.</a></noscript>
 <a class="dsq-brlink" href="http://disqus.com">comments powered by <span class="logo-disqus">Disqus</span></a>
 </section>
-</hr></hr></article>
-</section>
-</div>
+</hr></div></div></body></html>
+
+
 <div class="col-sm-3" id="sidebar">
 <aside>
 <!-- Sidebar -->
@@ -210,16 +213,19 @@ Lingxiao's World            </a>
 <a href="https://zjjconan.github.io/tag/visual-tracking.html">Visual Tracking</a>
 </li>
 <li class="list-group-item tag-2">
-<a href="https://zjjconan.github.io/tag/convolutional-neural-networks.html">Convolutional Neural Networks</a>
+<a href="https://zjjconan.github.io/tag/real-time-tracking.html">Real-Time Tracking</a>
 </li>
 <li class="list-group-item tag-2">
-<a href="https://zjjconan.github.io/tag/real-time-tracking.html">Real-Time Tracking</a>
+<a href="https://zjjconan.github.io/tag/convolutional-neural-networks.html">Convolutional Neural Networks</a>
 </li>
 <li class="list-group-item tag-2">
 <a href="https://zjjconan.github.io/tag/deep-neural-networks.html">Deep Neural Networks</a>
 </li>
 <li class="list-group-item tag-4">
-<a href="https://zjjconan.github.io/tag/mdnet.html">MDNet</a>
+<a href="https://zjjconan.github.io/tag/one-shot-learning.html">One-shot learning</a>
+</li>
+<li class="list-group-item tag-4">
+<a href="https://zjjconan.github.io/tag/ensemble-tracking.html">Ensemble Tracking</a>
 </li>
 <li class="list-group-item tag-4">
 <a href="https://zjjconan.github.io/tag/ssd.html">SSD</a>
@@ -228,10 +234,7 @@ Lingxiao's World            </a>
 <a href="https://zjjconan.github.io/tag/object-detection.html">Object Detection</a>
 </li>
 <li class="list-group-item tag-4">
-<a href="https://zjjconan.github.io/tag/ensemble-tracking.html">Ensemble Tracking</a>
-</li>
-<li class="list-group-item tag-4">
-<a href="https://zjjconan.github.io/tag/one-shot-learning.html">One-shot learning</a>
+<a href="https://zjjconan.github.io/tag/mdnet.html">MDNet</a>
 </li>
 </ul>
 </li>
@@ -240,8 +243,8 @@ Lingxiao's World            </a>
 </section>
 <!-- End Sidebar --> </aside>
 </div>
-</div>
-</div>
+
+
 <footer>
 <div class="container">
 <hr/>
@@ -294,5 +297,4 @@ Lingxiao's World            </a>
 <!-- End Google Analytics Code -->
 <script type="text/javascript">var addthis_config = {"data_track_addressbar": true};</script>
 <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=True" type="text/javascript"></script>
-</body>
-</html>
+
