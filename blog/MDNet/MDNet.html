@@ -145,8 +145,14 @@ Lingxiao's World            </a>
 </blockquote>
 <p><strong>个人看法：</strong> 由于tracking的训练样本比较少，针对第一以及第四点的claims，个人觉得没有什么问题。确实利用小的CNN网络可以在一方面避免训练阶段的过拟合状态，同时也可以提高tracking的跟踪速度（汗，1fps）。但是第二以及第三点的claims是有问题的：</p>
 <blockquote>
-<p>Re - 2. 更深的网络确实损失一部分spatial信息，但这种损失在这里的影响可以忽略不计。本篇论文对于feature的提取是先利用ROI crop出来一个区域，然后将cropped的区域进行resize，再利用CNN对每一个ROI提取feature（这也是MDNet跟踪速度的瓶颈）。实际上spatial的信息对于这种方式的操作并不是非常的重要，毕竟CNN会在每一个区域上都进行单独的操作。</p>
-<p>Re - 3. Tracking跟踪的目标一般都比较小（应该是数据库中的目标都比较小），但这并不代表我们需要将输入变得很小。相反，根据个人经验以及很多detection的系统，在小目标的周围进行crop，然后resize到一个相对大一点的size，例如224，对于小目标的定位以及跟踪是很有帮助的。</p>
+<ol>
+<li>
+<p>Response: 更深的网络确实损失一部分spatial信息，但这种损失在这里的影响可以忽略不计。本篇论文对于feature的提取是先利用ROI crop出来一个区域，然后将cropped的区域进行resize，再利用CNN对每一个ROI提取feature（这也是MDNet跟踪速度的瓶颈）。实际上spatial的信息对于这种方式的操作并不是非常的重要，毕竟CNN会在每一个区域上都进行单独的操作。</p>
+</li>
+<li>
+<p>Response: Tracking跟踪的目标一般都比较小（应该是数据库中的目标都比较小），但这并不代表我们需要将输入变得很小。相反，根据个人经验以及很多detection的系统，在小目标的周围进行crop，然后resize到一个相对大一点的size，例如224，对于小目标的定位以及跟踪是很有帮助的。</p>
+</li>
+</ol>
 </blockquote>
 <hr/>
 <h3 id="_2">在线跟踪</h3>
@@ -193,10 +199,10 @@ Lingxiao's World            </a>
 <section class="well" id="related-posts">
 <h4>Related Posts:</h4>
 <ul>
-<li><a href="https://zjjconan.github.io/blog/RT-MDNet/RT-MDNet.html">论文笔记《Real-Time MDNet》</a></li>
 <li><a href="https://zjjconan.github.io/blog/BranchOut/BranchOut.html">论文笔记《BranchOut: Regularization for Online Ensemble Tracking with Convolutional Neural Networks》</a></li>
-<li><a href="https://zjjconan.github.io/blog/Real-Time-Tracking-DNN-Part-1/Real-Time-Tracking-DNN-Part-1.html">论文集《Real-Time Tracking Methods (<span class="caps">DNN</span>-Part I)》</a></li>
+<li><a href="https://zjjconan.github.io/blog/RT-MDNet/RT-MDNet.html">论文笔记《Real-Time MDNet》</a></li>
 <li><a href="https://zjjconan.github.io/blog/MAVOT/MAVOT.html">论文笔记《<span class="caps">MAVOT</span>: Memory-Augmented Video Object Tracking》</a></li>
+<li><a href="https://zjjconan.github.io/blog/Real-Time-Tracking-DNN-Part-1/Real-Time-Tracking-DNN-Part-1.html">论文集《Real-Time Tracking Methods (<span class="caps">DNN</span>-Part I)》</a></li>
 <li><a href="https://zjjconan.github.io/blog/Real-Time-Tracking-DNN-Part-2/Real-Time-Tracking-DNN-Part-2.html">论文集《Real-Time Tracking Methods (<span class="caps">DNN</span>-Part <span class="caps">II</span>)》</a></li>
 </ul>
 </section>
@@ -264,25 +270,25 @@ Lingxiao's World            </a>
 <a href="https://zjjconan.github.io/tag/real-time-tracking.html">Real-Time Tracking</a>
 </li>
 <li class="list-group-item tag-2">
-<a href="https://zjjconan.github.io/tag/deep-neural-networks.html">Deep Neural Networks</a>
+<a href="https://zjjconan.github.io/tag/convolutional-neural-networks.html">Convolutional Neural Networks</a>
 </li>
 <li class="list-group-item tag-2">
-<a href="https://zjjconan.github.io/tag/convolutional-neural-networks.html">Convolutional Neural Networks</a>
+<a href="https://zjjconan.github.io/tag/deep-neural-networks.html">Deep Neural Networks</a>
+</li>
+<li class="list-group-item tag-4">
+<a href="https://zjjconan.github.io/tag/mdnet.html">MDNet</a>
 </li>
 <li class="list-group-item tag-4">
 <a href="https://zjjconan.github.io/tag/object-detection.html">Object Detection</a>
 </li>
 <li class="list-group-item tag-4">
-<a href="https://zjjconan.github.io/tag/mdnet.html">MDNet</a>
+<a href="https://zjjconan.github.io/tag/one-shot-learning.html">One-shot learning</a>
 </li>
 <li class="list-group-item tag-4">
 <a href="https://zjjconan.github.io/tag/ssd.html">SSD</a>
 </li>
 <li class="list-group-item tag-4">
 <a href="https://zjjconan.github.io/tag/ensemble-tracking.html">Ensemble Tracking</a>
-</li>
-<li class="list-group-item tag-4">
-<a href="https://zjjconan.github.io/tag/one-shot-learning.html">One-shot learning</a>
 </li>
 </ul>
 </li>
