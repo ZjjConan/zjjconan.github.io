@@ -16,7 +16,7 @@
 <meta content="论文笔记《An Analysis of Scale Invariance in Object Detection – SNIP》" property="og:title"/>
 <meta content="https://zjjconan.github.io/drafts/SNIP.html" property="og:url"/>
 <meta content="主要探讨Object Detection中scale的问题" property="og:description"/>
-<meta content="2018-09-10" property="article:published_time"/>
+<meta content="2019-04-03" property="article:published_time"/>
 <meta content="Object Detection" property="article:section"/>
 <meta content="Object Detection" property="article:tag"/>
 <meta content="Scale Invariance" property="article:tag"/>
@@ -97,7 +97,7 @@ Lingxiao's World            </a>
 <footer class="post-info">
 <span class="label label-default">Date</span>
 <span class="published">
-<i class="fa fa-calendar"></i><time datetime="2018-09-10T15:43:00+02:00"> 九月 10, 2018</time>
+<i class="fa fa-calendar"></i><time datetime="2019-04-03T21:03:00+02:00"> 四月 03, 2019</time>
 </span>
 <span class="label label-default">Tags</span>
 <a href="https://zjjconan.github.io/tag/object-detection.html">Object Detection</a>
@@ -106,20 +106,25 @@ Lingxiao's World            </a>
 </footer><!-- /.post-info --> </div>
 </div>
 <h3 id="_1">概述</h3>
-<p>论文出处 <a href="http://openaccess.thecvf.com/content_cvpr_2018/CameraReady/0552.pdf"><span class="caps">CVPR2018</span></a>。 本文主要在谈谈在利用CNN做detection中，关于scale的相关问题。</p>
+<p>论文出处 <a href="http://openaccess.thecvf.com/content_cvpr_2018/CameraReady/0552.pdf"><span class="caps">CVPR2018</span></a>。 实际上本文主要是研究在detection领域中, 如何高效合理的利用不同图像间的scale问题。</p>
 <hr/>
-<h3 id="_2">问题描述</h3>
-<!--&#8212; <div style=&#8221;text-align:center&#8221;-->
-<img alt="”DSOD-pipeline”" class="”image-process-article-image”" src="”{filename}/images/Object-Detection/DSOD/pipeline.png”"/>
+<h3 id="_2">问题分析</h3>
+<p>首先，作者认为目前对于image classification这个问题，deep networks已经做的非常的好了。但是对于generic object detection这个任务，deep networks并没有像image classification那样做到非常优秀。这里给出的证据便是在<code>COCO[1]</code>这个数据集上，最好的算法只能获得<code>62%</code>(<span class="caps">IOU</span>=0.5)。所以，作者在这里抛出一个问题，到底是什么原因使得object detection如此的难?</p>
+<p>作者认为对于detection来说，scale是一个不可避免且非常重要的问题，也正是因为detection需要处理的scale变化相对较大，所以使得detection这个问题变得非常的困难。具体可见下图分析：</p>
+<div style="text-align:center">
+<img alt="domain_shift" class="image-process-article-image" src="https://zjjconan.github.io/images/Object-Detection/SNIP\.\article-image\domain_shift.png"/>
 </div>
-
+<p>上图表示<code>ImageNet[2]</code>与<code>COCO[1]</code>这两个数据集在目标scale上的区别。从这张图可以得到两个结论：</p>
+<div class="highlight"><pre><span></span>1.
+</pre></div>
+<!--&#8212; 
 上图左给除了SSD [1]的结构，而上图右则给出了本文基于SSD改进的DSOD的结构。从整体结构来看，右图与左图最主要的区别在于其利用到了Dense Connection [2]的思想，使得卷积网络靠前的层与靠后的层有一个融合过程，融合之后在进行前向传播。
 
 ### Findings
 
 本文在研究中，通过实验有了如下findings:
 
-&gt; 1. 目前的object detector中，只有single-stage(proposal-free)的detector能够很成功的从小数据学习到足够优秀的detector。而two-stage的detector，诸如Faster-RCNN以及R-FCN由于有RoI pooling层的存在，使得在学习过程中，梯度的传递不是很smooth。所以训练起来比较难以收敛（这里关于RoI pooling的解释不足够深入）。
+--> 1. 目前的object detector中，只有single-stage(proposal-free)的detector能够很成功的从小数据学习到足够优秀的detector。而two-stage的detector，诸如Faster-RCNN以及R-FCN由于有RoI pooling层的存在，使得在学习过程中，梯度的传递不是很smooth。所以训练起来比较难以收敛（这里关于RoI pooling的解释不足够深入）。
 
 &gt; 2. deep supervision对于训练深度网络非常有效，尤其在小数据下进行训练。本文虽然只利用到一个loss function，但是由于有dense connection操作的存在，使得梯度可以很好的回传到前面的层。这种结构可以认为是implicit加入了supervision。
 
@@ -144,7 +149,7 @@ Lingxiao's World            </a>
 [1] Liu W, Anguelov D, Erhan D, et al. Ssd: Single shot multibox detector[C]. European conference on computer vision. Springer, Cham, 2016: 21-37.
 
 [2] Huang G, Liu Z, Weinberger K Q, et al. Densely connected convolutional networks. arXiv preprint arXiv:1608.06993, 2016. —&gt;
-            </article></section></div>
+            </div>
 <!-- /.entry-content -->
 <section class="well" id="related-posts">
 <h4>Related Posts:</h4>
@@ -187,9 +192,9 @@ Lingxiao's World            </a>
             Disqus.</a></noscript>
 <a class="dsq-brlink" href="http://disqus.com">comments powered by <span class="logo-disqus">Disqus</span></a>
 </section>
-</hr></div></div></body></html>
-
-
+</hr></article>
+</section>
+</div>
 <div class="col-sm-3" id="sidebar">
 <aside>
 <!-- Sidebar -->
@@ -216,19 +221,19 @@ Lingxiao's World            </a>
 <a href="https://zjjconan.github.io/tag/real-time-tracking.html">Real-Time Tracking</a>
 </li>
 <li class="list-group-item tag-2">
-<a href="https://zjjconan.github.io/tag/convolutional-neural-networks.html">Convolutional Neural Networks</a>
-</li>
-<li class="list-group-item tag-2">
 <a href="https://zjjconan.github.io/tag/deep-neural-networks.html">Deep Neural Networks</a>
 </li>
+<li class="list-group-item tag-2">
+<a href="https://zjjconan.github.io/tag/convolutional-neural-networks.html">Convolutional Neural Networks</a>
+</li>
 <li class="list-group-item tag-4">
-<a href="https://zjjconan.github.io/tag/one-shot-learning.html">One-shot learning</a>
+<a href="https://zjjconan.github.io/tag/ssd.html">SSD</a>
 </li>
 <li class="list-group-item tag-4">
 <a href="https://zjjconan.github.io/tag/ensemble-tracking.html">Ensemble Tracking</a>
 </li>
 <li class="list-group-item tag-4">
-<a href="https://zjjconan.github.io/tag/ssd.html">SSD</a>
+<a href="https://zjjconan.github.io/tag/one-shot-learning.html">One-shot learning</a>
 </li>
 <li class="list-group-item tag-4">
 <a href="https://zjjconan.github.io/tag/object-detection.html">Object Detection</a>
@@ -243,8 +248,8 @@ Lingxiao's World            </a>
 </section>
 <!-- End Sidebar --> </aside>
 </div>
-
-
+</div>
+</div>
 <footer>
 <div class="container">
 <hr/>
@@ -297,4 +302,5 @@ Lingxiao's World            </a>
 <!-- End Google Analytics Code -->
 <script type="text/javascript">var addthis_config = {"data_track_addressbar": true};</script>
 <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=True" type="text/javascript"></script>
-
+</body>
+</html>

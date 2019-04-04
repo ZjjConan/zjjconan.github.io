@@ -2,24 +2,24 @@
 
 <html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-<title>论文笔记《MAVOT: Memory-Augmented Video Object Tracking》 - Lingxiao's World</title>
+<title>论文笔记《An Analysis of Scale Invariance in Object Detection – SNIP》 - Lingxiao's World</title>
 <!-- Using the latest rendering mode for IE -->
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<link href="https://zjjconan.github.io/blog/MAVOT/MAVOT.html" rel="canonical"/>
+<link href="https://zjjconan.github.io/blog/SNIP/SNIP.html" rel="canonical"/>
 <meta content="Lingxiao.Yang" name="author">
-<meta content="Visual Tracking,One-shot learning" name="keywords">
-<meta content="考虑如何更好的在线进行tracker的ensembling工作。" name="description">
+<meta content="Object Detection,Scale Invariance" name="keywords">
+<meta content="主要探讨Object Detection中scale的问题" name="description">
 <meta content="Lingxiao's World" property="og:site_name"/>
 <meta content="article" property="og:type"/>
-<meta content="论文笔记《MAVOT: Memory-Augmented Video Object Tracking》" property="og:title"/>
-<meta content="https://zjjconan.github.io/blog/MAVOT/MAVOT.html" property="og:url"/>
-<meta content="考虑如何更好的在线进行tracker的ensembling工作。" property="og:description"/>
-<meta content="2017-12-25" property="article:published_time"/>
-<meta content="Visual Tracking" property="article:section"/>
-<meta content="Visual Tracking" property="article:tag"/>
-<meta content="One-shot learning" property="article:tag"/>
+<meta content="论文笔记《An Analysis of Scale Invariance in Object Detection – SNIP》" property="og:title"/>
+<meta content="https://zjjconan.github.io/blog/SNIP/SNIP.html" property="og:url"/>
+<meta content="主要探讨Object Detection中scale的问题" property="og:description"/>
+<meta content="2019-04-03" property="article:published_time"/>
+<meta content="Object Detection" property="article:section"/>
+<meta content="Object Detection" property="article:tag"/>
+<meta content="Scale Invariance" property="article:tag"/>
 <meta content="Lingxiao.Yang" property="article:author"/>
 <!-- Bootstrap -->
 <link href="https://zjjconan.github.io/theme/css/bootstrap.cerulean.min.css" rel="stylesheet" type="text/css">
@@ -80,14 +80,14 @@ Lingxiao's World            </a>
 <div class="col-sm-9">
 <ol class="breadcrumb">
 <li><a href="https://zjjconan.github.io" title="Lingxiao's World"><i class="fa fa-home fa-lg"></i></a></li>
-<li class="active">论文笔记《<span class="caps">MAVOT</span>: Memory-Augmented Video Object Tracking》</li>
+<li class="active">论文笔记《An Analysis of Scale Invariance in Object Detection – <span class="caps">SNIP</span>》</li>
 </ol>
 <section id="content">
 <article>
 <header class="page-header">
 <h2>
-<a href="https://zjjconan.github.io/blog/MAVOT/MAVOT.html" rel="bookmark" title="Permalink to 论文笔记《MAVOT: Memory-Augmented Video Object Tracking》">
-                        论文笔记《<span class="caps">MAVOT</span>: Memory-Augmented Video Object Tracking》
+<a href="https://zjjconan.github.io/blog/SNIP/SNIP.html" rel="bookmark" title="Permalink to 论文笔记《An Analysis of Scale Invariance in Object Detection – SNIP》">
+                        论文笔记《An Analysis of Scale Invariance in Object Detection – <span class="caps">SNIP</span>》
                     </a>
 </h2>
 </header>
@@ -97,75 +97,131 @@ Lingxiao's World            </a>
 <footer class="post-info">
 <span class="label label-default">Date</span>
 <span class="published">
-<i class="fa fa-calendar"></i><time datetime="2017-12-25T22:00:00+01:00"> 十二月 25, 2017</time>
+<i class="fa fa-calendar"></i><time datetime="2019-04-03T21:03:00+02:00"> 四月 03, 2019</time>
 </span>
 <span class="label label-default">Tags</span>
-<a href="https://zjjconan.github.io/tag/visual-tracking.html">Visual Tracking</a>
+<a href="https://zjjconan.github.io/tag/object-detection.html">Object Detection</a>
         /
-	<a href="https://zjjconan.github.io/tag/one-shot-learning.html">One-shot learning</a>
+	<a href="https://zjjconan.github.io/tag/scale-invariance.html">Scale Invariance</a>
 </footer><!-- /.post-info --> </div>
 </div>
 <h3 id="_1">概述</h3>
-<p>论文出处 <a href="https://arxiv.org/pdf/1711.09414.pdf">Arxiv</a>。 本篇文章主要是利用memory的思想来做目标跟踪，实际上类似于储存不同的跟踪模板来进行在线的匹配。</p>
+<p>论文出处 <a href="http://openaccess.thecvf.com/content_cvpr_2018/CameraReady/0552.pdf"><span class="caps">CVPR2018</span></a>。 实际上本文主要是研究在detection领域中, 如何高效合理的利用不同图像间的scale问题。</p>
 <hr/>
-<h3 id="_2">跟踪的整体流程</h3>
+<h3 id="_2">问题分析</h3>
+<p>首先，作者认为目前对于image classification这个问题，deep networks已经做的非常的好了。但是对于generic object detection这个任务，deep networks并没有像image classification那样做到非常优秀。这里给出的证据便是在<code>COCO[1]</code>这个数据集上，最好的算法只能获得<code>62%</code>(<span class="caps">IOU</span>=0.5)。所以，作者在这里抛出一个问题，到底是什么原因使得object detection如此的难?</p>
+<p>作者认为对于detection来说，scale是一个不可避免且非常重要的问题，也正是因为detection需要处理的scale变化相对较大，所以使得detection这个问题变得非常的困难。具体可见下图分析：</p>
 <div style="text-align:center">
-<img alt="MAVOT-pipeline" class="image-process-article-image" src="https://zjjconan.github.io/images/MAVOT\.\article-image\MAVOT-pipeline.png"/>
+<img alt="domain_shift" class="image-process-article-image" src="https://zjjconan.github.io/images/Object-Detection/SNIP\.\article-image\domain_shift.png"/>
 </div>
-<p></p>
-<p>上图给出了本文具体的跟踪流程。蓝色虚线框部分主要是template feature的提取过程。这里主要利用到了两部分信息，目标本身信息，以及目标周围的背景信息。背景部分的处理即简单将目标部分挖出来即可。作者在得到这样的patch之后，利用HALF-<span class="caps">VGG</span>-16来提取feature。得到两部分feature之后，去更新已有的memory信息，然后通过searching region得到合适的response map。并最终得到目标的位置。这一部分主要表示在红色的虚线框中。这篇文章最主要的部分在于如何建立，更新以及利用好memory信息。</p>
-<hr/>
-<h3 id="memory">Memory</h3>
-<p>文章在说明如何建立以及使用memory之前还提到了更多的实现细节，考虑到本文主要是在利用external memory信息来做tracking，这里仅仅具体介绍一下文中如何建立以及利用memory。在这里我们用 <span class="math">\(V^F, V^B\)</span> 来表示目标以及背景的feature。<span class="math">\(M\)</span> 来表示memory。<span class="math">\(M\)</span>的行表示memory的位置个数，列表示memory中feature的维度。<span class="math">\(t\)</span> 表示第<span class="math">\(t\)</span>帧。</p>
-<h4 id="memory-write">Memory Write</h4>
-<p>对于每一帧信息，在提取出searching region的feature<span class="math">\(V\)</span>后，利用<span class="math">\(S_{v}=max(M_{t}V)\)</span>, 来计算当前patch的feature与每一个memory中feature的相似度。论文作者认为，如果<span class="math">\(S_{v} &gt; 0.9\)</span>, 由于此时的已经有能够表达当前帧信息的memory unit，所以不再将此unit写入memory中。在测试或者说是跟踪的过程中，作者利用一个权值<span class="math">\(U_{t-1}\)</span> 来监视每一个unit被激活的次数。具体可以这么来理解，如果一个<span class="math">\(S_{v}\)</span>的分数小于0.9，作者会找到最近激活的unit，并产生一个one-hot权值<span class="math">\(W_{v}\)</span>。同时更新<span class="math">\(U_{t-1}\)</span>。其更新过程可以总结为3部分：1）reset，2）加上<span class="math">\(S_{v}\)</span>以及 3）decay。第三种更新法则遵循以下公式：</p>
-<div class="math">\begin{equation}
-    U_{t} = (\gamma \times U_{t-1} + S_{v}) \otimes (1 - W_{v}) + W_{v} \otimes c
-\end{equation}</div>
-<p>这几条原则实际是为了保证：1）如果某些units不怎么常用，则认为其没什么作用，所以reset那些location部分的units，以及2）某些位置的units经常会被用到，则加强其表达能力。由于上文中<span class="math">\(W_{v}\)</span>记录了不常用unit的位置信息，作者利用该权值直接<em>erase</em>掉不常用的memory unit：</p>
-<div class="math">\begin{equation}
-    M^{'}_{t-1} = M_{t-1} \otimes ((1 - W_{v})ones(256))
-\end{equation}</div>
-<div class="math">\begin{equation}
-    M_{t} = M^{'}_{t-1} + W_{v}V^{T}
-\end{equation}</div>
-<p>其中ones代表的全是1的向量。这两个公式的目的做了两件事情，1）将不常用的unit去除掉（公式2），2）将去除掉的部分利用当前的feature来代替（公式3）。不知道为什么不直接用文字解释。</p>
-<h4 id="memory-read">Memory Read</h4>
-<p>关于memory的read过程，作者做了5步操作来得到最终的response map。</p>
-<div class="math">\begin{equation}
-    r_{i} = exp(M_{t}V_{i})
-\end{equation}</div>
-<div class="math">\begin{equation}
-    out_i = r_{i}^{T}M_{t}
-\end{equation}</div>
-<div class="math">\begin{equation}
-    p_{i}^{F} = &lt;V_{i},out_{i}^{F}&gt;
-\end{equation}</div>
-<div class="math">\begin{equation}
-    p_{i}^{B} = &lt;V_{i},out_{i}^{B}&gt;
-\end{equation}</div>
-<div class="math">\begin{equation}
-    p_{i} = p_{i}^{F} - p_{i}^{B}
-\end{equation}</div>
-<p>而目标的最终位置则是<span class="math">\(p_{i}\)</span>最大值的位置。公式（6） ~ （8）比较容易理解，即利用每一个位置的feature与储存的memory进行比较。越大表示feature与memory中某些部分更相似。但是作者为什么要进行公式（4）（5）的操作，这一部分论文中没有给出比较明确的解释。</p>
-<h4 id="_3">其他</h4>
-<p>整篇文章总结起来就是提出了一种收集template的策略，然后将收集到的template应用到跟踪中来。论文为了能够学习到更强的feature，作者采用了ImageNet <span class="caps">VID</span> [1]数据集进行训练。</p>
-<hr/>
-<h3 id="_4">实验部分</h3>
+<p>上图表示<code>ImageNet[2]</code>与<code>COCO[1]</code>这两个数据集在目标scale上的区别。从这张图可以得到两个结论：</p>
+<ol>
+<li>
+<p><code>ImageNet</code>与<code>COCO</code>数据在scale上存在巨大的差别，例如，目标的scale在<code>ImageNet</code>数据集种，分布比较均匀，而<code>COCO</code>数据集包含大量的小目标样本（see<code>Median</code>值）</p>
+</li>
+<li>
+<p><code>COCO</code>中目标scale的变化明显大于<code>ImageNet</code></p>
+</li>
+</ol>
+<p>根据上述观察，作者认为scale的不一致性使得在利用预训练的网络存在过大的domain shift。所以需要找到一种解决方案去缩小这种domain shift。</p>
+<h3 id="_3">解决方案</h3>
 <div style="text-align:center">
-<img alt="MAVOT-VOT16" class="image-process-article-image" src="https://zjjconan.github.io/images/MAVOT\.\article-image\MAVOT-VOT16.png"/>
+<img alt="preliminary_exp" class="image-process-article-image" src="https://zjjconan.github.io/images/Object-Detection/SNIP\.\article-image\preliminary_exp.png"/>
 </div>
-<p></p>
-<p>上图主要是数值结果。可以看出MAVOT的结果还是可以的。虽然没有做到非常好的结果，类似于CCOT [2], 但本文主要提供了一种新的思路去做template的收集。下图给出了两个video跟踪的结果。</p>
+<p><strong>方案1 - Naive Multi-Scale Inference:</strong> 最常用且最直接的方法是通过image pyramid当做输入来做训练以及测试。这里作者做了一个简单的测试，即利用pre-trained网络去对不同分辨率下的图片进行分类(eg, <span class="math">\(48\times48\)</span>)。测试结果如上图（a）所示。从结果得出结论：<em>测试与训练过程中用不同的分辨率，结果会差别很大。</em> （问题：这里实际上仅仅测试了小于<span class="math">\(224\times224\)</span>），对于比<span class="math">\(224\times224\)</span>大的size没有测试，个人觉得这一块是很有bias的）。而且在detector的训练过程中，我们通常会用相对于测试阶段小的图片来进行训练）。</p>
+<p><strong>方案2 - 针对不同大小的图片训练不同的网络:</strong> 上图（b）（c）中显示了针对不同大小的图像训练不同网络的结果。<span class="caps">CNN</span>-B 代表基于<span class="math">\(224\times224\)</span>预训练的网络。<span class="caps">CNN</span>-S则是针对不同图像大小训练的网络。结合这两张图可以得出结论：<em>不同size下训练的网络确实要比基于<span class="math">\(224\times224\)</span></em>下训练的网络结果要好。</p>
+<p><strong>方案3 - 在不同resolution上进行网络的fine-tuning:</strong> 上图CNN-B-FT代表这种方式。从图中可以得出结论，即<em>fine-tuning可以很好的弥补训练样本与测试样本在scale不统一的问题</em>。</p>
+<p>但是，以上的分析主要是基于<code>image classification</code>的任务，接下来，为了更好的说明scale问题的重要性，作者又在detection的框架下详细分析了scale不同带来的问题。</p>
+<h3 id="scale">目标检测中scale的问题</h3>
+<!-- <div style="text-align:center">
+    <img class="image-process-article-image" src="https://zjjconan.github.io/images/Object-Detection/SNIP/training_detector.png" alt="training_detector">
+</div> -->
+<table>
+<thead>
+<tr>
+<th align="left"><span class="math">\(1400_{&lt;80px}\)</span></th>
+<th align="center"><span class="math">\(800_{all}\)</span></th>
+<th align="center"><span class="math">\(1400_{all}\)</span></th>
+<th align="center"><span class="caps">MST</span></th>
+<th align="center"><span class="caps">SNIP</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">16.4</td>
+<td align="center">19.6</td>
+<td align="center">19.9</td>
+<td align="center">19.5</td>
+<td align="center">21.4</td>
+</tr>
+</tbody>
+</table>
+<p>由于作者基于<code>COCO[1]</code>这个库来做实验，而这个库的难点主要是小目标居多，所以本论文的主要分析还是基于小目标的准确度。为了很好的分析scale不同带来的问题，作者做了三个简单的实验：</p>
+<ul>
+<li>
+<p>在不同图像大小的情况下训练，作者训练了两种情况，即<span class="math">\(800\times1400\)</span> (<span class="math">\(800_{all}\)</span>)以及<span class="math">\(1400\times2000\)</span> (<span class="math">\(1400_{all}\)</span>)。</p>
+</li>
+<li>
+<p>专门训练一种小目标检测器，即训练阶段只将小目标的样本用于训练，而其余样本全部删除。</p>
+</li>
+<li>
+<p>Multi-scale训练策略，即将不同尺度下的图片输入，同时利用所有样本进行训练 （<span class="caps">MST</span>）。</p>
+</li>
+</ul>
+<p>结果如上图所示。可以看出：（1）图片大小对于最终的结果会有影响，但是这种影响比较小(<span class="math">\(800_{all}\)</span> <em>vs</em> <span class="math">\(1400_{all}\)</span> )。（2）单独利用小样本进行训练结果并不好。 （3） MST的结果并不理想。作者认为造成这几点的影响主要是数据的问题。例如单独训练小样本的detector使得我们损失了很多有用的训练样本。又比如MST以及不同scale的图片训练过程中，某些样本由于太小或者太大，使得目标比较难以被检测到，最终导致训练的的网络出现问题（这个claim好弱，感觉convicing不太够）。</p>
+<p>总之，作者基于以上分析，认为：<em>我们需要合适大小的样本来进行detector的训练</em>。</p>
+<h3 id="scale-normalization-for-image-pyramids">Scale Normalization for Image Pyramids</h3>
 <div style="text-align:center">
-<img alt="MAVOT-Result" class="image-process-article-image" src="https://zjjconan.github.io/images/MAVOT\.\article-image\MAVOT-Result.png"/>
+<img alt="SNIP" class="image-process-article-image" src="https://zjjconan.github.io/images/Object-Detection/SNIP\.\article-image\SNIP.png"/>
 </div>
-<p></p>
-<p>实际上细读文章后，可以发现本文有些地方没有解释清楚，例如为什么要用到公式（4）（5），以及根据上图跟踪的结果来看，可以看出是有scale变换的，但是文章中没有说明如何来处理这种scale的变化。难道是利用image pyramid来进行操作。同时个人感觉这里不能算是真正意义上的one-shot learning吧。</p>
-<hr/>
-<h3 id="_5">参考文献</h3>
-<p>[1] Russakovsky O, Deng J, Su H, et al. Imagenet large scale visual recognition challenge[J]. International Journal of Computer Vision, 2015, 115(3): 211-252.</p>
-<p>[2] Danelljan M, Robinson A, Khan F S, et al. Beyond correlation filters: Learning continuous convolution operators for visual tracking[C]. European Conference on Computer Vision. Springer International Publishing, 2016: 472-488.</p>
+<p>基于前面的分析，作者提出了Scale Normalization for Image Pyramids (<span class="caps">SNIP</span>)的策略。实际上这SNIP非常简单，即利用多尺度训练的方式，即MST。只不过在每一个尺度下，选择出那些scale比较接近预训练网络的region进行真正的网络训练（上图中，红绿黄颜色表示的bounding box）。</p>
+<table>
+<thead>
+<tr>
+<th align="left">Method</th>
+<th align="center"><span class="caps">AP</span></th>
+<th align="center"><span class="caps">APS</span></th>
+<th align="center"><span class="caps">APM</span></th>
+<th align="center"><span class="caps">APL</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Single Scale</td>
+<td align="center">34.5</td>
+<td align="center">16.3</td>
+<td align="center">37.2</td>
+<td align="center">47.6</td>
+</tr>
+<tr>
+<td align="left"><span class="caps">MS</span> Test</td>
+<td align="center">35.9</td>
+<td align="center">19.5</td>
+<td align="center">37.3</td>
+<td align="center">48.6</td>
+</tr>
+<tr>
+<td align="left"><span class="caps">MS</span> Train/Test</td>
+<td align="center">35.6</td>
+<td align="center">19.5</td>
+<td align="center">37.5</td>
+<td align="center">47.3</td>
+</tr>
+<tr>
+<td align="left"><span class="caps">SNIP</span> (This)</td>
+<td align="center"><strong>37.8</strong></td>
+<td align="center"><strong>21.4</strong></td>
+<td align="center"><strong>40.4</strong></td>
+<td align="center">50.1</td>
+</tr>
+</tbody>
+</table>
+<p>从上面详细的对比结果来看，SNIP的提升还是很客观的。并且SNIP也如作者所说，较传统的MST要好不少。其他结果请参照原文。实际上本文提出的技术在SPPNet[3]里面也是这么实现的，只不过当时的选择是基于hand-crafted产生的region来做，例如通过SSW[4]来做region proposals。</p>
+<h3 id="_4">参考文献</h3>
+<p>[1] Lin T Y, Maire M, Belongie S, et al. Microsoft coco: Common objects in context[C]. European conference on computer vision. Springer, Cham, 2014: 740-755.</p>
+<p>[2] Deng J, Dong W, Socher R, et al. Imagenet: A large-scale hierarchical image database[C]. 2009 <span class="caps">IEEE</span> conference on computer vision and pattern recognition. Ieee, 2009: 248-255.</p>
+<p>[3] He K, Zhang X, Ren S, et al. Spatial pyramid pooling in deep convolutional networks for visual recognition[J]. <span class="caps">IEEE</span> transactions on pattern analysis and machine intelligence, 2015, 37(9): 1904-1916.</p>
+<p>[4] Uijlings J R R, Van De Sande K E A, Gevers T, et al. Selective search for object recognition[J]. International journal of computer vision, 2013, 104(2): 154-171.</p>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",
@@ -226,11 +282,7 @@ Lingxiao's World            </a>
 <section class="well" id="related-posts">
 <h4>Related Posts:</h4>
 <ul>
-<li><a href="https://zjjconan.github.io/blog/Real-Time-Tracking-DNN-Part-1/Real-Time-Tracking-DNN-Part-1.html">论文集《Real-Time Tracking Methods (<span class="caps">DNN</span>-Part I)》</a></li>
-<li><a href="https://zjjconan.github.io/blog/RT-MDNet/RT-MDNet.html">论文笔记《Real-Time MDNet》</a></li>
-<li><a href="https://zjjconan.github.io/blog/Real-Time-Tracking-DNN-Part-2/Real-Time-Tracking-DNN-Part-2.html">论文集《Real-Time Tracking Methods (<span class="caps">DNN</span>-Part <span class="caps">II</span>)》</a></li>
-<li><a href="https://zjjconan.github.io/blog/MDNet/MDNet.html">论文分析《Learning Multi-domain Convolutional Neural Networks for Visual Tracking》</a></li>
-<li><a href="https://zjjconan.github.io/blog/BranchOut/BranchOut.html">论文笔记《BranchOut: Regularization for Online Ensemble Tracking with Convolutional Neural Networks》</a></li>
+<li><a href="https://zjjconan.github.io/blog/DSOD/DSOD.html">论文笔记《<span class="caps">DSOD</span>: Learning Deeply Supervised Object Detectors from Scratch》</a></li>
 </ul>
 </section>
 <hr>
@@ -241,7 +293,7 @@ Lingxiao's World            </a>
 <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
 </div>
 <!-- AddThis Button END -->
-<hr>
+<hr/>
 <section class="comments" id="comments">
 <h2>Comments</h2>
 <div id="disqus_thread"></div>
@@ -249,7 +301,7 @@ Lingxiao's World            </a>
             /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
             var disqus_shortname = 'zjjconan'; // required: replace example with your forum shortname
 
-                var disqus_url = 'https://zjjconan.github.io/blog/MAVOT/MAVOT.html';
+                var disqus_url = 'https://zjjconan.github.io/blog/SNIP/SNIP.html';
 
             var disqus_config = function () {
                 this.language = "en";
@@ -268,7 +320,7 @@ Lingxiao's World            </a>
             Disqus.</a></noscript>
 <a class="dsq-brlink" href="http://disqus.com">comments powered by <span class="logo-disqus">Disqus</span></a>
 </section>
-</hr></hr></article>
+</hr></article>
 </section>
 </div>
 <div class="col-sm-3" id="sidebar">
