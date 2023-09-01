@@ -1,84 +1,378 @@
 ---
----
+--- 
 
-@string{aps = {American Physical Society,}}
+@string{ IEEE_TIP = {IEEE Transactions on Image Processing} }
+@string{ IEEE_TVCG = {IEEE Transactions on Visualization and Computer Graphics} }
+@string{ IEEE_TCSVT = {IEEE Transactions on Circuits and Systems for Video Technology} }
 
-@book{einstein1956investigations,
-  bibtex_show={true},
-  title={Investigations on the Theory of the Brownian Movement},
-  author={Einstein, Albert},
-  year={1956},
-  publisher={Courier Corporation},
-  preview={brownian-motion.gif}
+@string{ Elsevier_PR = {Pattern Recognition} }
+@string{ Soc_JoN = {Journal of Neuroscience} }
+@string{ Elsevier_CVIU = {Computer Vision and Image Understanding} }
+@string{ Elsevier_NC = {Neurocomputing} }
+
+@string{ IEEE_CVPR = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition} }
+@string{ IEEE_ICCV = {Proceedings of the IEEE/CVF International Conference on Computer Vision} }
+@string{ Springer_ECCV = {European Conference on Computer Vision} }
+@string{ AAAI_AAAI = {Proceedings of the AAAI Conference on Artificial Intelligence} }
+@string{ ACM_MM = {Proceedings of the ACM International Conference on Multimedia} }
+
+@string{ IEEE_ICME = {International Conference on Multimedia and Expo} }
+@string{ IEEE_IJCNN = {International Joint Conference on Neural Networks} }
+@string{ IEEE_ICIP = {International Conference on Image Processing} }
+
+
+@string{ PMLR_ICML = {Proceedings of the International Conference on Machine Learning} }
+@string{ IJCAI_IJCAI = {Proceedings of the International Conference on International Joint Conferences on Artificial Intelligence} }
+
+
+@article{Tang_SNN_AC2AS_PR2023,
+    abbr={PR},
+    title={AC2AS: Activation Consistency Coupled ANN-SNN Framework for Fast and Memory-Efficient SNN Training},
+    journal=Elsevier_PR,
+    journal_abbr={(PR)},
+    volume={144},
+    pages={109826},
+    year={2023},
+    issn={0031-3203},
+    url={https://www.sciencedirect.com/science/article/pii/S0031320323005241},
+    author={Tang, Jianxiong and Lai, Jian-Huang and Xie, Xiaohua and Yang, Lingxiao and Zheng, Wei-Shi},
+    keywords={Spiking Neural Networks, Deep Learning, Supervised Learning, Image Classification},
+    publisher={Elsevier}
 }
 
-@article{einstein1950meaning,
-  abbr={AJP},
-  bibtex_show={true},
-  title={The meaning of relativity},
-  author={Einstein, Albert and Taub, AH},
-  journal={American Journal of Physics},
-  volume={18},
-  number={6},
-  pages={403--404},
-  year={1950},
-  publisher={American Association of Physics Teachers}
+
+@article{Dong_AderTrain_TIP2023,
+    abbr={T-IP},
+    author={Dong, Junhao and Yang, Lingxiao and Wang, Yuan and Xie, Xiaohua and Lai, Jianhuang},
+    journal=IEEE_TIP,
+    journal_abbr={(T-IP)},
+    title={Toward Intrinsic Adversarial Robustness Through Probabilistic Training}, 
+    year={2023},
+    volume={32},
+    number={},
+    pages={3862-3872}
+}
+% preview={Dong_AderTrain_TIP2023.png}
+
+@InProceedings{Zhou_USOD_TGSD_CVPR2023,
+    abbr={CVPR},
+    author={Zhou, Huajun and Qiao, Bo and Yang, Lingxiao and Lai, Jianhuang and Xie, Xiaohua},
+    title={Texture-Guided Saliency Distilling for Unsupervised Salient Object Detection},
+    booktitle=IEEE_CVPR,
+    journal_abbr={(CVPR)},
+    year={2023},
+    pages={7257-7267}
 }
 
-@article{PhysRev.47.777,
-  abbr={PhysRev},
-  title={Can Quantum-Mechanical Description of Physical Reality Be Considered Complete?},
-  author={Einstein, A. and Podolsky, B. and Rosen, N.},
-  abstract={In a complete theory there is an element corresponding to each element of reality. A sufficient condition for the reality of a physical quantity is the possibility of predicting it with certainty, without disturbing the system. In quantum mechanics in the case of two physical quantities described by non-commuting operators, the knowledge of one precludes the knowledge of the other. Then either (1) the description of reality given by the wave function in quantum mechanics is not complete or (2) these two quantities cannot have simultaneous reality. Consideration of the problem of making predictions concerning a system on the basis of measurements made on another system that had previously interacted with it leads to the result that if (1) is false then (2) is also false. One is thus led to conclude that the description of reality as given by a wave function is not complete.},
-  journal={Phys. Rev.},
-  volume={47},
-  issue={10},
-  pages={777--780},
-  numpages={0},
-  year={1935},
-  month={May},
-  publisher=aps,
-  doi={10.1103/PhysRev.47.777},
-  url={http://link.aps.org/doi/10.1103/PhysRev.47.777},
-  html={https://journals.aps.org/pr/abstract/10.1103/PhysRev.47.777},
-  pdf={example_pdf.pdf},
-  altmetric={248277},
-  dimensions={true},
-  selected={true}
+@article{Luo_ShadowR_RL_TIP2023,
+    abbr={T-IP},
+    title={Learning Shadow Removal from Unpaired Samples via Reciprocal Learning},
+    author={Luo, Wenjie and Xie, Xiaohua and Deng, Kuoyu and Yang, Lingxiao and Lai, Jianhuang},
+    journal=IEEE_TIP,
+    journal_abbr={(T-IP)},
+    year={2023},
+    publisher={IEEE}
 }
 
-@article{einstein1905molekularkinetischen,
-  title={{\"U}ber die von der molekularkinetischen Theorie der W{\"a}rme geforderte Bewegung von in ruhenden Fl{\"u}ssigkeiten suspendierten Teilchen},
-  author={Einstein, A.},
-  journal={Annalen der physik},
-  volume={322},
-  number={8},
-  pages={549--560},
-  year={1905},
-  publisher={Wiley Online Library}
+@InProceedings{Yang_AVR_PredRNet_ICML2023,
+    selected={true},
+    abbr={ICML},
+    title={Neural Prediction Errors enable Analogical Visual Reasoning in Human Standard Intelligence Tests},
+    author={Yang, Lingxiao and You, Hongzhi and Zhen, Zonglei and Wang, Dahui and Wan, Xiaohong and Xie, Xiaohua and Zhang, Ru-Yuan},
+    booktitle=PMLR_ICML,
+    journal_abbr={(ICML)},
+    pages={39572--39583},
+    year={2023},
+    volume={202},
+    series={Proceedings of Machine Learning Research},
+    publisher={PMLR}
 }
 
-@article{einstein1905movement,
-  abbr={Ann. Phys.},
-  title={Un the movement of small particles suspended in statiunary liquids required by the molecular-kinetic theory 0f heat},
-  author={Einstein, A.},
-  journal={Ann. Phys.},
-  volume={17},
-  pages={549--560},
-  year={1905}
+@article{Zhang_PGPIG_DTCA_TVCG2023,
+    abbr={T-VCG},
+    title={Pose Guided Person Image Generation via Dual-task Correlation and Affinity Learning},
+    author={Zhang, Pengze and Yang, Lingxiao and Xie, Xiaohua and Lai, Jianhuang},
+    journal=IEEE_TVCG,
+    journal_abbr={(T-VCG)},
+    year={2023},
+    publisher={IEEE}
 }
 
-@article{einstein1905electrodynamics,
-  title={On the electrodynamics of moving bodies},
-  author={Einstein, A.},
-  year={1905}
+@article{Cheng_Representational_JoN2023,
+    abbr={J. Neurosci},
+    title={Representational geometries reveal differential effects of response correlations on population codes in neurophysiology and functional magnetic resonance imaging},
+    author={Cheng*, Zi-Jian and Yang*, Lingxiao and Zhang, Wen-Hao and Zhang, Ru-Yuan},
+    journal=Soc_JoN,
+    journal_abbr={(J. Neurosci)},
+    volume={43},
+    number={24},
+    pages={4498--4512},
+    year={2023},
+    publisher={Soc Neuroscience}
 }
 
-@book{przibram1967letters,
-  bibtex_show={true},
-  title={Letters on wave mechanics},
-  author={Einstein, Albert and Schrödinger, Erwin and Planck, Max and Lorentz, Hendrik Antoon and Przibram, Karl},
-  year={1967},
-  publisher={Vision},
-  preview={wave-mechanics.gif}
+
+@ARTICLE{Peng_WSGL_TIP2023,
+    abbr={T-IP},
+    title={Learning Weak Semantics by Feature Graph for Attribute-based Person Search},
+    author={Qiyang Peng* and Lingxiao Yang* and Xiaohua Xie and Jianhuang Lai},
+    journal=IEEE_TIP,
+    journal_abbr={(T-IP)},
+    year={2023},
+}
+
+@InProceedings{Xu_AVR_RuleMatch_IJCAI2023,
+    abbr={IJCAI},
+    title={RuleMatch: Matching Abstract Rules for Semi-Supervised Learning of Human Standard Intelligence Tests},
+    author={Yunlong Xu* and Lingxiao Yang* and Hongzhi You and Zonglei Zhen and Da-Hui Wang and Xiaohong Wan and Xiaohua Xie and Ru-Yuan Zhang},
+    booktitle=IJCAI_IJCAI,
+    journal_abbr={(IJCAI)},
+    year={2023}
+}
+
+@InProceedings{Tang_SNN_SCM_IJCAI2023,
+    abbr={IJCAI},
+    title={Spike Count Maximization for Neuromorphic Vision Recognition},
+    author={Tang, Jianxiong and Lai, Jian-Huang and Xie, Xiaohua and Yang, Lingxiao},
+    booktitle=IJCAI_IJCAI,
+    journal_abbr={(IJCAI)},
+    year={2023}
+}
+
+@InProceedings{Yan_SSL_CRCL_ICME2023,
+    abbr={ICME},
+    title={Self-supervised Cross-stage Regional Contrastive Learning for Object Detection},
+    author={Yan, Junkai and Yang, Lingxiao and Gao, Yipeng and Zheng, Wei-Shi},
+    booktitle=IEEE_ICME,
+    journal_abbr={(ICME)},
+    year={2023},
+    organization={IEEE}
+}
+
+@inproceedings{Qiao_FSOD_IAS_IJCNN2023,
+    abbr={IJCNN},
+    title={Few Shot Object Detection with Incompletely Annotated Samples},
+    author={Qiao, Bo and Zhou, Huajun and Yang#, Lingxiao and Xie, Xiaohua},
+    booktitle=IEEE_IJCNN,
+    journal_abbr={(IJCNN)},
+    year={2023},
+    organization={IEEE}
+}
+
+@InProceedings{Gao_AcroFOD_ECCV2022,
+    abbr={ECCV},
+    title={AcroFOD: An Adaptive Method for Cross-domain Few-shot Object Detection},
+    author={Yipeng Gao and Lingxiao Yang and Yunmu Huang and Song Xie and Shiyong Li and Wei-Shi Zheng},
+    booktitle=Springer_ECCV,
+    journal_abbr={(ECCV)},
+    year={2022}
+}
+
+@article{Tang_SNN_RLIF_NC2022,
+    abbr={Neurocomputing},
+    title={Relaxation LIF: A Gradient-based Spiking Neuron for Direct Training Deep Spiking Neural Networks},
+    journal=Elsevier_NC,
+    volume={501},
+    pages={499-513},
+    year={2022},
+    issn={0925-2312},
+    url={https://www.sciencedirect.com/science/article/pii/S092523122200755X},
+    author={Jianxiong Tang and Jian-Huang Lai and Wei-Shi Zheng and Lingxiao Yang and Xiaohua Xie},
+}
+
+@article{Zhou_USOD_A2S_TCSVT2022,
+    abbr={T-CSVT},
+    author={Zhou, Huajun and Chen, Peijia and Yang, Lingxiao and Xie, Xiaohua and Lai, Jianhuang},
+    journal=IEEE_TCSVT,
+    journal_abbr={(T-CSVT)},
+    title={Activation to Saliency: Forming High-Quality Labels for Unsupervised Salient Object Detection},
+    year={2022},
+    volume={},
+    pages={1-1},
+}
+
+@article{Zhou_SOD_SIS_TCSVT2022,
+    abbr={T-CSVT},
+    author={Zhou, Huajun and Yang, Lingxiao and Xie, Xiaohua and Lai, Jianhuang},
+    journal=IEEE_TCSVT,
+    journal_abbr={(T-CSVT)},
+    title={Selective Intra-Image Similarity for Personalized Fixation-based Object Segmentation},
+    year={2022},
+    volume={},
+    pages={1-1}
+}
+
+@InProceedings{Chen_WSSS_SIPE_CVPR2022,
+    abbr={CVPR},
+    author={Qi Chen and Lingxiao Yang and Jian-Huang Lai and Xiaohua Xie},
+    title={Self-Supervised Image-Specific Prototype Exploration for Weakly Supervised Semantic Segmentation},
+    booktitle=IEEE_CVPR,
+    journal_abbr={(CVPR)},
+    year={2022},
+    pages= {4288-4298}
+}
+
+@InProceedings{Zhang_PGPIG_DCT_CVPR2022,
+    abbr={CVPR},
+    author={Pengze Zhang and Lingxiao Yang and Jian-Huang Lai and Xiaohua Xie},
+    title={Exploring Dual-Task Correlation for Pose Guided Person Image Generation},
+    booktitle=IEEE_CVPR,
+    journal_abbr={(CVPR)},
+    year={2022},
+    pages={7713-7722}
+}
+
+@article{Zhang_PGPIG_TCN_TCSVT2021,
+    abbr={T-CSVT},
+    author={Pengze Zhang and Lingxiao Yang and Xiaohua Xie and Jian-Huang Lai},
+    journal=IEEE_TCSVT,
+    journal_abbr={(T-CSVT)},
+    title={Lightweight Texture Correlation Network for Pose Guided Person Image Generation},
+    year={2021},
+    volume={},
+    pages={1-1},
+}
+
+@inProceedings{Yang_CNN_SimAM_ICML2021,
+    selected={true},
+    abbr={ICML},
+    title={SimAM: A Simple, Parameter-free Attention Module for Convolutional Neural Networks},
+    author={Lingxiao Yang and Ru-Yuan Zhang and Lida Li and Xiaohua Xie},
+    booktitle=PMLR_ICML,
+    journal_abbr={(ICML)},
+    pages={11863--11874},
+    year={2021},
+    organization={PMLR}
+}
+
+@article{Li_DBD_LOGCAL_TIP2021,
+    abbr={T-IP},
+    author={Li, Jinxing and Fan, Dandan and Yang, Lingxiao and Gu, Shuhang and Lu, Guangming and Xu, Yong and Zhang, David},
+    journal=IEEE_TIP,
+    journal_abbr={(T-IP)},
+    title={Layer-Output Guided Complementary Attention Learning for Image Defocus Blur Detection},
+    year={2021},
+    volume={30},
+    pages={3748-3763}
+}
+
+@article{Chen_SOD_CALoss_TIP2021,
+    abbr={T-IP},
+    author={Chen, Zixuan and Zhou, Huajun and Lai, Jian-Huang and Yang, Lingxiao and Xie, Xiaohua},
+    journal=IEEE_TIP,
+    journal_abbr={(T-IP)},
+    title={Contour-Aware Loss: Boundary-Aware Learning for Salient Object Segmentation},
+    year={2021},
+    volume={30},
+    pages={431-443}
+}
+
+@inProceedings{Zhou_SOD_ITSD_CVPR2020,
+    abbr={CVPR},
+    title={Interactive Two-Stream Decoder for Accurate and Fast Saliency Detection},
+    author={Zhou, Huajun and Xie, Xiaohua and Lai, Jian-Huang and Chen, Zixuan and Yang, Lingxiao},
+    booktitle=IEEE_CVPR,
+    journal_abbr={(CVPR)},
+    pages={9141--9150},
+    year={2020}
+}
+
+@inproceedings{Yang_USOT_ULDCF_AAAI2019,
+    abbr={AAAI},
+    title={Learning A Visual Tracker from A Single Movie without Annotation},
+    author={Yang, Lingxiao and Zhang, David and Zhang, Lei},
+    booktitle=AAAI_AAAI,
+    journal_abbr={(AAAI)},
+    volume={33},
+    pages={9095--9102},
+    year={2019}
+}
+
+@InProceedings{Li_GOD_DAFS_ICCV2019,
+    abbr={ICCV},
+    author={Li, Shuai and Yang, Lingxiao and Huang, Jianqiang and Hua, Xian-Sheng and Zhang, Lei},
+    title={Dynamic Anchor Feature Selection for Single-Shot Object Detection},
+    booktitle=IEEE_ICCV,
+    journal_abbr={(ICCV)},
+    year={2019}
+}
+
+@article{YANG_CNN_PCNN_NC2018,
+    abbr={Neurocomputing},
+    title={Learning Discriminative Visual Elements using Part-based Convolutional Neural Network},
+    journal=Elsevier_NC,
+    volume={316},
+    pages={135-143},
+    year={2018},
+    issn={0925-2312},
+    url={https://www.sciencedirect.com/science/article/pii/S0925231218308944},
+    author={Lingxiao Yang and Xiaohua Xie and Jian-huang Lai},
+    keywords={Convolutional Neural Networks, Part-based Model, Visual Recognition},
+}
+
+@InProceedings{Yang_SOT_DLST_ACMMM2017,
+    abbr={ACM MM},
+    title={Deep {L}ocation-{S}pecific {T}racking},
+    author={Yang, Lingxiao and Liu, Risheng and Zhang, David and Zhang, Lei},
+    booktitle=ACM_MM,
+    journal_abbr={(ACM MM)},
+    pages={1309--1317},
+    year={2017}
+}
+
+@InProceedings{Yang_CNN_PartCNN_ICIP2017,
+    abbr={ICIP},
+    title={Part-based Convolutional Neural Network for Visual Recognition},
+    author={Yang, Lingxiao and Xie, Xiaohua and Li, Peihua and Zhang, David and Zhang, Lei},
+    booktitle=IEEE_ICIP,
+    journal_abbr={(ICIP)},
+    pages={1772--1776},
+    year={2017},
+    organization={IEEE}
+}
+
+@InProceedings{Yang_SOT_RTGT_ICME2017,
+    abbr={ICME},
+    title={Learning A Real-Time Generic Tracker using Convolutional Neural Networks},
+    author={Zhu*, Linnan and Yang*, Lingxiao and Zhang, David and Zhang, Lei},
+    booktitle=IEEE_ICME,
+    journal_abbr={(ICME Best Paper Candidate)},
+    pages={1219--1224},
+    year={2017},
+    organization={IEEE}
+}
+
+
+@article{Xie_MLL_ODAGs_CVIU2016,
+    abbr={CVIU},
+    title={Learning Object-Specific DAGs for Multi-label Material Recognition},
+    author={Xie, Xiaohua and Yang, Lingxiao and Zheng, Wei-Shi},
+    journal=Elsevier_CVIU,
+    journal_abbr={(CVIU)},
+    volume={143},
+    pages={183--190},
+    year={2016},
+    publisher={Elsevier}
+}
+
+@article{Yang_MLL_OSML_NC2016,
+    abbr={Neurocomputing},
+    title={Exploiting Object Semantic Cues for Multi-label Material Recognition},
+    author={Yang, Lingxiao and Xie, Xiaohua},
+    journal=Elsevier_NC,
+    volume={173},
+    pages={1646--1654},
+    year={2016},
+    publisher={Elsevier}
+}
+
+@InProceedings{Yang_GIC_MaxPart_ICIP2015,
+    abbr={ICIP},
+    title={Max-Margin Analysis based Patch Sampling for Discovery of Mid-Level Parts},
+    author={Yang, Lingxiao and Xie, Xiaohua},
+    booktitle=IEEE_ICIP,
+    journal_abbr={(ICIP)},
+    pages={2214--2218},
+    year={2015},
+    organization={IEEE}
 }
