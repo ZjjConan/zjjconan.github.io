@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Name | Publications</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bibjs/0.3.1/bib.min.js"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="name-title">LX. Yang | SYSU</div>
+    <nav class="nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="publications.html" class="nav-link active">Publications</a>
+      <a href="teaching.html" class="nav-link">Teaching</a>
+    </nav>
+  </header>
+  
+  <main>
+    <h1>Publications</h1>
+    <div id="bio">
+    Please see <a href="https://scholar.google.com.hk/citations?hl=zh-CN&user=jUDQ8OUAAAAJ&view_op=list_works&authuser=1&sortby=pubdate">Google Scholar</a> for more recent studies.
+    </div>
+    <!-- Container for dynamically generated publications -->
+    <div id="publications">
+      <!-- Example of a publication reference -->
+      <div class="publication" data-bib-key="YangFSOD2024"></div>
+    </div>
+  </main>
+  
+  <footer class="footer">
+    &copy; 2023 Your Name. Last updated: June 2023.
+  </footer>
+
+  <!-- JavaScript to load and parse .bib file -->
+  <script src="scripts/loadPublications.js"></script>
+</body>
+</html>

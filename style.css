@@ -1,0 +1,226 @@
+/* Clean academic style based on Bolei Zhou but without sidebar */
+:root {
+  --dark-blue: #2c3e50;
+  --medium-blue: #3498db;
+  --light-gray: #f8f9fa;
+  --medium-gray: #e9ecef;
+  --dark-gray: #495057;
+  --text-color: #212529;
+}
+
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+  font-size: 16px;
+}
+
+a {
+  color: var(--medium-blue);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 0;
+  border-bottom: 1px solid var(--medium-gray);
+}
+
+.name-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--dark-blue);
+}
+
+.name-title span {
+  font-weight: 300;
+}
+
+.nav {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-link {
+  font-size: 16px;
+  color: var(--dark-blue);
+  position: relative;
+}
+
+.nav-link.active {
+  font-weight: 600;
+}
+
+.nav-link.active:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background: var(--medium-blue);
+}
+
+/* Profile image and contact info */
+.profile-contact {
+  display: flex;
+  align-items: center;
+  margin-bottom: -40px;
+}
+
+.profile-img {
+  width: 200px;
+  border-radius: 4px;
+  margin-right: 20px;
+  border: 1px solid var(--medium-gray);
+}
+
+.contact-info {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  margin: 0;
+}
+
+.social-links {
+  margin-top: 10px;
+}
+
+.social-icon {
+  width: 50px;
+  height: 50px;
+  margin-right: 5px;
+}
+
+/* Bio section */
+.bio {
+  margin-bottom: 30px;
+  line-height: 1.7;
+}
+
+.bio p {
+  margin-bottom: 15px;
+}
+
+/* News section */
+.news-item {
+  margin-bottom: 8px;
+  padding-left: 15px;
+  border-left: 3px solid var(--medium-blue);
+}
+
+.news-date {
+  font-weight: 600;
+  color: var(--dark-blue);
+}
+
+/* News and Selected Publications section */
+h2 {
+  font-size: 24px; /* 增大字体大小 */
+  margin-bottom: 10px; /* 减小与下面内容的间距 */
+}
+
+/* Selected Publications */
+.selected-pubs {
+  margin-top: 30px;
+}
+
+.pub-item {
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px dashed var(--medium-gray);
+}
+
+.pub-title {
+  font-weight: 600;
+  color: var(--dark-blue);
+  margin-bottom: 5px;
+}
+
+.pub-authors {
+  font-style: italic;
+  color: var(--dark-gray);
+  margin-bottom: 5px;
+}
+
+.pub-venue {
+  color: var(--dark-gray);
+  margin-bottom: 8px;
+}
+
+.pub-links {
+  margin-top: 5px;
+}
+
+.pub-links a {
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+/* Publications */
+.publication {
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 1px dashed var(--medium-gray);
+}
+
+/* Teaching */
+.course {
+  margin-bottom: 20px;
+}
+
+.course-title {
+  font-weight: 600;
+  color: var(--dark-blue);
+  margin-bottom: 5px;
+}
+
+.course-term {
+  color: var(--dark-gray);
+  font-size: 14px;
+}
+
+/* Contact info */
+.contact-info {
+  background: var(--light-gray);
+  padding: 20px;
+  border-radius: 4px;
+  margin: 30px 0;
+}
+
+/* Footer */
+.footer {
+  margin-top: 50px;
+  padding: 20px 0;
+  border-top: 1px solid var(--medium-gray);
+  text-align: center;
+  color: var(--dark-gray);
+  font-size: 14px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .nav {
+    margin-top: 15px;
+    flex-wrap: wrap;
+  }
+  
+  .profile-img {
+    width: 150px;
+  }
+}
