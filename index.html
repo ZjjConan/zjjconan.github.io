@@ -5,6 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LX.Yang | SYSU</title>
   <link rel="stylesheet" href="style.css">
+  <!-- Citation system -->
+  <script src="scripts/citationManager.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async function() {
+      const cm = new CitationManager();
+      await cm.loadBibtex('materials/publications.bib');
+      
+      // Render selected publications
+      const selectedKeys = ['Yang2025LwEIB', 'Yang2024MMA'];
+      const pubs = cm.getPublications(selectedKeys);
+      const pv = new PublicationView();
+      
+      const container = document.querySelector('.selected-pubs .pub-list');
+      if (container) {
+        container.innerHTML = '';
+        pubs.forEach(pub => {
+          const div = document.createElement('div');
+          div.className = 'pub-item';
+          div.innerHTML = pv.generatePublicationHTML(pub);
+          container.appendChild(div);
+        });
+      }
+    });
+  </script>
 </head>
 <body>
   <header class="header">
@@ -33,51 +57,33 @@
     </div>
     
     <section class="bio">
-      <p>I am an Associate Professor at Sun Yat-sen University. My research interests include Computer Vision, Machine Learning, AI4Neuroscience and Neuroscience4AI.
-      Previously, I work as Post-Doctoral Researcher at Sun Yat-sen University in Guangzhou, China. 
-      My research interests include computer vision and machine learning with a focus on object recognition, video understanding,and brain inspired computational model.
-      More recently, I am also interested in more higher-level cognitive tasks (e.g., abstract visual reasoning).</p>
+      <p>I am an Associate Professor at Sun Yat-sen University. Previously, I worked as a Post-Doctoral Researcher 
+        at Sun Yat-sen University in Guangzhou, China. My research interests include Computer Vision, Machine Learning, 
+        AI4Neuroscience and Neuroscience4AI. More recently, I am also interested in more higher-level cognitive tasks 
+        (e.g., abstract visual reasoning).
+      </p>
        
       <h2>News</h2>
       <div class="news-item">
         <span class="news-date">Jan.06 2025</span> - We are glad that one of our work on adapting visual-language model has been accepted by 
         <b><i>International Journal of Computer Vision</i></b>.
       </div>
-      <!-- <div class="news-item">
-        <span class="news-date">Mar 2023</span> - Serving as Area Chair for NeurIPS 2023.
-      </div>
       <div class="news-item">
-        <span class="news-date">Jan 2023</span> - Received NSF CAREER Award.
-      </div> -->
+        <span class="news-date">Oct.12 2024</span> - I am very pleased to become an Associate Professor at the School of Systems Science and Engineering, 
+        Sun Yat-sen University.
+      </div>
 
       <div class="selected-pubs">
         <h2>Selected Publications</h2>
-        <div class="pub-item">
-          <div class="pub-title">Paper Title One</div>
-          <div class="pub-authors">Your Name, Coauthor One, Coauthor Two</div>
-          <div class="pub-venue">Conference on Computer Vision and Pattern Recognition (CVPR 2023)</div>
-          <div class="pub-links">
-            <a href="#">PDF</a>
-            <a href="#">Code</a>
-            <a href="#">Project Page</a>
-          </div>
-        </div>
-        
-        <div class="pub-item">
-          <div class="pub-title">Paper Title Two</div>
-          <div class="pub-authors">Coauthor One, Your Name, Coauthor Two</div>
-          <div class="pub-venue">International Conference on Machine Learning (ICML 2023)</div>
-          <div class="pub-links">
-            <a href="#">PDF</a>
-            <a href="#">Code</a>
-          </div>
+        <div class="pub-list">
+          <!-- Selected publications will be inserted here automatically -->
         </div>
       </div>
     </section>
   </main>
   
   <footer class="footer">
-    &copy; 2023 Your Name. Last updated: June 2023.
+    &copy; 2025 Lingxiao Yang. Last updated: Apr 2025.
   </footer>
 </body>
 </html>

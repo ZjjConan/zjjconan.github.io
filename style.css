@@ -12,7 +12,7 @@ body {
   font-family: 'Helvetica Neue', Arial, sans-serif;
   line-height: 1.6;
   color: var(--text-color);
-  max-width: 800px;
+  max-width: 960px;
   margin: 0 auto;
   padding: 0 20px;
   font-size: 16px;
@@ -124,54 +124,81 @@ a:hover {
   color: var(--dark-blue);
 }
 
-/* News and Selected Publications section */
+/* Headings */
 h2 {
-  font-size: 24px; /* 增大字体大小 */
-  margin-bottom: 10px; /* 减小与下面内容的间距 */
+  font-size: 24px;
+  margin-bottom: 10px;
 }
 
-/* Selected Publications */
-.selected-pubs {
-  margin-top: 30px;
-}
-
+/* Publications and Selected Publications */
 .pub-item {
-  margin-bottom: 15px;
-  padding-bottom: 15px;
+  margin-bottom: 0.3rem; 
+  padding-bottom: 0.3rem; 
   border-bottom: 1px dashed var(--medium-gray);
 }
 
 .pub-title {
   font-weight: 600;
   color: var(--dark-blue);
-  margin-bottom: 5px;
+  margin-bottom: 0.1rem;
 }
 
 .pub-authors {
-  font-style: italic;
   color: var(--dark-gray);
-  margin-bottom: 5px;
+  margin-bottom: 0.1rem;
 }
 
 .pub-venue {
   color: var(--dark-gray);
-  margin-bottom: 8px;
+  margin-bottom: 0.1rem;
+}
+
+.pub-year {
+  color: var(--dark-gray);
+  /* font-weight: 500; */
+  margin-bottom: 0.3rem;
 }
 
 .pub-links {
-  margin-top: 5px;
+  margin-top: 0.1rem;
 }
 
 .pub-links a {
-  margin-right: 10px;
-  font-size: 14px;
+  margin-right: 0.5rem;
+  color: var(--medium-blue);
+  text-decoration: none;
 }
 
-/* Publications */
-.publication {
-  margin-bottom: 25px;
-  padding-bottom: 15px;
-  border-bottom: 1px dashed var(--medium-gray);
+.pub-links a:hover {
+  text-decoration: underline;
+}
+
+/* Publications page specific styles */
+.publication-filters {
+  display: flex;
+  gap: 0.3rem;
+  margin: 1.2rem 0;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 0.5rem 1rem;
+  background-color: var(--light-gray);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 16px;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background-color: var(--medium-blue);
+  color: white;
+}
+
+.publication-list {
+  margin-top: 1rem;
 }
 
 /* Teaching */

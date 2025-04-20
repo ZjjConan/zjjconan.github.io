@@ -3,9 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Name | Publications</title>
+  <title>LX.Yang | Publications</title>
   <link rel="stylesheet" href="style.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bibjs/0.3.1/bib.min.js"></script>
+  <!-- MathJax for LaTeX rendering -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        ignoreHtmlClass: 'tex2jax_ignore'
+      }
+    };
+  </script>
+  <!-- Citation system -->
+  <script src="scripts/citationManager.js"></script>
 </head>
 <body>
   <header class="header">
@@ -16,24 +34,36 @@
       <a href="teaching.html" class="nav-link">Teaching</a>
     </nav>
   </header>
-  
+
   <main>
     <h1>Publications</h1>
     <div id="bio">
-    Please see <a href="https://scholar.google.com.hk/citations?hl=zh-CN&user=jUDQ8OUAAAAJ&view_op=list_works&authuser=1&sortby=pubdate">Google Scholar</a> for more recent studies.
+      Please see <a href="https://scholar.google.com" target="_blank">Google Scholar</a> for complete list.
+      * indicates corresponding author.
     </div>
-    <!-- Container for dynamically generated publications -->
-    <div id="publications">
-      <!-- Example of a publication reference -->
-      <div class="publication" data-bib-key="YangFSOD2024"></div>
+
+    <div class="publication-filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="article">Journal Articles</button>
+      <button class="filter-btn" data-filter="inproceedings">Conference Papers</button>
+    </div>
+
+    <div id="publications" class="publication-list">
+      <!-- Publications will be inserted here automatically -->
     </div>
   </main>
-  
+
   <footer class="footer">
-    &copy; 2023 Your Name. Last updated: June 2023.
+    &copy; 2025-<span id="current-year"></span> Lingxiao Yang. Last updated: 
+    <span id="last-updated">Apr 2025</span>.
   </footer>
 
-  <!-- JavaScript to load and parse .bib file -->
-  <script src="scripts/loadPublications.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('current-year').textContent = new Date().getFullYear();
+      const app = new PublicationApp();
+      app.initialize();
+    });
+  </script>
 </body>
 </html>
