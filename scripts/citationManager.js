@@ -107,9 +107,9 @@ class PublicationView {
     }
     
     html += `<div class="pub-links">`;
-    if (entry.url) html += `<a href="${entry.url}" target="_blank">PDF</a> `;
-    if (entry.doi) html += `<a href="https://doi.org/${entry.doi}" target="_blank">DOI</a> `;
-    if (entry.code) html += `<a href="${entry.code}" target="_blank">Code</a> `;
+    if (entry.url) html += `<a href="${entry.url}" target="_blank"><b>PDF</b></a> `;
+    // if (entry.doi) html += `<a href="https://doi.org/${entry.doi}" target="_blank">DOI</a> `;
+    if (entry.code) html += `<a href="${entry.code}" target="_blank"><b>Code</b></a> `;
     html += `</div>`;
     
     return html;
@@ -130,10 +130,22 @@ class PublicationView {
 
   formatAuthors(authors) {
     if (!authors) return 'Unknown author';
-    return authors.split(',').map(author => {
-      if (author.includes('Lingxiao Yang')) {
-        return `<b>${author}</b>`;
+    
+    return authors.split('and').map(author => {
+      // Trim whitespace and handle "Last, First" or "First Last" formats
+      author = author.trim();
+      
+      // Check for comma format (Yang, Lingxiao)
+      if (author.includes(',')) {
+        const [lastName, firstName] = author.split(',').map(part => part.trim());
+        author = `${firstName} ${lastName}`;
       }
+      
+      // Bold the author if it's Lingxiao Yang in any format
+      if (author.match('Lingxiao Yang|Yang Lingxiao')) {
+        return '<b>' + author + '</b>';
+      }
+      
       return author;
     }).join(', ');
   }
