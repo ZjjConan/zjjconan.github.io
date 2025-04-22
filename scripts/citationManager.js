@@ -86,9 +86,17 @@ class PublicationView {
   }
 
   generatePublicationHTML(entry) {
+    let thumbnailHTML = '';
+    // The following will include thumbnail image for every pub-entry
+    // if (entry.thumbnail) {
+    //     thumbnailHTML = `<img src="${entry.thumbnail}" class="pub-thumbnail" alt="Publication thumbnail">`;
+    // }
     let html = `
-      <div class="pub-title">${this.renderLatex(entry.title || 'Untitled')}</div>
-      <div class="pub-authors">${this.formatAuthors(entry.author)}</div>
+        <div class="pub-container">
+            ${thumbnailHTML}
+            <div class="pub-content">
+                <div class="pub-title">${this.renderLatex(entry.title || 'Untitled')}</div>
+                <div class="pub-authors">${this.formatAuthors(entry.author)}</div>
     `;
     
     if (entry.journal) {

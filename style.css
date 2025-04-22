@@ -131,6 +131,38 @@ h2 {
 }
 
 /* Publications and Selected Publications */
+/* Publication thumbnail styles */
+.pub-container {
+  display: flex;
+  gap: 1rem;
+  align-items: center; /* 确保垂直居中 */
+  margin: 0.0rem 0; /* 添加上下间距 */
+}
+
+.pub-thumbnail {
+  width: 150px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  flex-shrink: 0;
+  /* 3D 静态效果 */
+  box-shadow: 
+      3px 3px 5px rgba(0, 0, 0, 0.3),
+      -1px -1px 2px rgba(255, 255, 255, 0.3);
+  transform: perspective(500px) rotateX(1deg) rotateY(1deg);
+  transition: none; /* 确保没有动态效果 */
+  background: white;
+}
+
+.pub-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* 垂直居中内容 */
+}
+
+/* Adjust pub-item spacing */
 .pub-item {
   margin-bottom: 0.0rem; 
   padding-bottom: 0.35rem; 
@@ -155,7 +187,6 @@ h2 {
 
 .pub-year {
   color: var(--dark-gray);
-  /* font-weight: 500; */
   margin-bottom: 0.0rem;
 }
 
