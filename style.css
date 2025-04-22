@@ -172,22 +172,22 @@ h2 {
 .pub-title {
   font-weight: 600;
   color: var(--dark-blue);
-  margin-bottom: 0.0rem;
+  margin-bottom: -0.2rem;
 }
 
 .pub-authors {
   color: var(--dark-gray);
-  margin-bottom: 0.0rem;
+  margin-bottom: -0.2rem;
 }
 
 .pub-venue {
   color: var(--dark-gray);
-  margin-bottom: 0.0rem;
+  margin-bottom: -0.2rem;
 }
 
 .pub-year {
   color: var(--dark-gray);
-  margin-bottom: 0.0rem;
+  margin-bottom: -0.2rem;
 }
 
 .pub-links {
