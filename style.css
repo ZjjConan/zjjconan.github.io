@@ -136,7 +136,7 @@ h2 {
   display: flex;
   gap: 1rem;
   align-items: center; /* 确保垂直居中 */
-  margin: 0.0rem 0; /* 添加上下间距 */
+  margin: 0.1rem 0; /* 添加上下间距 */
 }
 
 .pub-thumbnail {
@@ -191,11 +191,11 @@ h2 {
 }
 
 .pub-links {
-  margin-top: 0.0rem;
+  margin-top: 0rem;
 }
 
 .pub-links a {
-  font-size: 15px;
+  font-size: 14px;
   margin-right: 1rem;
   color: var(--medium-blue);
   text-decoration: none;

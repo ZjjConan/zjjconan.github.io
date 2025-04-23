@@ -115,10 +115,9 @@ class PublicationView {
     }
     
     html += `<div class="pub-links">`;
-    if (entry.url) html += `<a href="${entry.url}" target="_blank"><b>PDF</b></a> `;
-    // if (entry.doi) html += `<a href="https://doi.org/${entry.doi}" target="_blank">DOI</a> `;
-    if (entry.webpage) html += `<a href="${entry.webpage}" target="_blank"><b>Webpage</b></a> `;
-    if (entry.code) html += `<a href="${entry.code}" target="_blank"><b>Code</b></a> `;
+    if (entry.url) html += `<a href="${entry.url}" target="_blank">📄 <b>PDF</b></a> `;
+    if (entry.webpage) html += `<a href="${entry.webpage}" target="_blank">🌐 <b>Webpage</b></a> `;
+    if (entry.code) html += `<a href="${entry.code}" target="_blank">💻 <b>Code</b></a> `;
     html += `</div>`;
     
     return html;
