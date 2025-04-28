@@ -11,16 +11,12 @@ class PublicationApp {
       const sortedPublications = this.sortPublications(allPublications);
       this.publicationView.renderPublications(sortedPublications);
       this.publicationView.setupFilters();
-      if (typeof MathJax !== 'undefined') {
-        setTimeout(() => MathJax.typesetPromise(), 50);
-      }
     } catch (error) {
       console.error('Error:', error);
       document.getElementById('publications').innerHTML = 
         '<p>Error loading publications. Please try again later.</p>';
     }
   }
-  
 
   sortPublications(publications) {
     return [...publications].sort((a, b) => (b.year || '0') - (a.year || '0'));
@@ -39,29 +35,26 @@ class CitationManager {
   }
 
   parseBibtex(bibtex) {
-    const lines = bibtex.split('\n');
-    let entry = null;
-    for (let line of lines) {
-      line = line.trim();
-      if (line.startsWith('@')) {
-        if (entry) {
-          this.publications[entry.key] = entry;
-        }
-        const typeKey = line.match(/^@(\w+)\{([^,]+),?/);
-        if (typeKey) {
-          entry = { type: typeKey[1].toLowerCase(), key: typeKey[2], fields: {} };
-        }
-      } else if (entry && line.includes('=')) {
-        const [field, ...valueParts] = line.split('=');
-        const value = valueParts.join('=').trim().replace(/^{|},?$/g, '');
-        entry[field.trim().toLowerCase()] = value;
+    const entryRegex = /@(\w+)\{([^,]+),\s*([^@]*)\}/g;
+    let match;
+    
+    while ((match = entryRegex.exec(bibtex)) !== null) {
+      const type = match[1];
+      const key = match[2];
+      const fields = match[3];
+      
+      const entry = { type, key };
+      const fieldRegex = /(\w+)\s*=\s*\{([^}]*)\}/g;
+      let fieldMatch;
+      
+      while ((fieldMatch = fieldRegex.exec(fields)) !== null) {
+        entry[fieldMatch[1].toLowerCase()] = fieldMatch[2];
       }
-    }
-    if (entry) {
-      this.publications[entry.key] = entry;
+      
+      this.publications[key] = entry;
     }
   }
-  
+
   getPublications(keys) {
     return keys.map(key => this.publications[key]).filter(Boolean);
   }
@@ -76,26 +69,22 @@ class PublicationView {
     const container = document.getElementById('publications') || 
                      document.querySelector('.pub-list');
     if (!container) return;
-  
+    
     container.innerHTML = '';
-  
-    const fragment = document.createDocumentFragment(); // 用 fragment
-  
+    
     publications.forEach(entry => {
       const pubElement = document.createElement('div');
       pubElement.className = `pub-item ${entry.type}`;
       pubElement.setAttribute('data-category', entry.type);
       pubElement.innerHTML = this.generatePublicationHTML(entry);
-      fragment.appendChild(pubElement);
+      container.appendChild(pubElement);
     });
-  
-    container.appendChild(fragment); // 一次性加进去
-  
+
     if (typeof MathJax !== 'undefined') {
       MathJax.typesetPromise();
     }
   }
-  
+
   generatePublicationHTML(entry) {
     let thumbnailHTML = '';
     // The following will include thumbnail image for every pub-entry
