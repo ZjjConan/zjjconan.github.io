@@ -115,8 +115,11 @@ a:hover {
 /* News section */
 .news-item {
   margin-bottom: 8px;
-  padding-left: 15px;
-  border-left: 3px solid var(--medium-blue);
+  line-height: 1.4;
+}
+
+.news-item p {
+  margin: 0;
 }
 
 .news-date {
