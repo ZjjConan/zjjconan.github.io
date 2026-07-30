@@ -6,6 +6,7 @@
   --medium-gray: #e9ecef;
   --dark-gray: #495057;
   --text-color: #212529;
+  --venue-color: #8B0000;
 }
 
 body {
@@ -115,7 +116,7 @@ a:hover {
 /* News section */
 .news-item {
   margin-bottom: 8px;
-  line-height: 1.4;
+  line-height: 1.45;
 }
 
 .news-item p {
@@ -125,6 +126,11 @@ a:hover {
 .news-date {
   font-weight: 600;
   color: var(--dark-blue);
+}
+
+.news-venue {
+  color: var(--venue-color);
+  font-weight: bold;
 }
 
 /* Headings */
