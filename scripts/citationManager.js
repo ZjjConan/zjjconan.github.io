@@ -2,15 +2,18 @@ class PublicationApp {
   constructor() {
     this.citationManager = new CitationManager();
     this.publicationView = new PublicationView();
+    this.allPublications = [];
   }
 
   async initialize() {
     try {
       await this.citationManager.loadBibtex('materials/publications.bib');
-      const allPublications = this.citationManager.getAllPublications();
-      const sortedPublications = this.sortPublications(allPublications);
+      this.allPublications = this.citationManager.getAllPublications();
+      const sortedPublications = this.sortPublications(this.allPublications);
       this.publicationView.renderPublications(sortedPublications);
-      this.publicationView.setupFilters();
+      this.publicationView.setupFilters(sortedPublications, (filtered) => {
+        this.publicationView.renderPublications(filtered);
+      });
     } catch (error) {
       console.error('Error:', error);
       document.getElementById('publications').innerHTML = 
@@ -72,11 +75,11 @@ class PublicationView {
     
     container.innerHTML = '';
     
-    publications.forEach(entry => {
+    publications.forEach((entry, index) => {
       const pubElement = document.createElement('div');
       pubElement.className = `pub-item ${entry.type}`;
       pubElement.setAttribute('data-category', entry.type);
-      pubElement.innerHTML = this.generatePublicationHTML(entry);
+      pubElement.innerHTML = this.generatePublicationHTML(entry, index + 1);
       container.appendChild(pubElement);
     });
 
@@ -85,39 +88,63 @@ class PublicationView {
     }
   }
 
-  generatePublicationHTML(entry) {
-    let thumbnailHTML = '';
-    // The following will include thumbnail image for every pub-entry
-    // if (entry.thumbnail) {
-    //     thumbnailHTML = `<img src="${entry.thumbnail}" class="pub-thumbnail" alt="Publication thumbnail">`;
-    // }
+  generatePublicationHTML(entry, index) {
+    // 标题：如果有 URL，则用 <a> 包裹标题链接到 PDF
+    const title = this.renderLatex(entry.title || 'Untitled');
+    let titleHtml;
+    if (entry.url) {
+      titleHtml = `<a href="${entry.url}" target="_blank">${title}</a>`;
+    } else {
+      titleHtml = title;
+    }
+    
     let html = `
         <div class="pub-container">
-            ${thumbnailHTML}
             <div class="pub-content">
-                <div class="pub-title">${this.renderLatex(entry.title || 'Untitled')}</div>
+                <div class="pub-title"><span class="pub-number">[${index}]</span> ${titleHtml}</div>
                 <div class="pub-authors">${this.formatAuthors(entry.author)}</div>
     `;
     
-    if (entry.journal) {
-      html += `<div class="pub-venue"><i>${this.renderLatex(entry.journal)}</i>`;
-      if (entry.journal_abbre) html += ` (<b>${entry.journal_abbre}</b>)`;
-      if (entry.volume) html += `, ${entry.volume}`;
-      if (entry.number) html += `(${entry.number})`;
-      if (entry.pages) html += `, pp. ${entry.pages}`;
-      if (entry.year) html += `, ${entry.year}`;
-      html += `</div>`;
-    } else if (entry.booktitle) {
-      html += `<div class="pub-venue"><i>${this.renderLatex(entry.booktitle)}</i>`;
-      if (entry.booktitle_abbre) html += ` (<b>${entry.booktitle_abbre}</b>)`;
-      if (entry.year) html += `, ${entry.year}`;
-      html += `</div>`;
+    // 构建第三行：期刊/会议信息 + Webpage链接 + Code链接
+    let venueHtml = '';
+    const type = entry.type || '';
+    
+    if (type === 'article' || entry.journal) {
+      // const journal = entry.journal_abbre || entry.journal || '';
+      // venueHtml = `<i>${this.renderLatex(journal)}</i>`;
+      // if (entry.volume) venueHtml += `, ${entry.volume}`;
+      // if (entry.number) venueHtml += `(${entry.number})`;
+      // if (entry.pages) venueHtml += `, pp. ${entry.pages}`;
+      // if (entry.year) venueHtml += `, ${entry.year}`;
+      venueHtml += `<div class="pub-venue"><i>${this.renderLatex(entry.journal)}</i>`;
+      if (entry.journal_abbre) venueHtml += ` (<b>${entry.journal_abbre}</b>)`;
+      if (entry.volume) venueHtml += `, ${entry.volume}`;
+      if (entry.number) venueHtml += `(${entry.number})`;
+      if (entry.pages) venueHtml += `, pp. ${entry.pages}`;
+      if (entry.year) venueHtml += `, ${entry.year}`;
+      // venueHtml += `</div>`;
+    } else if (type === 'inproceedings' || entry.booktitle) {
+      // const booktitle = entry.booktitle_abbre || entry.booktitle || '';
+      // venueHtml = `in <i>${this.renderLatex(booktitle)}</i>`;
+      // if (entry.year) venueHtml += `, ${entry.year}`;
+      // if (entry.pages) venueHtml += `, pp. ${entry.pages}`;
+      venueHtml += `<div class="pub-venue"><i>${this.renderLatex(entry.booktitle)}</i>`;
+      if (entry.booktitle_abbre) venueHtml += ` (<b>${entry.booktitle_abbre}</b>)`;
+      if (entry.year) venueHtml += `, ${entry.year}`;
+    } else if (type === 'preprint') {
+      venueHtml = `arXiv preprint`;
+      if (entry.year) venueHtml += `, ${entry.year}`;
     }
     
-    html += `<div class="pub-links">`;
-    if (entry.url) html += `<a href="${entry.url}" target="_blank">📄 <b>PDF</b></a> `;
-    if (entry.webpage) html += `<a href="${entry.webpage}" target="_blank">🌐 <b>Webpage</b></a> `;
-    if (entry.code) html += `<a href="${entry.code}" target="_blank">💻 <b>Code</b></a> `;
+    // 在第三行末尾添加链接：[Webpage] 和 [Code]
+    const links = [];
+    if (entry.webpage) links.push(`<a href="${entry.webpage}" target="_blank"><b>Project Page</b></a>`);
+    if (entry.code) links.push(`<a href="${entry.code}" target="_blank"><b>Code</b></a>`);
+    if (links.length > 0) {
+      venueHtml += ` [${links.join('] [')}]`;
+    }
+    
+    html += `<div class="pub-venue">${venueHtml}</div>`;
     html += `</div>`;
     
     return html;
@@ -140,17 +167,14 @@ class PublicationView {
     if (!authors) return 'Unknown author';
     
     return authors.split('and').map(author => {
-      // Trim whitespace and handle "Last, First" or "First Last" formats
       author = author.trim();
       
-      // Check for comma format (Yang, Lingxiao)
       if (author.includes(',')) {
         const [lastName, firstName] = author.split(',').map(part => part.trim());
         author = `${firstName} ${lastName}`;
       }
       
-      // Bold the author if it's Lingxiao Yang in any format
-      if (author.match('Lingxiao Yang|Yang Lingxiao')) {
+      if (author.includes('Lingxiao Yang') || author.includes('Yang Lingxiao')) {
         return '<b>' + author + '</b>';
       }
       
@@ -158,18 +182,24 @@ class PublicationView {
     }).join(', ');
   }
 
-  setupFilters() {
+  setupFilters(allPublications, onFilter) {
     const filterButtons = document.querySelectorAll('.filter-btn');
     filterButtons.forEach(button => {
       button.addEventListener('click', function() {
         filterButtons.forEach(btn => btn.classList.remove('active'));
         this.classList.add('active');
         const filter = this.getAttribute('data-filter');
-        document.querySelectorAll('.pub-item').forEach(pub => {
-          pub.style.display = (filter === 'all' || pub.getAttribute('data-category') === filter) 
-            ? 'block' 
-            : 'none';
-        });
+        
+        let filtered = allPublications;
+        if (filter === 'article') {
+          filtered = allPublications.filter(pub => pub.type === 'article');
+        } else if (filter === 'inproceedings') {
+          filtered = allPublications.filter(pub => pub.type === 'inproceedings');
+        } else if (filter === 'preprint') {
+          filtered = allPublications.filter(pub => pub.type === 'preprint');
+        }
+        
+        onFilter(filtered);
       });
     });
   }

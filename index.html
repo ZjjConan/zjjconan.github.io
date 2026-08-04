@@ -12,7 +12,7 @@
       const cm = new CitationManager();
       await cm.loadBibtex('materials/publications.bib');
       
-      // Render selected publications
+      // Selected publications
       const selectedKeys = ['Yang2025PredRNet', 'Yang2025LwEIB', 'Yang2024MMA', 'Yang2021SimAM'];
       const pubs = cm.getPublications(selectedKeys);
       const pv = new PublicationView();
@@ -20,10 +20,11 @@
       const container = document.querySelector('.selected-pubs .pub-list');
       if (container) {
         container.innerHTML = '';
-        pubs.forEach(pub => {
+        pubs.forEach((pub, index) => {
           const div = document.createElement('div');
           div.className = 'pub-item';
-          div.innerHTML = pv.generatePublicationHTML(pub);
+          // 传入序号 index + 1
+          div.innerHTML = pv.generatePublicationHTML(pub, index + 1);
           container.appendChild(div);
         });
       }
@@ -151,7 +152,7 @@
       <div class="selected-pubs">
         <h2>Selected Publications</h2>
         <div class="pub-list">
-          <!-- Selected publications will be inserted here automatically -->
+          <!-- Selected publications will be inserted here -->
         </div>
       </div>
     </section>
