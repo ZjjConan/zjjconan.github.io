@@ -2,10 +2,11 @@
   --dark-blue: #2c3e50;
   --medium-blue: #3498db;
   --light-gray: #f8f9fa;
-  --medium-gray: #e9ecef;
+  --medium-gray: #646565;
   --dark-gray: #495057;
   --text-color: #212529;
   --venue-color: #8B0000;
+  --dark: #000000;
 }
 
 body {
@@ -33,7 +34,7 @@ a:hover {
   justify-content: space-between;
   align-items: center;
   padding: 30px 0;
-  border-bottom: 1px solid var(--medium-gray);
+  border-bottom: 1px solid var(--light-gray);
 }
 
 .name-title {
@@ -78,7 +79,7 @@ a:hover {
   width: 200px;
   border-radius: 4px;
   margin-right: 20px;
-  border: 1px solid var(--medium-gray);
+  border: 1px solid var(--light-gray);
 }
 
 .contact-info {
@@ -89,13 +90,13 @@ a:hover {
 }
 
 .social-links {
-  margin-top: 10px;
+  margin-top: 25px;
 }
 
 .social-icon {
   width: 50px;
   height: 50px;
-  margin-right: 5px;
+  margin-right: 10px;
 }
 
 /* Bio section */
@@ -136,9 +137,15 @@ h2 {
 
 /* ─── 出版物样式 ─── */
 .pub-item {
-  margin-bottom: 0.8rem;
-  padding-bottom: 0.4rem;
-  border-bottom: 1px dashed var(--medium-gray);
+  margin-bottom: 0.3rem; 
+  padding-bottom: 0.0rem;
+  border-bottom: 1px dashed var(--light-gray);
+}
+
+.pub-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 .pub-container {
@@ -150,7 +157,7 @@ h2 {
 .pub-number {
   flex: 0 0 3em;
   font-weight: 600;
-  color: var(--dark-blue);
+  color: var(--dark-blue); 
   user-select: none;
   font-size: inherit;
   text-align: left;
@@ -168,7 +175,8 @@ h2 {
 }
 
 .pub-title a {
-  color: #000000;
+  font-weight: 600;
+  color: var(--dark-blue); 
   text-decoration: none;
 }
 
@@ -178,7 +186,7 @@ h2 {
 }
 
 .pub-authors {
-  color: var(--dark-gray);
+  color: var(--medium-gray);
 }
 
 .pub-authors b {
@@ -191,7 +199,7 @@ h2 {
 }
 
 .pub-venue i {
-  color: var(--dark-blue);
+  color: var(--medium-gray);
   font-style: italic;
 }
 
@@ -203,6 +211,23 @@ h2 {
 .pub-venue a:hover {
   text-decoration: underline;
 }
+
+.pub-title,
+.pub-authors,
+.pub-venue {
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+}
+
+/* .pub-title {
+  margin-bottom: 0px;
+}
+
+.pub-authors {
+  margin-bottom: 0px;
+} */
+
 
 /* ─── 过滤按钮 ─── */
 .publication-filters {
@@ -260,7 +285,7 @@ h2 {
 .footer {
   margin-top: 50px;
   padding: 20px 0;
-  border-top: 1px solid var(--medium-gray);
+  border-top: 1px solid var(--light-gray);
   text-align: center;
   color: var(--dark-gray);
   font-size: 14px;

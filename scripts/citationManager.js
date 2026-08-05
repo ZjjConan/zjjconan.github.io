@@ -121,7 +121,7 @@ class PublicationView {
       if (entry.volume) venueHtml += `, ${entry.volume}`;
       if (entry.number) venueHtml += `(${entry.number})`;
       if (entry.pages) venueHtml += `, pp. ${entry.pages}`;
-      if (entry.year) venueHtml += `, ${entry.year}`;
+      if (entry.year) venueHtml += `, ${entry.year}.`;
       // venueHtml += `</div>`;
     } else if (type === 'inproceedings' || entry.booktitle) {
       // const booktitle = entry.booktitle_abbre || entry.booktitle || '';
@@ -130,10 +130,10 @@ class PublicationView {
       // if (entry.pages) venueHtml += `, pp. ${entry.pages}`;
       venueHtml += `<div class="pub-venue"><i>${this.renderLatex(entry.booktitle)}</i>`;
       if (entry.booktitle_abbre) venueHtml += ` (<b>${entry.booktitle_abbre}</b>)`;
-      if (entry.year) venueHtml += `, ${entry.year}`;
+      if (entry.year) venueHtml += `, ${entry.year}.`;
     } else if (type === 'preprint') {
       venueHtml = `arXiv preprint`;
-      if (entry.year) venueHtml += `, ${entry.year}`;
+      if (entry.year) venueHtml += `, ${entry.year}.`;
     }
     
     // 在第三行末尾添加链接：[Webpage] 和 [Code]
